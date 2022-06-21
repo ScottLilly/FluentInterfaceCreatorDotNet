@@ -1,17 +1,16 @@
 ﻿using System.Windows;
 
-namespace FluentInterfaceCreator.WPF
-{
-    public partial class ApplicationSettings : Window
-    {
-        public ApplicationSettings()
-        {
-            InitializeComponent();
-        }
+namespace FluentInterfaceCreator.WPF;
 
-        private void OK_OnClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+public partial class ApplicationSettings : Window
+{
+    public ApplicationSettings()
+    {
+        InitializeComponent();
+    }
+
+    private void OK_OnClick(object sender, RoutedEventArgs e)
+    {
+        Close();
     }
 }
