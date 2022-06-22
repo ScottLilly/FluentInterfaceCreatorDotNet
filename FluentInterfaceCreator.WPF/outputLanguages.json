@@ -1,0 +1,94 @@
+[
+  {
+    "Name": "C#",
+    "FileExtension": "cs",
+    "IsCaseSensitive": true,
+    "NativeDataTypes": [
+      {
+        "Name": "void",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "byte",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "sbyte",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "short",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "ushort",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "int",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "uint",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "long",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "ulong",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "float",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "double",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "object",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "char",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "string",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "decimal",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "bool",
+        "ContainingNamespace": "",
+        "IsNative": true
+      },
+      {
+        "Name": "DateTime",
+        "ContainingNamespace": "System",
+        "IsNative": true
+      }
+    ]
+  }
+]
