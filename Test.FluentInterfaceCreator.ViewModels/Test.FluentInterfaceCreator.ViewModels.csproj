@@ -25,4 +25,10 @@
     <ProjectReference Include="..\FluentInterfaceCreator.ViewModels\FluentInterfaceCreator.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="outputLanguages.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
