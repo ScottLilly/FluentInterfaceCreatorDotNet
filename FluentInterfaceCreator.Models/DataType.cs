@@ -30,7 +30,7 @@ public class DataType
     }
 
     // For deserialization
-    internal DataType()
+    public DataType()
     {
     }
 

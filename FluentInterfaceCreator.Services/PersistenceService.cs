@@ -16,6 +16,14 @@ public static class PersistenceService
         return Serialization.Deserialize<Project>(serializedProject);
     }
 
+    public static List<OutputLanguage> GetOutputLanguages()
+    {
+        string json = File.ReadAllText("outputLanguages.json");
+
+        return Newtonsoft.Json
+            .JsonConvert.DeserializeObject<List<OutputLanguage>>(json);
+    }
+
     public static void SaveProjectToXmlFile(Project project, string fileName)
     {
         File.WriteAllText(fileName, Serialization.Serialize(project));

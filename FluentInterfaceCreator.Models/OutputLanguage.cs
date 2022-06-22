@@ -26,7 +26,7 @@ public class OutputLanguage
     }
 
     // For deserialization
-    internal OutputLanguage()
+    public OutputLanguage()
     {
     }
 }
