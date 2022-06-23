@@ -49,6 +49,13 @@ internal sealed class CSharpFluentInterfaceFileCreator :
         builder.AddLine(1, $"public class {_project.FactoryClassName} : {_project.InterfaceListAsCommaSeparatedString}");
         builder.AddLine(1, "{");
 
+        builder.AddLine(2, "");
+        builder.AddLine(2, "// Instantiate backing variables here");
+        builder.AddLine(2, $"private {_project.FactoryClassName}()");
+        builder.AddLine(2, "{");
+        builder.AddLine(2, "}");
+        builder.AddLine(2, "");
+
         AddInstantiatingFunctions(builder);
         AddChainingFunctions(builder);
         AddExecutingFunctions(builder);
