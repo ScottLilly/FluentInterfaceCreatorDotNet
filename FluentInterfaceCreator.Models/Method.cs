@@ -43,6 +43,9 @@ public class Method
     public ObservableCollection<CallableMethodIndicator> MethodsCallableNext { get; } =
         new ObservableCollection<CallableMethodIndicator>();
 
+    public IEnumerable<CallableMethodIndicator> SortedMethodsCallableNext =>
+        MethodsCallableNext.OrderBy(m => m.Group).ThenBy(m => m.Signature);
+
     #region Derived properties
 
     public bool IsChainStarting =>
