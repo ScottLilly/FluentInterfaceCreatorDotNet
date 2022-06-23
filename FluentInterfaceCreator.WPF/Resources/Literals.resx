@@ -267,6 +267,9 @@
   <data name="SupportPage" xml:space="preserve">
     <value>Support Page</value>
   </data>
+  <data name="UseIEnumerable" xml:space="preserve">
+    <value>IEnumerable?</value>
+  </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
   </data>

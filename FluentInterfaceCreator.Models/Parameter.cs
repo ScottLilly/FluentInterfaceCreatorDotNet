@@ -8,8 +8,12 @@ namespace FluentInterfaceCreator.Models;
 [AddINotifyPropertyChangedInterface]
 public class Parameter
 {
+    public bool UseIEnumerable { get; set; }
     public DataType DataType { get; set; }
     public string Name { get; set; }
+
+    public string FormattedDataType =>
+        UseIEnumerable ? $"IEnumerable<{DataType.Name}>" : DataType.Name;
 
     public IEnumerable<string> ValidationErrors()
     {
@@ -42,6 +46,7 @@ public class Parameter
             ? StringComparison.CurrentCulture
             : StringComparison.CurrentCultureIgnoreCase;
 
-        return Name.Equals(parameter.Name.Trim(), comparisonMethod);
+        return Name.Equals(parameter.Name.Trim(), comparisonMethod) &&
+               UseIEnumerable == parameter.UseIEnumerable;
     }
 }

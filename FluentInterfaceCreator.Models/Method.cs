@@ -31,7 +31,11 @@ public class Method
 
     // Only used for Executing methods
     public bool RequiresReturnDataType => Group == MethodGroup.Executing;
+    public bool UseIEnumerable { get; set; }
     public DataType ReturnDataType { get; set; }
+
+    public string FormattedReturnDataType =>
+        UseIEnumerable ? $"IEnumerable<{ReturnDataType.Name}>" : ReturnDataType.Name;
 
     public ObservableCollection<Parameter> Parameters { get; } =
         new ObservableCollection<Parameter>();
@@ -53,10 +57,10 @@ public class Method
         $"{Name}({ParameterDataTypeList})";
 
     public string ParameterList =>
-        string.Join(", ", Parameters.Select(p => $"{p.DataType.Name} {p.Name}"));
+        string.Join(", ", Parameters.Select(p => $"{p.FormattedDataType} {p.Name}"));
 
     public string ParameterDataTypeList =>
-        string.Join(", ", Parameters.Select(p => $"{p.DataType.Name}"));
+        string.Join(", ", Parameters.Select(p => $"{p.FormattedDataType}"));
 
     // Used to determine methods that can call the same 'next' methods,
     // to eliminate duplicate InterfaceData objects that identify the same interface.
@@ -75,6 +79,11 @@ public class Method
 
             namespacesNeeded.AddRange(Parameters.Select(parameter => parameter.DataType.ContainingNamespace));
             namespacesNeeded.Add(ReturnDataType?.ContainingNamespace);
+
+            if (Parameters.Any(p => p.UseIEnumerable))
+            {
+                namespacesNeeded.Add("System.Collections.Generic");
+            }
 
             return namespacesNeeded.Where(n => !string.IsNullOrWhiteSpace(n)).Distinct().ToList();
         }
