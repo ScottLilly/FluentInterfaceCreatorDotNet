@@ -511,6 +511,15 @@ namespace FluentInterfaceCreator.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IEnumerable?.
+        /// </summary>
+        public static string UseIEnumerable {
+            get {
+                return ResourceManager.GetString("UseIEnumerable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
         public static string Version {

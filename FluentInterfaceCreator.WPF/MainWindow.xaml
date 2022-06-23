@@ -425,6 +425,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="15"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
@@ -476,15 +477,26 @@
                                       DisplayMemberPath="Name"
                                       SelectedItem="{Binding MethodUnderEdit.ReturnDataType}"/>
 
+                            <Label Grid.Row="5" Grid.Column="0"
+                                   FontWeight="Bold"
+                                   Visibility="{Binding MethodUnderEdit.RequiresReturnDataType, Converter={StaticResource VisibleWhenTrueCollapsedWhenFalse}}"
+                                   Content="{Binding Source={x:Static resources:Literals.UseIEnumerable}}"/>
+                            <CheckBox Grid.Row="5" Grid.Column="1"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Visibility="{Binding MethodUnderEdit.RequiresReturnDataType, Converter={StaticResource VisibleWhenTrueCollapsedWhenFalse}}"
+                                      IsChecked="{Binding MethodUnderEdit.UseIEnumerable}"/>
+
                             <!-- Method Parameters -->
-                            <Border Grid.Row="5" Grid.Column="0"
+                            <Border Grid.Row="6" Grid.Column="0"
                                     Grid.ColumnSpan="2"
-                                    Margin="5"
+                                    Margin="6"
                                     BorderBrush="LightGray"
                                     BorderThickness="1">
 
                                 <Grid>
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
@@ -559,13 +571,21 @@
 
                                     <Label Grid.Row="4" Grid.Column="0"
                                            FontWeight="Bold"
+                                           Content="{Binding Source={x:Static resources:Literals.UseIEnumerable}}"/>
+                                    <CheckBox Grid.Row="4" Grid.Column="1"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              IsChecked="{Binding ParameterUnderEdit.UseIEnumerable}"/>
+
+                                    <Label Grid.Row="5" Grid.Column="0"
+                                           FontWeight="Bold"
                                            Content="{Binding Source={x:Static resources:Literals.Name}}"/>
-                                    <TextBox Grid.Row="4" Grid.Column="1"
+                                    <TextBox Grid.Row="5" Grid.Column="1"
                                              HorizontalAlignment="Left"
                                              MinWidth="175"
                                              Text="{Binding ParameterUnderEdit.Name}"/>
 
-                                    <Button Grid.Row="5" Grid.Column="0"
+                                    <Button Grid.Row="6" Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Content="{Binding Source={x:Static resources:Literals.AddParameter}}"
                                             MinWidth="100"
@@ -576,7 +596,7 @@
                             </Border>
 
                             <!-- Add Method button -->
-                            <Button Grid.Row="7" Grid.Column="0"
+                            <Button Grid.Row="8" Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     Content="{Binding Source={x:Static resources:Literals.AddMethod}}"
                                     MinWidth="100"

@@ -117,7 +117,7 @@ internal sealed class CSharpFluentInterfaceFileCreator :
                     interfaceData.CallableMethods
                         .Where(cm => cm.Group == Method.MethodGroup.Executing))
             {
-                builder.AddLine(2, $"{callableMethod.ReturnDataType.Name} {callableMethod.Signature};");
+                builder.AddLine(2, $"{callableMethod.FormattedReturnDataType} {callableMethod.Signature};");
             }
 
             builder.AddLine(1, "}");
@@ -175,7 +175,7 @@ internal sealed class CSharpFluentInterfaceFileCreator :
 
         foreach(Method method in _project.ExecutingMethods)
         {
-            builder.AddLineAfterBlankLine(2, $"public {method.ReturnDataType.Name} {method.Signature}");
+            builder.AddLineAfterBlankLine(2, $"public {method.FormattedReturnDataType} {method.Signature}");
             builder.AddLine(2, "{");
             builder.AddLine(2, "}");
         }

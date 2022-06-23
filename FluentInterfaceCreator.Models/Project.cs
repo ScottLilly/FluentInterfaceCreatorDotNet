@@ -201,6 +201,19 @@ public class Project : INotifyPropertyChanged
             namespaces.AddRange(method.NamespacesNeeded);
         }
 
+        if (InstantiatingMethods.Any(im => 
+                im.UseIEnumerable ||
+                im.Parameters.Any(p => p.UseIEnumerable)) ||
+            ChainingMethods.Any(cm => 
+                cm.UseIEnumerable ||
+                cm.Parameters.Any(p => p.UseIEnumerable)) ||
+            ExecutingMethods.Any(em => 
+                em.UseIEnumerable ||
+                em.Parameters.Any(p => p.UseIEnumerable)))
+        {
+            namespaces.Add("System.Collections.Generic");
+        }
+
         return namespaces.Distinct().OrderBy(n => n).ToList();
     }
 
