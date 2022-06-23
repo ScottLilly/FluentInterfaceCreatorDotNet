@@ -623,7 +623,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Chain starting methods -->
+                    <!-- Pair starting methods available -->
                     <Label Grid.Row="0" Grid.Column="0"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"
@@ -670,7 +670,7 @@
 
                     </DataGrid>
 
-                    <!-- Chain ending methods -->
+                    <!-- Pair ending methods -->
                     <StackPanel Grid.Row="2" Grid.Column="0"
                                 Visibility="{Binding HasMethod, Converter={StaticResource VisibleWhenTrueCollapsedWhenFalse}}"
                                 Orientation="Horizontal">
@@ -685,7 +685,7 @@
                               CanUserAddRows="False"
                               CanUserDeleteRows="False"
                               Visibility="{Binding HasMethod, Converter={StaticResource VisibleWhenTrueCollapsedWhenFalse}}"
-                              ItemsSource="{Binding SelectedMethod.MethodsCallableNext}">
+                              ItemsSource="{Binding SelectedMethod.SortedMethodsCallableNext}">
 
                         <DataGrid.Columns>
 
