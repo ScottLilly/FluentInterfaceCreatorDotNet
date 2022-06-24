@@ -89,14 +89,14 @@ public class TestMethod : BaseTestClass
         method.Parameters.Add(
             new Parameter
             {
-                Name = "value",
+                Name = "value1",
                 DataType = GetDataTypeWithName("int"),
                 UseIEnumerable = false
             });
         method.Parameters.Add(
             new Parameter
             {
-                Name = "value",
+                Name = "value2",
                 DataType = GetDataTypeWithName("bool"),
                 UseIEnumerable = false
             });
@@ -127,14 +127,14 @@ public class TestMethod : BaseTestClass
         method.Parameters.Add(
             new Parameter
             {
-                Name = "value",
+                Name = "value1",
                 DataType = GetDataTypeWithName("int"),
                 UseIEnumerable = true
             });
         method.Parameters.Add(
             new Parameter
             {
-                Name = "value",
+                Name = "value2",
                 DataType = GetDataTypeWithName("bool"),
                 UseIEnumerable = false
             });
@@ -206,14 +206,14 @@ public class TestMethod : BaseTestClass
         method.Parameters.Add(
             new Parameter
             {
-                Name = "value",
+                Name = "value1",
                 DataType = GetDataTypeWithName("int"),
                 UseIEnumerable = true
             });
         method.Parameters.Add(
             new Parameter
             {
-                Name = "value",
+                Name = "value2",
                 DataType = GetDataTypeWithName("DateTime"),
                 UseIEnumerable = false
             });
