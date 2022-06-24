@@ -11,55 +11,31 @@ public class Method : INotifyPropertyChanged
     public Enums.MethodType Type { get; set; }
     public string Name { get; set; }
 
+    public ObservableCollection<Parameter> Parameters { get; } = new();
+
+    public bool CanStartChainPair =>
+        Type is Enums.MethodType.Instantiating or Enums.MethodType.Chaining;
+    public bool CanEndChainPair =>
+        Type is Enums.MethodType.Chaining or Enums.MethodType.Executing;
+    public bool RequiresReturnDataType =>
+        Type == Enums.MethodType.Executing;
+    public IEnumerable<string> RequiredNamespaces =>
+        Parameters.SelectMany(p => p.RequiredNamespaces)
+            .Concat(new List<string>
+            {
+                ReturnDataType?.ContainingNamespace ?? "",
+                UseIEnumerable ? "System.Collections.Generic" : ""
+            })
+            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .Distinct();
+
     // Only used for Executing methods
-    public bool RequiresReturnDataType => Type == Enums.MethodType.Executing;
     public bool UseIEnumerable { get; set; }
     public DataType? ReturnDataType { get; set; }
-
     public string FormattedReturnDataType =>
-        UseIEnumerable ? $"IEnumerable<{ReturnDataType?.Name}>" : ReturnDataType.Name;
-
-    public ObservableCollection<Parameter> Parameters { get; } =
-        new ObservableCollection<Parameter>();
-
-    #region Derived properties
-
-    public bool IsChainStarting =>
-        Type is Enums.MethodType.Instantiating or Enums.MethodType.Chaining;
-    public bool IsChainEnding =>
-        Type is Enums.MethodType.Chaining or Enums.MethodType.Executing;
-
-    public string Signature =>
-        $"{Name}({ParameterList})";
-
-    public string DataTypeSignature =>
-        $"{Name}({ParameterDataTypeList})";
-
-    public string ParameterList =>
-        string.Join(", ", Parameters.Select(p => $"{p.FormattedDataType} {p.Name}"));
-
-    public string ParameterDataTypeList =>
-        string.Join(", ", Parameters.Select(p => $"{p.FormattedDataType}"));
-
-    public List<string> NamespacesNeeded
-    {
-        get
-        {
-            List<string> namespacesNeeded = new List<string>();
-
-            namespacesNeeded.AddRange(Parameters.Select(parameter => parameter.DataType.ContainingNamespace));
-            namespacesNeeded.Add(ReturnDataType?.ContainingNamespace);
-
-            if (Parameters.Any(p => p.UseIEnumerable))
-            {
-                namespacesNeeded.Add("System.Collections.Generic");
-            }
-
-            return namespacesNeeded.Where(n => !string.IsNullOrWhiteSpace(n)).Distinct().ToList();
-        }
-    }
-
-    #endregion
+        UseIEnumerable 
+            ? $"IEnumerable<{ReturnDataType?.Name}>" 
+            : ReturnDataType?.Name ?? "";
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -97,5 +73,7 @@ public class Method : INotifyPropertyChanged
 
     public bool Matches(Method method, bool isCaseSensitive = true) =>
         Name.Matches(method.Name, isCaseSensitive) &&
-        ParameterDataTypeList.Matches(method.ParameterDataTypeList, isCaseSensitive);
+        FormattedReturnDataType.Matches(method.FormattedReturnDataType, isCaseSensitive) &&
+        Parameters.Select(p => p.FormattedDataType)
+            .SequenceEqual(method.Parameters.Select(p => p.FormattedDataType));
 }

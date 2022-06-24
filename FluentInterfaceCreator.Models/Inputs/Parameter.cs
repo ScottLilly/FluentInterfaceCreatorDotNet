@@ -13,6 +13,13 @@ public class Parameter : INotifyPropertyChanged
     public string FormattedDataType =>
         UseIEnumerable ? $"IEnumerable<{DataType.Name}>" : DataType.Name;
 
+    public IEnumerable<string> RequiredNamespaces =>
+        new List<string>
+        {
+            DataType.ContainingNamespace,
+            UseIEnumerable ? "System.Collections.Generic" : ""
+        }.Where(rn => !string.IsNullOrWhiteSpace(rn));
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public IEnumerable<string> ValidationErrors()

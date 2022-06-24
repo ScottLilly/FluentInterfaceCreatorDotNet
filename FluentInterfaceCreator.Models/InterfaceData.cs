@@ -39,6 +39,6 @@ public class InterfaceData : INotifyPropertyChanged
 
     public List<string> NamespacesNeeded()
     {
-        return CallableMethods.SelectMany(x => x.NamespacesNeeded).Distinct().OrderBy(n => n).ToList();
+        return CallableMethods.SelectMany(x => x.RequiredNamespaces).Distinct().OrderBy(n => n).ToList();
     }
 }

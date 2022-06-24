@@ -1,4 +1,5 @@
 ﻿using FluentInterfaceCreator.Core;
+using FluentInterfaceCreator.Models;
 using FluentInterfaceCreator.Models.Inputs;
 using FluentInterfaceCreator.ViewModels;
 
@@ -6,6 +7,9 @@ namespace Test.FluentInterfaceCreator;
 
 public abstract class BaseTestClass
 {
+    protected const string GENERIC_NAMESPACE_NAME = 
+        "System.Collections.Generic";
+
     private readonly OutputLanguage _cSharpLanguage;
 
     protected BaseTestClass()
@@ -42,5 +46,12 @@ public abstract class BaseTestClass
         yield return new object[] { "decimal" };
         yield return new object[] { "bool" };
         yield return new object[] { "DateTime" };
+    }
+
+    public static IEnumerable<object[]> MethodTypes()
+    {
+        yield return new object[] { Enums.MethodType.Instantiating };
+        yield return new object[] { Enums.MethodType.Chaining };
+        yield return new object[] { Enums.MethodType.Executing };
     }
 }
