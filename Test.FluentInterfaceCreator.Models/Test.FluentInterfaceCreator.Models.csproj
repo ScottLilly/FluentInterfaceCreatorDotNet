@@ -22,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FluentInterfaceCreator.ViewModels\FluentInterfaceCreator.ViewModels.csproj" />
+    <ProjectReference Include="..\FluentInterfaceCreator.Core\FluentInterfaceCreator.Core.csproj" />
+    <ProjectReference Include="..\FluentInterfaceCreator.Models\FluentInterfaceCreator.Models.csproj" />
   </ItemGroup>
 
 </Project>

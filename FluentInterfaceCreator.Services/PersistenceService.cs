@@ -1,6 +1,7 @@
 ﻿using System.Xml;
 using FluentInterfaceCreator.Core;
-using FluentInterfaceCreator.Models;
+using FluentInterfaceCreator.Models.Inputs;
+using FluentInterfaceCreator.Models.Outputs;
 
 namespace FluentInterfaceCreator.Services;
 

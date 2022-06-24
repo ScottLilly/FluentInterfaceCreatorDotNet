@@ -1,13 +1,13 @@
 ﻿using System.Text;
 using FluentInterfaceCreator.Core;
 
-namespace FluentInterfaceCreator.Models;
+namespace FluentInterfaceCreator.Models.Outputs;
 
 public class FluentInterfaceFile
 {
     private const string TAB_CHARACTER = "\t";
 
-    private readonly List<Line> _lines = new List<Line>();
+    private readonly List<Line> _lines = new();
 
     public string Name { get; }
 

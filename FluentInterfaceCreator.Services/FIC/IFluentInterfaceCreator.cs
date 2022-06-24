@@ -1,4 +1,4 @@
-﻿using FluentInterfaceCreator.Models;
+﻿using FluentInterfaceCreator.Models.Outputs;
 
 namespace FluentInterfaceCreator.Services.FIC;
 
