@@ -59,6 +59,7 @@ public class TestMethod : BaseTestClass
         method.ReturnDataType = GetDataTypeWithName(dataTypeName);
 
         Assert.Equal($"IEnumerable<{dataTypeName}>", method.FormattedReturnDataType);
+        Assert.Equal($"IEnumerable<{dataTypeName}>|=", method.Signature);
     }
 
     [Fact]
@@ -82,6 +83,7 @@ public class TestMethod : BaseTestClass
             });
 
         Assert.Empty(method.RequiredNamespaces);
+        Assert.Equal("|=int", method.Signature);
     }
 
     [Fact]
@@ -104,6 +106,7 @@ public class TestMethod : BaseTestClass
             });
 
         Assert.Empty(method.RequiredNamespaces);
+        Assert.Equal("|=int:bool", method.Signature);
     }
 
     [Fact]
@@ -120,6 +123,7 @@ public class TestMethod : BaseTestClass
 
         Assert.Single(method.RequiredNamespaces);
         Assert.Equal(GENERIC_NAMESPACE_NAME, method.RequiredNamespaces.First());
+        Assert.Equal("|=IEnumerable<int>", method.Signature);
     }
 
     [Fact]
@@ -143,6 +147,7 @@ public class TestMethod : BaseTestClass
 
         Assert.Single(method.RequiredNamespaces);
         Assert.Equal(GENERIC_NAMESPACE_NAME, method.RequiredNamespaces.First());
+        Assert.Equal("|=IEnumerable<int>:bool", method.Signature);
     }
 
     [Fact]
@@ -159,6 +164,7 @@ public class TestMethod : BaseTestClass
 
         Assert.Single(method.RequiredNamespaces);
         Assert.Equal("System", method.RequiredNamespaces.First());
+        Assert.Equal("|=DateTime", method.Signature);
     }
 
     [Fact]
@@ -182,6 +188,7 @@ public class TestMethod : BaseTestClass
 
         Assert.Single(method.RequiredNamespaces);
         Assert.Equal("System", method.RequiredNamespaces.First());
+        Assert.Equal("|=DateTime:DateTime", method.Signature);
     }
 
     [Fact]
@@ -199,12 +206,20 @@ public class TestMethod : BaseTestClass
         Assert.Equal(2, method.RequiredNamespaces.Count());
         Assert.Contains("System", method.RequiredNamespaces);
         Assert.Contains(GENERIC_NAMESPACE_NAME, method.RequiredNamespaces);
+        Assert.Equal("|=IEnumerable<DateTime>", method.Signature);
     }
 
     [Fact]
     public void Test_NamespacesNeeded_MultipleParameters_MultipleNamespace()
     {
-        var method = new Method();
+        var method = new Method
+        {
+            Name = "TestMethod",
+            Type = Enums.MethodType.Executing,
+            ReturnDataType = GetDataTypeWithName("string"),
+            UseIEnumerable = true
+        };
+
         method.Parameters.Add(
             new Parameter
             {
@@ -223,5 +238,6 @@ public class TestMethod : BaseTestClass
         Assert.Equal(2, method.RequiredNamespaces.Count());
         Assert.Contains("System", method.RequiredNamespaces);
         Assert.Contains(GENERIC_NAMESPACE_NAME, method.RequiredNamespaces);
+        Assert.Equal("IEnumerable<string>|TestMethod=IEnumerable<int>:DateTime", method.Signature);
     }
 }
