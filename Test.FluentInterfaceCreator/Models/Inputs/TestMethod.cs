@@ -76,7 +76,9 @@ public class TestMethod : BaseTestClass
         method.Parameters.Add(
             new Parameter
             {
-                Name = "value", DataType = GetDataTypeWithName("int"), UseIEnumerable = false
+                Name = "value", 
+                DataType = GetDataTypeWithName("int"), 
+                UseIEnumerable = false
             });
 
         Assert.Empty(method.RequiredNamespaces);
