@@ -10,14 +10,14 @@ public abstract class BaseTestClass
     protected const string GENERIC_NAMESPACE_NAME = 
         "System.Collections.Generic";
 
-    private readonly OutputLanguage _cSharpLanguage;
+    protected readonly ProjectEditor _projectEditor;
+    protected readonly OutputLanguage _cSharpLanguage;
 
     protected BaseTestClass()
     {
-        var projectEditor = new ProjectEditor();
-
+        _projectEditor = new ProjectEditor();
         _cSharpLanguage =
-            projectEditor.OutputLanguages.First(ol => ol.Name.Matches("C#"));
+            _projectEditor.OutputLanguages.First(ol => ol.Name.Matches("C#"));
     }
 
     protected DataType GetDataTypeWithName(string name)
@@ -26,6 +26,35 @@ public abstract class BaseTestClass
             .NativeDataTypes
             .First(dt => dt.Name.Matches(name));
     }
+
+    protected Method BuildInstantiatingMethod(string name) =>
+        new Method
+        {
+            Name = name,
+            Type = Enums.MethodType.Instantiating
+        };
+
+    protected Method BuildChainingMethod(string name) =>
+        new Method
+        {
+            Name = name,
+            Type = Enums.MethodType.Chaining
+        };
+
+    protected Method BuildExecutingMethod(string name, string returnDataType) =>
+        new Method
+        {
+            Name = name,
+            Type = Enums.MethodType.Executing,
+            ReturnDataType = GetDataTypeWithName(returnDataType)
+        };
+
+    protected Parameter BuildParameter(string name, string dataType) =>
+        new Parameter
+        {
+            Name = name,
+            DataType = GetDataTypeWithName(dataType)
+        };
 
     public static IEnumerable<object[]> DataTypeNames()
     {

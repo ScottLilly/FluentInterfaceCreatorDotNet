@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using FluentInterfaceCreator.Core;
 
@@ -12,18 +13,40 @@ public class Project : INotifyPropertyChanged
     public string FactoryClassName { get; set; } = "";
     public ObservableCollection<DataType> DataTypes { get; } = new();
     public ObservableCollection<Method> Methods { get; } = new();
-
+    public List<MethodLink> MethodLinks { get; } = new();
 
     public bool CanCreateOutputFiles =>
         Name.IsNotEmpty() &&
         NamespaceForFactoryClass.IsNotEmpty() &&
-        FactoryClassName.IsNotEmpty();
+        FactoryClassName.IsNotEmpty() &&
+        InstantiatingMethods.Any() &&
+        ChainingMethods.Any() &&
+        ExecutingMethods.Any() &&
+        InstantiatingMethods.All(im => 
+            MethodLinks.Any(ml => ml.StartingMethodId == im.Id)) &&
+        ChainingMethods.All(cm => 
+            MethodLinks.Any(ml => ml.StartingMethodId == cm.Id)) &&
+        ChainingMethods.All(cm => 
+            MethodLinks.Any(ml => ml.EndingMethodId == cm.Id)) &&
+        ExecutingMethods.All(cm => 
+            MethodLinks.Any(ml => ml.EndingMethodId == cm.Id));
+
+    private IEnumerable<Method> InstantiatingMethods =>
+        Methods.Where(m => m.Type == Enums.MethodType.Instantiating);
+
+    private IEnumerable<Method> ChainingMethods =>
+        Methods.Where(m => m.Type == Enums.MethodType.Chaining);
+
+    private IEnumerable<Method> ExecutingMethods =>
+        Methods.Where(m => m.Type == Enums.MethodType.Executing);
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public Project()
     {
+        // Connect internal handlers, to refresh computed values (when needed)
         PropertyChanged += OnPropertyChanged;
+        Methods.CollectionChanged += OnMethodsCollectionChanged;
     }
 
     #region Public methods
@@ -32,11 +55,34 @@ public class Project : INotifyPropertyChanged
 
     #region Private methods
 
-    private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    private void OnPropertyChanged(object? sender, 
+        PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(OutputLanguage))
         {
             PopulateNativeDataTypes();
+        }
+    }
+
+    private void OnMethodsCollectionChanged(object? sender,
+        NotifyCollectionChangedEventArgs e)
+    {
+        if (e.Action != NotifyCollectionChangedAction.Remove ||
+            e.OldItems == null)
+        {
+            return;
+        }
+
+        // When a Method is removed from the Methods property,
+        // remove the MethodLink objects that referenced it
+        foreach (var item in e.OldItems)
+        {
+            if (item is Method method)
+            {
+                MethodLinks.RemoveAll(ml =>
+                    ml.StartingMethodId == method.Id ||
+                    ml.EndingMethodId == method.Id);
+            }
         }
     }
 

@@ -1,5 +1,6 @@
+using FluentInterfaceCreator.Models;
 using FluentInterfaceCreator.Models.Inputs;
-using FluentInterfaceCreator.ViewModels;
+using Parameter = FluentInterfaceCreator.Models.Inputs.Parameter;
 
 namespace Test.FluentInterfaceCreator.ViewModels;
 
@@ -8,47 +9,62 @@ public class TestProjectEditor : BaseTestClass
     [Fact]
     public void Test_Instantiate()
     {
-        var vm = new ProjectEditor();
-        OutputLanguage? cSharpLanguage = 
-            vm.OutputLanguages.FirstOrDefault(ol => ol.Name.Equals("C#"));
-
-        Assert.Single(vm.OutputLanguages);
-        Assert.Equal(17, cSharpLanguage?.NativeDataTypes.Count);
+        Assert.Single(_projectEditor.OutputLanguages);
+        Assert.Equal(17, _cSharpLanguage?.NativeDataTypes.Count);
     }
 
     [Fact]
     public void Test_SelectOutputLanguage()
     {
-        var vm = new ProjectEditor();
-        OutputLanguage? cSharpLanguage =
-            vm.OutputLanguages.FirstOrDefault(ol => ol.Name.Equals("C#"));
+        Assert.Empty(_projectEditor.Project.DataTypes);
 
-        Assert.Empty(vm.Project.DataTypes);
+        _projectEditor.Project.OutputLanguage = _cSharpLanguage;
 
-        vm.Project.OutputLanguage = cSharpLanguage;
-
-        Assert.Equal(17, vm.Project.DataTypes.Count);
+        Assert.Equal(17, _projectEditor.Project.DataTypes.Count);
     }
 
     [Fact]
     public void Test_ProjectCanCreateOutputFiles()
     {
-        var vm = new ProjectEditor();
-        OutputLanguage? cSharpLanguage =
-            vm.OutputLanguages.FirstOrDefault(ol => ol.Name.Equals("C#"));
+        Assert.False(_projectEditor.Project.CanCreateOutputFiles);
 
-        Assert.False(vm.Project.CanCreateOutputFiles);
+        _projectEditor.Project.OutputLanguage = _cSharpLanguage;
+        Assert.False(_projectEditor.Project.CanCreateOutputFiles);
 
-        vm.Project.OutputLanguage = cSharpLanguage;
-        Assert.False(vm.Project.CanCreateOutputFiles);
+        _projectEditor.Project.Name = "FluentEmailBuilder";
+        Assert.False(_projectEditor.Project.CanCreateOutputFiles);
 
-        vm.Project.Name = "FluentEmailBuilder";
-        Assert.False(vm.Project.CanCreateOutputFiles);
+        _projectEditor.Project.NamespaceForFactoryClass = "FluentEmailBuilder";
+        Assert.False(_projectEditor.Project.CanCreateOutputFiles);
 
-        vm.Project.NamespaceForFactoryClass = "FluentEmailBuilder";
-        Assert.False(vm.Project.CanCreateOutputFiles);
+        _projectEditor.Project.FactoryClassName = "MailMessageBuilder";
+        Assert.False(_projectEditor.Project.CanCreateOutputFiles);
 
-        vm.Project.FactoryClassName = "MailMessageBuilder";
-        Assert.True(vm.Project.CanCreateOutputFiles);
+        var instantiatingMethod = BuildInstantiatingMethod("Create");
+        _projectEditor.Project.Methods.Add(instantiatingMethod);
+        Assert.False(_projectEditor.Project.CanCreateOutputFiles);
+
+        var chainingMethod = BuildChainingMethod("AddNumber");
+        chainingMethod.Parameters.Add(BuildParameter("value", "int"));
+        _projectEditor.Project.Methods.Add(chainingMethod);
+        Assert.False(_projectEditor.Project.CanCreateOutputFiles);
+
+        var executingMethod = BuildExecutingMethod("ComputeTotal", "int");
+        _projectEditor.Project.Methods.Add(executingMethod);
+        Assert.False(_projectEditor.Project.CanCreateOutputFiles);
+
+        _projectEditor.Project.MethodLinks.Add(new MethodLink
+        {
+            StartingMethodId = instantiatingMethod.Id,
+            EndingMethodId = chainingMethod.Id
+        });
+
+        _projectEditor.Project.MethodLinks.Add(new MethodLink
+        {
+            StartingMethodId = chainingMethod.Id,
+            EndingMethodId = executingMethod.Id
+        });
+        Assert.True(_projectEditor.Project.CanCreateOutputFiles);
+
     }
 }
