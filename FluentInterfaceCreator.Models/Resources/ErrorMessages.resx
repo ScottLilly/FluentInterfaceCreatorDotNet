@@ -133,10 +133,10 @@
     <value>'DataType' is required</value>
   </data>
   <data name="GroupIsNotValid" xml:space="preserve">
-    <value>'Group' is not valid</value>
+    <value>'Type' is not valid</value>
   </data>
   <data name="GroupIsRequired" xml:space="preserve">
-    <value>'Group' is required</value>
+    <value>'Type' is required</value>
   </data>
   <data name="InvalidLanguage" xml:space="preserve">
     <value>Invalid language</value>

@@ -106,7 +106,7 @@ namespace FluentInterfaceCreator.Models.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;Group&apos; is not valid.
+        ///   Looks up a localized string similar to &apos;Type&apos; is not valid.
         /// </summary>
         public static string GroupIsNotValid {
             get {
@@ -115,7 +115,7 @@ namespace FluentInterfaceCreator.Models.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;Group&apos; is required.
+        ///   Looks up a localized string similar to &apos;Type&apos; is required.
         /// </summary>
         public static string GroupIsRequired {
             get {

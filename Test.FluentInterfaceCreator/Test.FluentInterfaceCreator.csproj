@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -22,7 +22,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FluentInterfaceCreator.Core\FluentInterfaceCreator.Core.csproj" />
+    <ProjectReference Include="..\FluentInterfaceCreator.Models\FluentInterfaceCreator.Models.csproj" />
+    <ProjectReference Include="..\FluentInterfaceCreator.Services\FluentInterfaceCreator.Services.csproj" />
     <ProjectReference Include="..\FluentInterfaceCreator.ViewModels\FluentInterfaceCreator.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="outputLanguages.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

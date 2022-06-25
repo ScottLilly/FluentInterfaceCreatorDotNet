@@ -1,17 +1,18 @@
-﻿using FluentInterfaceCreator.Core;
+﻿using System.ComponentModel;
+using FluentInterfaceCreator.Core;
+using FluentInterfaceCreator.Models.Inputs;
 using FluentInterfaceCreator.Models.Resources;
-using PropertyChanged;
 
 namespace FluentInterfaceCreator.Models;
 
-[Serializable]
-[AddINotifyPropertyChangedInterface]
-public class InterfaceData
+public class InterfaceData : INotifyPropertyChanged
 {
     public string Name { get; set; }
     public string CallableMethodsSignature { get; set; }
     public List<Method> CalledByMethods { get; set; } = new List<Method>();
     public List<Method> CallableMethods { get; set; } = new List<Method>();
+
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     public IEnumerable<string> ValidationErrors()
     {
@@ -33,22 +34,11 @@ public class InterfaceData
         }
     }
 
-    public bool Matches(InterfaceData interfaceData, bool isCaseSensitive = true)
-    {
-        if(Name.IsEmpty() || interfaceData.Name.IsEmpty())
-        {
-            return false;
-        }
-
-        StringComparison comparisonMethod = isCaseSensitive
-            ? StringComparison.CurrentCulture
-            : StringComparison.CurrentCultureIgnoreCase;
-
-        return Name.Equals(interfaceData.Name.Trim(), comparisonMethod);
-    }
+    public bool Matches(InterfaceData interfaceData, bool isCaseSensitive = true) => 
+        Name.Matches(interfaceData.Name, isCaseSensitive);
 
     public List<string> NamespacesNeeded()
     {
-        return CallableMethods.SelectMany(x => x.NamespacesNeeded).Distinct().OrderBy(n => n).ToList();
+        return CallableMethods.SelectMany(x => x.RequiredNamespaces).Distinct().OrderBy(n => n).ToList();
     }
 }

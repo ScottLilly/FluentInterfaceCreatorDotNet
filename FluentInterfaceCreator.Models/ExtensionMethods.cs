@@ -1,9 +1,11 @@
-﻿namespace FluentInterfaceCreator.Models;
+﻿using FluentInterfaceCreator.Models.Inputs;
+
+namespace FluentInterfaceCreator.Models;
 
 public static class ExtensionMethods
 {
-    public static bool IsChainStartingMethod(this Method.MethodGroup group)
+    public static bool IsChainStartingMethod(this Enums.MethodType type)
     {
-        return group is Method.MethodGroup.Instantiating or Method.MethodGroup.Chaining;
+        return type is Enums.MethodType.Instantiating or Enums.MethodType.Chaining;
     }
 }

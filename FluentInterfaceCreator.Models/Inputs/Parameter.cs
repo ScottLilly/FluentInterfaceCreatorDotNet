@@ -1,12 +1,10 @@
-﻿using FluentInterfaceCreator.Core;
+﻿using System.ComponentModel;
+using FluentInterfaceCreator.Core;
 using FluentInterfaceCreator.Models.Resources;
-using PropertyChanged;
 
-namespace FluentInterfaceCreator.Models;
+namespace FluentInterfaceCreator.Models.Inputs;
 
-[Serializable]
-[AddINotifyPropertyChangedInterface]
-public class Parameter
+public class Parameter : INotifyPropertyChanged
 {
     public bool UseIEnumerable { get; set; }
     public DataType DataType { get; set; }
@@ -15,20 +13,29 @@ public class Parameter
     public string FormattedDataType =>
         UseIEnumerable ? $"IEnumerable<{DataType.Name}>" : DataType.Name;
 
+    public IEnumerable<string> RequiredNamespaces =>
+        new List<string>
+        {
+            DataType.ContainingNamespace,
+            UseIEnumerable ? "System.Collections.Generic" : ""
+        }.Where(rn => !string.IsNullOrWhiteSpace(rn));
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
     public IEnumerable<string> ValidationErrors()
     {
-        if(DataType == null)
+        if (DataType == null)
         {
             yield return ErrorMessages.DataTypeIsRequired;
         }
 
-        if(Name.IsEmpty())
+        if (Name.IsEmpty())
         {
             yield return ErrorMessages.NameIsRequired;
         }
         else
         {
-            if(Name.HasAnInternalSpace())
+            if (Name.HasAnInternalSpace())
             {
                 yield return ErrorMessages.NameCannotContainAnInternalSpace;
             }
@@ -40,13 +47,7 @@ public class Parameter
         }
     }
 
-    public bool Matches(Parameter parameter, bool isCaseSensitive = true)
-    {
-        StringComparison comparisonMethod = isCaseSensitive
-            ? StringComparison.CurrentCulture
-            : StringComparison.CurrentCultureIgnoreCase;
-
-        return Name.Equals(parameter.Name.Trim(), comparisonMethod) &&
-               UseIEnumerable == parameter.UseIEnumerable;
-    }
+    public bool Matches(Parameter parameter, bool isCaseSensitive = true) =>
+        Name.Matches(parameter.Name, isCaseSensitive) &&
+        UseIEnumerable == parameter.UseIEnumerable;
 }

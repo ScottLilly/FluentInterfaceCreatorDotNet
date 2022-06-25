@@ -7,7 +7,7 @@ public static class ExtensionMethods
         return string.IsNullOrWhiteSpace(text);
     }
 
-    public static bool HasText(this string text)
+    public static bool IsNotEmpty(this string text)
     {
         return !text.IsEmpty();
     }
@@ -36,7 +36,7 @@ public static class ExtensionMethods
 
     public static bool HasAnInternalSpace(this string text)
     {
-        return text.HasText() && text.Trim().Contains(' ');
+        return text.IsNotEmpty() && text.Trim().Contains(' ');
     }
 
     public static string ToStringWithLineFeeds(this IEnumerable<string> lines)
@@ -47,5 +47,14 @@ public static class ExtensionMethods
     public static string Repeated(this string text, int times)
     {
         return string.Concat(Enumerable.Repeat(text, times));
+    }
+
+    public static bool Matches(this string text, string comparisonText,
+        bool isCaseSensitive = true)
+    {
+        return text.Trim().Equals(comparisonText.Trim(),
+            isCaseSensitive 
+                ? StringComparison.InvariantCulture 
+                : StringComparison.InvariantCultureIgnoreCase);
     }
 }

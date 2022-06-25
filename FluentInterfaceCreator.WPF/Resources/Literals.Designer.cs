@@ -259,7 +259,7 @@ namespace FluentInterfaceCreator.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Group.
+        ///   Looks up a localized string similar to Type.
         /// </summary>
         public static string Group {
             get {
