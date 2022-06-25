@@ -29,13 +29,20 @@ public class Method : INotifyPropertyChanged
             .Where(s => !string.IsNullOrWhiteSpace(s))
             .Distinct();
 
+    public string Signature =>
+        FormattedReturnDataType + "|" + 
+        Name + "=" + 
+        string.Join(":", Parameters.Select(p => p.FormattedDataType));
+
     // Only used for Executing methods
     public bool UseIEnumerable { get; set; }
     public DataType? ReturnDataType { get; set; }
     public string FormattedReturnDataType =>
-        UseIEnumerable 
-            ? $"IEnumerable<{ReturnDataType?.Name}>" 
-            : ReturnDataType?.Name ?? "";
+        Type == Enums.MethodType.Executing
+            ? UseIEnumerable
+                ? $"IEnumerable<{ReturnDataType?.Name}>" 
+                : ReturnDataType?.Name ?? ""
+            : "";
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
