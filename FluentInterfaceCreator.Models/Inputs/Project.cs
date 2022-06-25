@@ -13,7 +13,7 @@ public class Project : INotifyPropertyChanged
     public string FactoryClassName { get; set; } = "";
     public ObservableCollection<DataType> DataTypes { get; } = new();
     public ObservableCollection<Method> Methods { get; } = new();
-    public List<MethodLink> MethodsLink { get; } = new();
+    public List<MethodLink> MethodLinks { get; } = new();
 
     public bool CanCreateOutputFiles =>
         Name.IsNotEmpty() &&
@@ -21,7 +21,15 @@ public class Project : INotifyPropertyChanged
         FactoryClassName.IsNotEmpty() &&
         InstantiatingMethods.Any() &&
         ChainingMethods.Any() &&
-        ExecutingMethods.Any();
+        ExecutingMethods.Any() &&
+        InstantiatingMethods.All(im => 
+            MethodLinks.Any(ml => ml.StartingMethodId == im.Id)) &&
+        ChainingMethods.All(cm => 
+            MethodLinks.Any(ml => ml.StartingMethodId == cm.Id)) &&
+        ChainingMethods.All(cm => 
+            MethodLinks.Any(ml => ml.EndingMethodId == cm.Id)) &&
+        ExecutingMethods.All(cm => 
+            MethodLinks.Any(ml => ml.EndingMethodId == cm.Id));
 
     private IEnumerable<Method> InstantiatingMethods =>
         Methods.Where(m => m.Type == Enums.MethodType.Instantiating);
@@ -71,7 +79,7 @@ public class Project : INotifyPropertyChanged
         {
             if (item is Method method)
             {
-                MethodsLink.RemoveAll(ml =>
+                MethodLinks.RemoveAll(ml =>
                     ml.StartingMethodId == method.Id ||
                     ml.EndingMethodId == method.Id);
             }

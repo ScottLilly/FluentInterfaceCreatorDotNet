@@ -40,7 +40,8 @@ public class TestProjectEditor : BaseTestClass
         _projectEditor.Project.FactoryClassName = "MailMessageBuilder";
         Assert.False(_projectEditor.Project.CanCreateOutputFiles);
 
-        _projectEditor.Project.Methods.Add(BuildInstantiatingMethod("Create"));
+        var instantiatingMethod = BuildInstantiatingMethod("Create");
+        _projectEditor.Project.Methods.Add(instantiatingMethod);
         Assert.False(_projectEditor.Project.CanCreateOutputFiles);
 
         var chainingMethod = BuildChainingMethod("AddNumber");
@@ -50,6 +51,20 @@ public class TestProjectEditor : BaseTestClass
 
         var executingMethod = BuildExecutingMethod("ComputeTotal", "int");
         _projectEditor.Project.Methods.Add(executingMethod);
+        Assert.False(_projectEditor.Project.CanCreateOutputFiles);
+
+        _projectEditor.Project.MethodLinks.Add(new MethodLink
+        {
+            StartingMethodId = instantiatingMethod.Id,
+            EndingMethodId = chainingMethod.Id
+        });
+
+        _projectEditor.Project.MethodLinks.Add(new MethodLink
+        {
+            StartingMethodId = chainingMethod.Id,
+            EndingMethodId = executingMethod.Id
+        });
         Assert.True(_projectEditor.Project.CanCreateOutputFiles);
+
     }
 }
