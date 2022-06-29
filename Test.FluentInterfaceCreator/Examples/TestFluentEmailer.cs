@@ -203,7 +203,7 @@ public class TestFluentEmailer : BaseTestClass
                 i.CallsIntoMethodIds.Contains(buildMethod.Id));
         iCanAddToAddressOrBuild.Name = "ICanAddToAddressOrBuild";
 
-        PersistenceService.SaveProjectToDisk(project,
-            @"E:\temp\output\project.json");
+        //PersistenceService.SaveProjectToDisk(project,
+        //    @"E:\temp\output\project.json");
     }
 }
