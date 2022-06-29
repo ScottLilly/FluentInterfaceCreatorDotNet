@@ -93,7 +93,7 @@ public class Project : INotifyPropertyChanged
                     var methodLinksToRemove =
                         MethodLinks.Where(ml =>
                             ml.StartingMethodId == method.Id ||
-                            ml.EndingMethodId == method.Id);
+                            ml.EndingMethodId == method.Id).ToList();
 
                     foreach (MethodLink methodLink in methodLinksToRemove)
                     {
@@ -140,7 +140,7 @@ public class Project : INotifyPropertyChanged
             new Dictionary<Guid, List<Guid>>();
 
         var distinctCallingMethods =
-            MethodLinks.Select(ml => ml.StartingMethodId).Distinct();
+            MethodLinks.Select(ml => ml.StartingMethodId).Distinct().ToList();
 
         foreach (Guid callingMethod in distinctCallingMethods)
         {
