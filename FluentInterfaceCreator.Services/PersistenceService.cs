@@ -2,6 +2,7 @@
 using FluentInterfaceCreator.Core;
 using FluentInterfaceCreator.Models.Inputs;
 using FluentInterfaceCreator.Models.Outputs;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace FluentInterfaceCreator.Services;
 
@@ -23,6 +24,12 @@ public static class PersistenceService
 
         return Newtonsoft.Json
             .JsonConvert.DeserializeObject<List<OutputLanguage>>(json);
+    }
+
+    public static void SaveProjectToDisk(Project project, string filename)
+    {
+        File.WriteAllText(filename,
+            Newtonsoft.Json.JsonConvert.SerializeObject(project, Formatting.Indented));
     }
 
     public static void SaveProjectToXmlFile(Project project, string fileName)
