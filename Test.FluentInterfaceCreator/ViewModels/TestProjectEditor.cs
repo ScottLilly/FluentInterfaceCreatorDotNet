@@ -1,6 +1,4 @@
-using FluentInterfaceCreator.Models;
 using FluentInterfaceCreator.Models.Inputs;
-using Parameter = FluentInterfaceCreator.Models.Inputs.Parameter;
 
 namespace Test.FluentInterfaceCreator.ViewModels;
 

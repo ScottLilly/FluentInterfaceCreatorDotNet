@@ -20,6 +20,11 @@ public abstract class BaseTestClass
             _projectEditor.OutputLanguages.First(ol => ol.Name.Matches("C#"));
     }
 
+    protected OutputLanguage GetOutputLanguage()
+    {
+        return _cSharpLanguage;
+    }
+
     protected DataType GetDataTypeWithName(string name)
     {
         return _cSharpLanguage
