@@ -12,7 +12,8 @@ public class Parameter : INotifyPropertyChanged
 
     public string FormattedDataType =>
         UseIEnumerable ? $"IEnumerable<{DataType.Name}>" : DataType.Name;
-
+    public string FormattedDataTypeAndName =>
+        $"{FormattedDataType} {Name}";
     public IEnumerable<string> RequiredNamespaces =>
         new List<string>
         {

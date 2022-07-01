@@ -29,7 +29,7 @@ public class Method : INotifyPropertyChanged
             .Where(s => !string.IsNullOrWhiteSpace(s))
             .Distinct();
 
-    public string Signature =>
+    public string DataTypeOnlySignature =>
         FormattedReturnDataType + "|" + 
         Name + "=" + 
         string.Join(":", Parameters.Select(p => p.FormattedDataType));
@@ -43,6 +43,9 @@ public class Method : INotifyPropertyChanged
                 ? $"IEnumerable<{ReturnDataType?.Name}>" 
                 : ReturnDataType?.Name ?? ""
             : "";
+
+    public string FullSignature =>
+        $"{Name}({string.Join(", ", Parameters.Select(p => p.FormattedDataTypeAndName))})";
 
     public event PropertyChangedEventHandler? PropertyChanged;
 

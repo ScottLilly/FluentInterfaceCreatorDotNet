@@ -32,14 +32,17 @@ public class Project : INotifyPropertyChanged
         ExecutingMethods.All(cm => 
             MethodLinks.Any(ml => ml.EndingMethodId == cm.Id));
 
-    private IEnumerable<Method> InstantiatingMethods =>
+    public string ListOfInterfaces =>
+        string.Join(", ", InterfaceSpecs.Select(i => i.Name).Distinct());
+    public IEnumerable<Method> InstantiatingMethods =>
         Methods.Where(m => m.Type == Enums.MethodType.Instantiating);
-
-    private IEnumerable<Method> ChainingMethods =>
+    public IEnumerable<Method> ChainingMethods =>
         Methods.Where(m => m.Type == Enums.MethodType.Chaining);
-
-    private IEnumerable<Method> ExecutingMethods =>
+    public IEnumerable<Method> ExecutingMethods =>
         Methods.Where(m => m.Type == Enums.MethodType.Executing);
+
+    public List<string> NamespacesNeeded =>
+        Methods.SelectMany(m => m.RequiredNamespaces).Distinct().ToList();
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -115,27 +118,8 @@ public class Project : INotifyPropertyChanged
     private void RefreshInterfaceSpecs()
     {
         InterfaceSpecs.Clear();
-        // Remove references to deleted Methods
-        //foreach (var interfaceSpec in InterfaceSpecs)
-        //{
-        //    // Remove missing methods from InterfaceSpecs
-        //    interfaceSpec.CalledByMethodId
-        //        .RemoveAll(cbm => Methods.All(m => m.Id != cbm));
-        //    interfaceSpec.CallsIntoMethodIds
-        //        .RemoveAll(cim => Methods.All(m => m.Id != cim));
 
-        //    // Remove InterfaceSpecs with empty calledBy or callsInto values
-        //    var interfaceSpecsToRemove =
-        //        InterfaceSpecs.Where(i => !i.CalledByMethodId.Any() ||
-        //                                  !i.CallsIntoMethodIds.Any());
-
-        //    foreach (InterfaceSpec spec in interfaceSpecsToRemove)
-        //    {
-        //        InterfaceSpecs.Remove(spec);
-        //    }
-        //}
-
-        // Add InterfaceSpecs that are missing
+        // Add InterfaceSpecs
         Dictionary<Guid, List<Guid>> chainedMethods =
             new Dictionary<Guid, List<Guid>>();
 

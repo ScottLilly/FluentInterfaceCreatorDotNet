@@ -10,6 +10,7 @@ public class TestFluentEmailer : BaseTestClass
     public void Test_CreateFluentEmailer()
     {
         Project project = new Project();
+        project.OutputLanguage = GetOutputLanguage();
         project.Name = "FluentEmailer";
         project.NamespaceForFactoryClass = "FluentEmailer";
         project.FactoryClassName = "FluentEmailCreator";
@@ -89,6 +90,7 @@ public class TestFluentEmailer : BaseTestClass
         Method buildMethod = new Method();
         buildMethod.Name = "Build";
         buildMethod.Type = Enums.MethodType.Executing;
+        buildMethod.ReturnDataType = mailMessageDataType;
 
         project.Methods.Add(buildMethod);
 
@@ -190,7 +192,7 @@ public class TestFluentEmailer : BaseTestClass
                 i.CalledByMethodId.Contains(fromAddressMailAddressMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(toAddressStringMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(toAddressMailAddressMethod.Id));
-        iCanAddToAddress.Name = "ICanAddToAddress";
+        iCanAddToAddress.Name = "IMustAddToAddress";
 
         var iCanAddToAddressOrBuild =
             project.InterfaceSpecs.First(i =>
@@ -202,6 +204,16 @@ public class TestFluentEmailer : BaseTestClass
                 i.CallsIntoMethodIds.Contains(toAddressMailAddressMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(buildMethod.Id));
         iCanAddToAddressOrBuild.Name = "ICanAddToAddressOrBuild";
+
+        var fluentInterfaceFileCreator = 
+            FluentInterfaceCreatorFactory.GetFluentInterfaceFileCreator(project);
+
+        Assert.NotNull(fluentInterfaceFileCreator);
+
+        //File.WriteAllText(
+        //    Path.Combine(@"e:\temp\output", 
+        //        $"{project.FactoryClassName}.{project.OutputLanguage.FileExtension}"),
+        //    fluentInterfaceFileCreator.CreateInSingleFile().FormattedText());
 
         //PersistenceService.SaveProjectToDisk(project,
         //    @"E:\temp\output\project.json");
