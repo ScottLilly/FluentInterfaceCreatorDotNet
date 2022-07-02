@@ -17,6 +17,7 @@ public class Project : INotifyPropertyChanged
     public ObservableCollection<InterfaceSpec> InterfaceSpecs { get; } = new();
 
     public bool CanCreateOutputFiles =>
+        OutputLanguage != null &&
         Name.IsNotEmpty() &&
         NamespaceForFactoryClass.IsNotEmpty() &&
         FactoryClassName.IsNotEmpty() &&
@@ -30,10 +31,9 @@ public class Project : INotifyPropertyChanged
         ChainingMethods.All(cm => 
             MethodLinks.Any(ml => ml.EndingMethodId == cm.Id)) &&
         ExecutingMethods.All(cm => 
-            MethodLinks.Any(ml => ml.EndingMethodId == cm.Id));
+            MethodLinks.Any(ml => ml.EndingMethodId == cm.Id)) &&
+        InterfaceSpecs.All(i => i.Name.IsNotEmpty());
 
-    public string ListOfInterfaces =>
-        string.Join(", ", InterfaceSpecs.Select(i => i.Name).Distinct());
     public IEnumerable<Method> InstantiatingMethods =>
         Methods.Where(m => m.Type == Enums.MethodType.Instantiating);
     public IEnumerable<Method> ChainingMethods =>
@@ -41,6 +41,8 @@ public class Project : INotifyPropertyChanged
     public IEnumerable<Method> ExecutingMethods =>
         Methods.Where(m => m.Type == Enums.MethodType.Executing);
 
+    public string ListOfInterfaces =>
+        string.Join(", ", InterfaceSpecs.Select(i => i.Name).Distinct());
     public List<string> NamespacesNeeded =>
         Methods.SelectMany(m => m.RequiredNamespaces).Distinct().ToList();
 
@@ -48,15 +50,11 @@ public class Project : INotifyPropertyChanged
 
     public Project()
     {
-        // Connect internal handlers, to refresh computed values (when needed)
+        // Internal handlers, to refresh computed values
         PropertyChanged += OnPropertyChanged;
         Methods.CollectionChanged += OnMethodsCollectionChanged;
         MethodLinks.CollectionChanged += OnMethodLinksCollectionChanged;
     }
-
-    #region Public methods
-
-    #endregion
 
     #region Private methods
 
@@ -65,25 +63,15 @@ public class Project : INotifyPropertyChanged
     {
         if (e.PropertyName == nameof(OutputLanguage))
         {
-            PopulateNativeDataTypes();
+            DataTypes.Clear();
+
+            OutputLanguage?.NativeDataTypes.ForEach(DataTypes.Add);
         }
     }
 
     private void OnMethodsCollectionChanged(object? sender,
         NotifyCollectionChangedEventArgs e)
     {
-        // When a Method is added, create an InterfaceSpec object
-        //if (e.Action == NotifyCollectionChangedAction.Add &&
-        //    e.NewItems != null)
-        //{
-        //    foreach (var item in e.NewItems)
-        //    {
-        //        if (item is Method method)
-        //        {
-        //        }
-        //    }
-        //}
-
         // When a Method is removed from the Methods property,
         // remove the MethodLink objects that referenced it
         if (e.Action == NotifyCollectionChangedAction.Remove &&
@@ -91,17 +79,19 @@ public class Project : INotifyPropertyChanged
         {
             foreach (var item in e.OldItems)
             {
-                if (item is Method method)
+                if (item is not Method method)
                 {
-                    var methodLinksToRemove =
-                        MethodLinks.Where(ml =>
-                            ml.StartingMethodId == method.Id ||
-                            ml.EndingMethodId == method.Id).ToList();
+                    continue;
+                }
 
-                    foreach (MethodLink methodLink in methodLinksToRemove)
-                    {
-                        MethodLinks.Remove(methodLink);
-                    }
+                var methodLinksToRemove =
+                    MethodLinks.Where(ml =>
+                        ml.StartingMethodId == method.Id ||
+                        ml.EndingMethodId == method.Id).ToList();
+
+                foreach (MethodLink methodLink in methodLinksToRemove)
+                {
+                    MethodLinks.Remove(methodLink);
                 }
             }
         }
@@ -119,9 +109,7 @@ public class Project : INotifyPropertyChanged
     {
         InterfaceSpecs.Clear();
 
-        // Add InterfaceSpecs
-        Dictionary<Guid, List<Guid>> chainedMethods =
-            new Dictionary<Guid, List<Guid>>();
+        Dictionary<Guid, List<Guid>> chainedMethods = new();
 
         var distinctCallingMethods =
             MethodLinks.Select(ml => ml.StartingMethodId).Distinct().ToList();
@@ -152,23 +140,10 @@ public class Project : INotifyPropertyChanged
             else
             {
                 if (matchingInterfaceSpec.CalledByMethodId
-                    .All(cbm => cbm != chainedMethod.Key))
+                    .None(cbm => cbm == chainedMethod.Key))
                 {
                     matchingInterfaceSpec.CalledByMethodId.Add(chainedMethod.Key);
                 }
-            }
-        }
-    }
-
-    private void PopulateNativeDataTypes()
-    {
-        DataTypes.Clear();
-
-        if (OutputLanguage != null)
-        {
-            foreach (DataType dataType in OutputLanguage.NativeDataTypes)
-            {
-                DataTypes.Add(dataType);
             }
         }
     }
