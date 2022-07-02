@@ -62,7 +62,13 @@ public class TestProjectEditor : BaseTestClass
             StartingMethodId = chainingMethod.Id,
             EndingMethodId = executingMethod.Id
         });
-        Assert.True(_projectEditor.Project.CanCreateOutputFiles);
 
+        int i = 1;
+        foreach (InterfaceSpec interfaceSpec in _projectEditor.Project.InterfaceSpecs)
+        {
+            interfaceSpec.Name = $"ITest{i++}";
+        }
+
+        Assert.True(_projectEditor.Project.CanCreateOutputFiles);
     }
 }

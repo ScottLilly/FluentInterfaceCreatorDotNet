@@ -57,4 +57,11 @@ public static class ExtensionMethods
                 ? StringComparison.InvariantCulture 
                 : StringComparison.InvariantCultureIgnoreCase);
     }
+
+    public static bool None<T>(this IEnumerable<T> elements, Func<T, bool>? func = null)
+    {
+        return func == null
+            ? !elements.Any()
+            : !elements.Any(func.Invoke);
+    }
 }

@@ -170,10 +170,9 @@ public class TestFluentEmailer : BaseTestClass
             EndingMethodId = buildMethod.Id
         });
 
-        Assert.True(project.CanCreateOutputFiles);
+        Assert.False(project.CanCreateOutputFiles);
 
         // Populate interfaceSpec object names
-
         var iMustAddFromAddress =
             project.InterfaceSpecs.First(i =>
                 i.CalledByMethodId.Count == 1 &&
@@ -205,15 +204,17 @@ public class TestFluentEmailer : BaseTestClass
                 i.CallsIntoMethodIds.Contains(buildMethod.Id));
         iCanAddToAddressOrBuild.Name = "ICanAddToAddressOrBuild";
 
+        Assert.True(project.CanCreateOutputFiles);
+
         var fluentInterfaceFileCreator = 
             FluentInterfaceCreatorFactory.GetFluentInterfaceFileCreator(project);
 
         Assert.NotNull(fluentInterfaceFileCreator);
 
         //File.WriteAllText(
-        //    Path.Combine(@"e:\temp\output", 
+        //    Path.Combine(@"e:\temp\output",
         //        $"{project.FactoryClassName}.{project.OutputLanguage.FileExtension}"),
-        //    fluentInterfaceFileCreator.CreateInSingleFile().FormattedText());
+        //    fluentInterfaceFileCreator.CreateFluentInterfaceFile().FormattedText());
 
         //PersistenceService.SaveProjectToDisk(project,
         //    @"E:\temp\output\project.json");

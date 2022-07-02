@@ -9,28 +9,12 @@ internal sealed class CSharpFluentInterfaceFileCreator :
 {
     private readonly Project _project;
 
-    private enum InterfaceLocation
-    {
-        BuilderFile,
-        IndividualFiles
-    }
-
     public CSharpFluentInterfaceFileCreator(Project project)
     {
         _project = project;
     }
 
-    public FluentInterfaceFile CreateInSingleFile()
-    {
-        return CreateBuilderFile(InterfaceLocation.BuilderFile);
-    }
-
-    public IEnumerable<FluentInterfaceFile> CreateInMultipleFiles()
-    {
-        throw new NotImplementedException();
-    }
-
-    private FluentInterfaceFile CreateBuilderFile(InterfaceLocation interfaceLocation)
+    public FluentInterfaceFile CreateFluentInterfaceFile()
     {
         FluentInterfaceFile builder =
             new FluentInterfaceFile($"{_project.FactoryClassName}.{_project.OutputLanguage.FileExtension}");
@@ -50,16 +34,12 @@ internal sealed class CSharpFluentInterfaceFileCreator :
         // Close class
         builder.AddLine(1, "}");
 
-        // Append interfaces, if single file output
-        if (interfaceLocation == InterfaceLocation.BuilderFile)
-        {
-            builder.AddLineAfterBlankLine(1, "// Interfaces");
+        // Append interfaces
+        builder.AddLineAfterBlankLine(1, "// Interfaces");
 
-            foreach (FluentInterfaceFile interfaceFile in
-                CreateInterfaceFiles(InterfaceLocation.BuilderFile))
-            {
-                builder.AddLineAfterBlankLine(0, interfaceFile.FormattedText());
-            }
+        foreach (FluentInterfaceFile interfaceFile in CreateInterfaceFiles())
+        {
+            builder.AddLineAfterBlankLine(0, interfaceFile.FormattedText());
         }
 
         // Close namespace
@@ -68,7 +48,7 @@ internal sealed class CSharpFluentInterfaceFileCreator :
         return builder;
     }
 
-    private List<FluentInterfaceFile> CreateInterfaceFiles(InterfaceLocation interfaceLocation)
+    private List<FluentInterfaceFile> CreateInterfaceFiles()
     {
         List<FluentInterfaceFile> interfaces = new List<FluentInterfaceFile>();
 
@@ -77,23 +57,14 @@ internal sealed class CSharpFluentInterfaceFileCreator :
             FluentInterfaceFile builder =
                 new FluentInterfaceFile($"{interfaceSpec.Name}.{_project.OutputLanguage.FileExtension}");
 
-            // TODO: Need to handle, if creating separate files for Interfaces
-            //if (interfaceLocation == InterfaceLocation.IndividualFiles)
-            //{
-            //    AddRequiredUsingStatements(builder, interfaceSpec.NamespacesNeeded);
-
-            //    // Start namespace
-            //    builder.AddLine(0, $"namespace {_project.NamespaceForFactoryClass}");
-            //    builder.AddLine(0, "{");
-            //}
-
             builder.AddLine(1, $"public interface {interfaceSpec.Name}");
 
             builder.AddLine(1, "{");
 
             foreach (Method method in
-                     _project.Methods.Where(m => m.CanEndChainPair &&
-                                                 interfaceSpec.CallsIntoMethodIds.Contains(m.Id)))
+                     _project.Methods
+                         .Where(m => m.CanEndChainPair &&
+                                     interfaceSpec.CallsIntoMethodIds.Contains(m.Id)))
             {
                 if (method.Type == Enums.MethodType.Executing)
                 {
@@ -109,11 +80,6 @@ internal sealed class CSharpFluentInterfaceFileCreator :
             }
 
             builder.AddLine(1, "}");
-
-            if (interfaceLocation == InterfaceLocation.IndividualFiles)
-            {
-                builder.AddLine(0, "}");
-            }
 
             interfaces.Add(builder);
         }
@@ -180,5 +146,4 @@ internal sealed class CSharpFluentInterfaceFileCreator :
             builder.AddBlankLine();
         }
     }
-
 }
