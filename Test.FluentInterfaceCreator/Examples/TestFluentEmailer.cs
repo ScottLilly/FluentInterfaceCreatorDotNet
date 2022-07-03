@@ -114,7 +114,6 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(buildMethod);
 
-        // Chains
         #region Add MethodLinks
 
         #region Add MethodLinks that call into From
@@ -249,44 +248,49 @@ public class TestFluentEmailer : BaseTestClass
 
         Assert.False(project.CanCreateOutputFiles);
 
-        #region Update InterfaceSpecs
+        #region Set InterfaceSpecs Names
 
-        // Populate interfaceSpec object names
-        var iMustAddFromAddress =
-            project.InterfaceSpecs.First(i =>
-                i.CalledByMethodId.Count == 2 &&
-                i.CallsIntoMethodIds.Count == 3 &&
-                i.CalledByMethodId.Contains(createMailMessageMethod.Id) &&
-                i.CalledByMethodId.Contains(createHtmlMailMessageMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(fromAddressStringMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(fromAddressStringStringMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(fromAddressMailAddressMethod.Id));
-        iMustAddFromAddress.Name = "IMustAddFromAddress";
+        GetInterfaceSpec(project,
+            new List<Guid>
+            {
+                createMailMessageMethod.Id,
+                createHtmlMailMessageMethod.Id
+            },
+            new List<Guid>
+            {
+                fromAddressStringMethod.Id,
+                fromAddressStringStringMethod.Id,
+                fromAddressMailAddressMethod.Id
+            }).Name = "IMustAddFromAddress";
 
-        var iCanAddToAddress =
-            project.InterfaceSpecs.First(i =>
-                i.CalledByMethodId.Count == 3 &&
-                i.CallsIntoMethodIds.Count == 3 &&
-                i.CalledByMethodId.Contains(fromAddressStringMethod.Id) &&
-                i.CalledByMethodId.Contains(fromAddressStringStringMethod.Id) &&
-                i.CalledByMethodId.Contains(fromAddressMailAddressMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(toAddressStringMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(toAddressStringStringMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(toAddressMailAddressMethod.Id));
-        iCanAddToAddress.Name = "IMustAddToAddress";
+        GetInterfaceSpec(project,
+            new List<Guid>
+            {
+                fromAddressStringMethod.Id,
+                fromAddressStringStringMethod.Id,
+                fromAddressMailAddressMethod.Id
+            },
+            new List<Guid>
+            {
+                toAddressStringMethod.Id,
+                toAddressStringStringMethod.Id,
+                toAddressMailAddressMethod.Id
+            }).Name = "IMustAddToAddress";
 
-        var iCanAddToAddressOrBuild =
-            project.InterfaceSpecs.First(i =>
-                i.CalledByMethodId.Count == 3 &&
-                i.CallsIntoMethodIds.Count == 4 &&
-                i.CalledByMethodId.Contains(toAddressStringMethod.Id) &&
-                i.CalledByMethodId.Contains(toAddressStringStringMethod.Id) &&
-                i.CalledByMethodId.Contains(toAddressMailAddressMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(toAddressStringMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(toAddressStringStringMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(toAddressMailAddressMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(buildMethod.Id));
-        iCanAddToAddressOrBuild.Name = "ICanAddToAddressOrBuild";
+        GetInterfaceSpec(project,
+            new List<Guid>
+            {
+                toAddressStringMethod.Id,
+                toAddressStringStringMethod.Id,
+                toAddressMailAddressMethod.Id
+            },
+            new List<Guid>
+            {
+                toAddressStringMethod.Id,
+                toAddressStringStringMethod.Id,
+                toAddressMailAddressMethod.Id,
+                buildMethod.Id
+            }).Name = "ICanAddToAddressOrBuild";
 
         #endregion
 
@@ -309,4 +313,14 @@ public class TestFluentEmailer : BaseTestClass
 
         #endregion
     }
+
+    private static InterfaceSpec GetInterfaceSpec(
+        Project project, 
+        IReadOnlyCollection<Guid> calledByMethodIds,
+        IReadOnlyCollection<Guid> callsIntoMethodIds) =>
+        project.InterfaceSpecs
+            .First(i => i.CalledByMethodId.OrderBy(id => id)
+                            .SequenceEqual(calledByMethodIds.OrderBy(id => id)) &&
+                        i.CallsIntoMethodIds.OrderBy(id => id)
+                            .SequenceEqual(callsIntoMethodIds.OrderBy(id => id)));
 }
