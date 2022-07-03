@@ -102,6 +102,13 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(toAddressStringMethod);
 
+        Method toAddressStringStringMethod =
+            new Method("To", Enums.MethodType.Chaining);
+        toAddressStringStringMethod.Parameters.Add(parameterEmailAddressString);
+        toAddressStringStringMethod.Parameters.Add(parameterEmailAddressDisplayNameString);
+
+        project.Methods.Add(toAddressStringStringMethod);
+
         Method toAddressMailAddressMethod = 
             new Method("To", Enums.MethodType.Chaining);
         toAddressMailAddressMethod.Parameters.Add(parameterEmailAddressMailAddress);
@@ -145,11 +152,16 @@ public class TestFluentEmailer : BaseTestClass
 
         #endregion
 
-        // Calls to To
+        #region Add MethodLinks that only call into To
+
         // fromAddressStringMethod
         project.MethodLinks.Add(new MethodLink(
             fromAddressStringMethod.Id,
             toAddressStringMethod.Id));
+
+        project.MethodLinks.Add(new MethodLink(
+            fromAddressStringMethod.Id,
+            toAddressStringStringMethod.Id));
 
         project.MethodLinks.Add(new MethodLink(
             fromAddressStringMethod.Id,
@@ -162,6 +174,10 @@ public class TestFluentEmailer : BaseTestClass
 
         project.MethodLinks.Add(new MethodLink(
             fromAddressStringStringMethod.Id,
+            toAddressStringStringMethod.Id));
+
+        project.MethodLinks.Add(new MethodLink(
+            fromAddressStringStringMethod.Id,
             toAddressMailAddressMethod.Id));
 
         // fromAddressMailAddressMethod
@@ -171,12 +187,38 @@ public class TestFluentEmailer : BaseTestClass
 
         project.MethodLinks.Add(new MethodLink(
             fromAddressMailAddressMethod.Id,
+            toAddressStringStringMethod.Id));
+
+        project.MethodLinks.Add(new MethodLink(
+            fromAddressMailAddressMethod.Id,
             toAddressMailAddressMethod.Id));
 
+        #endregion
+
+        #region Add MethodLinks that call into To or Build
+
+        // Calls into TO
         // toAddressStringMethod
+        project.MethodLinks.Add(new MethodLink(
+            toAddressStringStringMethod.Id,
+            toAddressStringMethod.Id));
+
+        project.MethodLinks.Add(new MethodLink(
+            toAddressStringStringMethod.Id,
+            toAddressStringStringMethod.Id));
+
+        project.MethodLinks.Add(new MethodLink(
+            toAddressStringStringMethod.Id,
+            toAddressMailAddressMethod.Id));
+
+        // toAddressStringStringMethod
         project.MethodLinks.Add(new MethodLink(
             toAddressStringMethod.Id,
             toAddressStringMethod.Id));
+
+        project.MethodLinks.Add(new MethodLink(
+            toAddressStringMethod.Id,
+            toAddressStringStringMethod.Id));
 
         project.MethodLinks.Add(new MethodLink(
             toAddressStringMethod.Id,
@@ -189,12 +231,19 @@ public class TestFluentEmailer : BaseTestClass
 
         project.MethodLinks.Add(new MethodLink(
             toAddressMailAddressMethod.Id,
-            toAddressMailAddressMethod.Id));
-
-        #region Calls into Build method
+            toAddressStringStringMethod.Id));
 
         project.MethodLinks.Add(new MethodLink(
+            toAddressMailAddressMethod.Id,
+            toAddressMailAddressMethod.Id));
+
+        // Calls into BUILD
+        project.MethodLinks.Add(new MethodLink(
             toAddressStringMethod.Id,
+            buildMethod.Id));
+
+        project.MethodLinks.Add(new MethodLink(
+            toAddressStringStringMethod.Id,
             buildMethod.Id));
 
         project.MethodLinks.Add(new MethodLink(
@@ -224,21 +273,24 @@ public class TestFluentEmailer : BaseTestClass
         var iCanAddToAddress =
             project.InterfaceSpecs.First(i =>
                 i.CalledByMethodId.Count == 3 &&
-                i.CallsIntoMethodIds.Count == 2 &&
+                i.CallsIntoMethodIds.Count == 3 &&
                 i.CalledByMethodId.Contains(fromAddressStringMethod.Id) &&
                 i.CalledByMethodId.Contains(fromAddressStringStringMethod.Id) &&
                 i.CalledByMethodId.Contains(fromAddressMailAddressMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(toAddressStringMethod.Id) &&
+                i.CallsIntoMethodIds.Contains(toAddressStringStringMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(toAddressMailAddressMethod.Id));
         iCanAddToAddress.Name = "IMustAddToAddress";
 
         var iCanAddToAddressOrBuild =
             project.InterfaceSpecs.First(i =>
-                i.CalledByMethodId.Count == 2 &&
-                i.CallsIntoMethodIds.Count == 3 &&
+                i.CalledByMethodId.Count == 3 &&
+                i.CallsIntoMethodIds.Count == 4 &&
                 i.CalledByMethodId.Contains(toAddressStringMethod.Id) &&
+                i.CalledByMethodId.Contains(toAddressStringStringMethod.Id) &&
                 i.CalledByMethodId.Contains(toAddressMailAddressMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(toAddressStringMethod.Id) &&
+                i.CallsIntoMethodIds.Contains(toAddressStringStringMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(toAddressMailAddressMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(buildMethod.Id));
         iCanAddToAddressOrBuild.Name = "ICanAddToAddressOrBuild";
