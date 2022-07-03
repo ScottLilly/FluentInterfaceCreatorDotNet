@@ -49,6 +49,27 @@ public class Method : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
+    public Method(string name, Enums.MethodType type)
+    {
+        Name = name;
+        Type = type;
+    }
+
+    // TODO: Find better solution
+    // Parameterless constructor for editing ViewModel and desrialization
+    public Method()
+    {
+    }
+
+    // TODO: Find better solution
+    // Should only be used for Executing functions
+    public Method(string name, Enums.MethodType type, DataType? returnDataType)
+    {
+        Name = name;
+        Type = type;
+        ReturnDataType = returnDataType;
+    }
+
     public IEnumerable<string> ValidationErrors()
     {
         if (Type != Enums.MethodType.Instantiating &&

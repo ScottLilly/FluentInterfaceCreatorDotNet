@@ -9,11 +9,17 @@ public class TestFluentEmailer : BaseTestClass
     [Fact]
     public void Test_CreateFluentEmailer()
     {
+        #region Project setup
+
         Project project = new Project();
         project.OutputLanguage = GetOutputLanguage();
-        project.Name = "FluentEmailer";
-        project.NamespaceForFactoryClass = "FluentEmailer";
-        project.FactoryClassName = "FluentEmailCreator";
+        project.Name = "FluentMailMessage";
+        project.NamespaceForFactoryClass = "FluentMailMessage";
+        project.FactoryClassName = "FluentMailMessageCreator";
+
+        #endregion
+
+        #region Add DataTypes
 
         // Add non-standard DataTypes
         DataType mailMessageDataType = new DataType
@@ -32,18 +38,26 @@ public class TestFluentEmailer : BaseTestClass
         };
         project.DataTypes.Add(mailAddressDataType);
 
-        // Add Methods
-        // Create
-        Method createMethod = new Method();
-        createMethod.Name = "Create";
-        createMethod.Type = Enums.MethodType.Instantiating;
+        #endregion
 
-        project.Methods.Add(createMethod);
+        #region Add Instanatiating methods
+
+        // Create
+        Method createMailMessageMethod = 
+            new Method("CreateMailMessage", Enums.MethodType.Instantiating);
+
+        project.Methods.Add(createMailMessageMethod);
+
+        Method createHtmlMailMessageMethod = 
+            new Method("CreateHtmlMailMessage", Enums.MethodType.Instantiating);
+
+        project.Methods.Add(createHtmlMailMessageMethod);
+
+        #endregion
 
         // From
-        Method fromAddressStringMethod = new Method();
-        fromAddressStringMethod.Name = "From";
-        fromAddressStringMethod.Type = Enums.MethodType.Chaining;
+        Method fromAddressStringMethod = 
+            new Method("From", Enums.MethodType.Chaining);
         fromAddressStringMethod.Parameters.Add(new Parameter
         {
             DataType = GetDataTypeWithName("string"),
@@ -52,9 +66,8 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(fromAddressStringMethod);
 
-        Method fromAddressMailAddressMethod = new Method();
-        fromAddressMailAddressMethod.Name = "From";
-        fromAddressMailAddressMethod.Type = Enums.MethodType.Chaining;
+        Method fromAddressMailAddressMethod = 
+            new Method("From", Enums.MethodType.Chaining);
         fromAddressMailAddressMethod.Parameters.Add(new Parameter
         {
             DataType = mailAddressDataType,
@@ -64,9 +77,8 @@ public class TestFluentEmailer : BaseTestClass
         project.Methods.Add(fromAddressMailAddressMethod);
 
         // To
-        Method toAddressStringMethod = new Method();
-        toAddressStringMethod.Name = "To";
-        toAddressStringMethod.Type = Enums.MethodType.Chaining;
+        Method toAddressStringMethod = 
+            new Method("To", Enums.MethodType.Chaining);
         toAddressStringMethod.Parameters.Add(new Parameter
         {
             DataType = GetDataTypeWithName("string"),
@@ -75,9 +87,8 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(toAddressStringMethod);
 
-        Method toAddressMailAddressMethod = new Method();
-        toAddressMailAddressMethod.Name = "To";
-        toAddressMailAddressMethod.Type = Enums.MethodType.Chaining;
+        Method toAddressMailAddressMethod = 
+            new Method("To", Enums.MethodType.Chaining);
         toAddressMailAddressMethod.Parameters.Add(new Parameter
         {
             DataType = mailAddressDataType,
@@ -87,24 +98,36 @@ public class TestFluentEmailer : BaseTestClass
         project.Methods.Add(toAddressMailAddressMethod);
 
         // Build
-        Method buildMethod = new Method();
-        buildMethod.Name = "Build";
-        buildMethod.Type = Enums.MethodType.Executing;
-        buildMethod.ReturnDataType = mailMessageDataType;
+        Method buildMethod = 
+            new Method("Build", Enums.MethodType.Executing, mailMessageDataType);
 
         project.Methods.Add(buildMethod);
 
         // Chains
+        #region Add MethodLinks
+
         // Calls to From
         project.MethodLinks.Add(new MethodLink
         {
-            StartingMethodId = createMethod.Id,
+            StartingMethodId = createMailMessageMethod.Id,
             EndingMethodId = fromAddressStringMethod.Id
         });
 
         project.MethodLinks.Add(new MethodLink
         {
-            StartingMethodId = createMethod.Id,
+            StartingMethodId = createMailMessageMethod.Id,
+            EndingMethodId = fromAddressMailAddressMethod.Id
+        });
+
+        project.MethodLinks.Add(new MethodLink
+        {
+            StartingMethodId = createHtmlMailMessageMethod.Id,
+            EndingMethodId = fromAddressStringMethod.Id
+        });
+
+        project.MethodLinks.Add(new MethodLink
+        {
+            StartingMethodId = createHtmlMailMessageMethod.Id,
             EndingMethodId = fromAddressMailAddressMethod.Id
         });
 
@@ -170,16 +193,18 @@ public class TestFluentEmailer : BaseTestClass
             EndingMethodId = buildMethod.Id
         });
 
+        #endregion
+
         Assert.False(project.CanCreateOutputFiles);
 
         // Populate interfaceSpec object names
         var iMustAddFromAddress =
             project.InterfaceSpecs.First(i =>
-                i.CalledByMethodId.Count == 1 &&
+                i.CalledByMethodId.Count == 2 &&
                 i.CallsIntoMethodIds.Count == 2 &&
-                i.CalledByMethodId.Contains(createMethod.Id) &&
+                i.CalledByMethodId.Contains(createMailMessageMethod.Id) &&
+                i.CalledByMethodId.Contains(createHtmlMailMessageMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(fromAddressStringMethod.Id) &&
-                i.CallsIntoMethodIds.Contains(fromAddressMailAddressMethod.Id) &&
                 i.CallsIntoMethodIds.Contains(fromAddressMailAddressMethod.Id));
         iMustAddFromAddress.Name = "IMustAddFromAddress";
 
@@ -211,12 +236,12 @@ public class TestFluentEmailer : BaseTestClass
 
         Assert.NotNull(fluentInterfaceFileCreator);
 
-        //File.WriteAllText(
-        //    Path.Combine(@"e:\temp\output",
-        //        $"{project.FactoryClassName}.{project.OutputLanguage.FileExtension}"),
-        //    fluentInterfaceFileCreator.CreateFluentInterfaceFile().FormattedText());
+        File.WriteAllText(
+            Path.Combine(@"e:\temp\output",
+                $"{project.FactoryClassName}.{project.OutputLanguage.FileExtension}"),
+            fluentInterfaceFileCreator.CreateFluentInterfaceFile().FormattedText());
 
-        //PersistenceService.SaveProjectToDisk(project,
-        //    @"E:\temp\output\project.json");
+        PersistenceService.SaveProjectToDisk(project,
+            @"E:\temp\output\project.json");
     }
 }
