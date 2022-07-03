@@ -23,6 +23,17 @@ public class Parameter : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
+    public Parameter()
+    {
+    }
+
+    public Parameter(string name, DataType dataType, bool useIEnumerable = false)
+    {
+        Name = name;
+        DataType = dataType;
+        UseIEnumerable = useIEnumerable;
+    }
+
     public IEnumerable<string> ValidationErrors()
     {
         if (DataType == null)

@@ -40,25 +40,18 @@ public class TestFluentEmailer : BaseTestClass
 
         #endregion
 
-        Parameter parameterEmailAddressString = 
-            new Parameter
-        {
-            DataType = GetDataTypeWithName("string"),
-            Name = "emailAddress"
-        };
+        #region Add Parameters
 
-        Parameter parameterEmailAddressMailAddress = new Parameter
-        {
-            DataType = mailAddressDataType,
-            Name = "emailAddress"
-        };
+        Parameter parameterEmailAddressString = 
+            new Parameter("emailAddress", GetDataTypeWithName("string"));
+
+        Parameter parameterEmailAddressMailAddress = 
+            new Parameter("emailAddress", mailAddressDataType);
 
         Parameter parameterEmailAddressDisplayNameString =
-            new Parameter
-            {
-                DataType = GetDataTypeWithName("string"),
-                Name = "displayName"
-            };
+            new Parameter("displayName", GetDataTypeWithName("string"));
+
+        #endregion
 
         #region Add Instanatiating methods
 
@@ -126,72 +119,72 @@ public class TestFluentEmailer : BaseTestClass
 
         #region Add MethodLinks that call into From
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
+            createMailMessageMethod.Id, 
+            fromAddressStringMethod.Id);
+
+        project.AddMethodLink(
+            createMailMessageMethod.Id, 
+            fromAddressStringStringMethod.Id);
+
+        project.AddMethodLink(
             createMailMessageMethod.Id,
-            fromAddressStringMethod.Id));
+            fromAddressMailAddressMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
-            createMailMessageMethod.Id,
-            fromAddressStringStringMethod.Id));
-
-        project.MethodLinks.Add(new MethodLink(
-            createMailMessageMethod.Id,
-            fromAddressMailAddressMethod.Id));
-
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             createHtmlMailMessageMethod.Id,
-            fromAddressStringMethod.Id));
+            fromAddressStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             createHtmlMailMessageMethod.Id,
-            fromAddressStringStringMethod.Id));
+            fromAddressStringStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             createHtmlMailMessageMethod.Id,
-            fromAddressMailAddressMethod.Id));
+            fromAddressMailAddressMethod.Id);
 
         #endregion
 
         #region Add MethodLinks that only call into To
 
         // fromAddressStringMethod
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             fromAddressStringMethod.Id,
-            toAddressStringMethod.Id));
+            toAddressStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             fromAddressStringMethod.Id,
-            toAddressStringStringMethod.Id));
+            toAddressStringStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             fromAddressStringMethod.Id,
-            toAddressMailAddressMethod.Id));
+            toAddressMailAddressMethod.Id);
 
         // fromAddressStringStringMethod
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             fromAddressStringStringMethod.Id,
-            toAddressStringMethod.Id));
+            toAddressStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             fromAddressStringStringMethod.Id,
-            toAddressStringStringMethod.Id));
+            toAddressStringStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             fromAddressStringStringMethod.Id,
-            toAddressMailAddressMethod.Id));
+            toAddressMailAddressMethod.Id);
 
         // fromAddressMailAddressMethod
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             fromAddressMailAddressMethod.Id,
-            toAddressStringMethod.Id));
+            toAddressStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             fromAddressMailAddressMethod.Id,
-            toAddressStringStringMethod.Id));
+            toAddressStringStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             fromAddressMailAddressMethod.Id,
-            toAddressMailAddressMethod.Id));
+            toAddressMailAddressMethod.Id);
 
         #endregion
 
@@ -199,56 +192,56 @@ public class TestFluentEmailer : BaseTestClass
 
         // Calls into TO
         // toAddressStringMethod
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressStringStringMethod.Id,
-            toAddressStringMethod.Id));
+            toAddressStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressStringStringMethod.Id,
-            toAddressStringStringMethod.Id));
+            toAddressStringStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressStringStringMethod.Id,
-            toAddressMailAddressMethod.Id));
+            toAddressMailAddressMethod.Id);
 
         // toAddressStringStringMethod
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressStringMethod.Id,
-            toAddressStringMethod.Id));
+            toAddressStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressStringMethod.Id,
-            toAddressStringStringMethod.Id));
+            toAddressStringStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressStringMethod.Id,
-            toAddressMailAddressMethod.Id));
+            toAddressMailAddressMethod.Id);
 
         // toAddressMailAddressMethod
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressMailAddressMethod.Id,
-            toAddressStringMethod.Id));
+            toAddressStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressMailAddressMethod.Id,
-            toAddressStringStringMethod.Id));
+            toAddressStringStringMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressMailAddressMethod.Id,
-            toAddressMailAddressMethod.Id));
+            toAddressMailAddressMethod.Id);
 
         // Calls into BUILD
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressStringMethod.Id,
-            buildMethod.Id));
+            buildMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressStringStringMethod.Id,
-            buildMethod.Id));
+            buildMethod.Id);
 
-        project.MethodLinks.Add(new MethodLink(
+        project.AddMethodLink(
             toAddressMailAddressMethod.Id,
-            buildMethod.Id));
+            buildMethod.Id);
 
         #endregion
 

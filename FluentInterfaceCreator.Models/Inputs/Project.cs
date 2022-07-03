@@ -56,6 +56,15 @@ public class Project : INotifyPropertyChanged
         MethodLinks.CollectionChanged += OnMethodLinksCollectionChanged;
     }
 
+    #region Public methods
+
+    public void AddMethodLink(Guid startingMethodId, Guid endingMethodId)
+    {
+        MethodLinks.Add(new MethodLink(startingMethodId, endingMethodId));
+    }
+
+    #endregion
+
     #region Private methods
 
     private void OnPropertyChanged(object? sender, 
