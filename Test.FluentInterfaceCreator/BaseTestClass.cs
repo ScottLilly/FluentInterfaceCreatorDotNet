@@ -33,26 +33,13 @@ public abstract class BaseTestClass
     }
 
     protected Method BuildInstantiatingMethod(string name) =>
-        new Method
-        {
-            Name = name,
-            Type = Enums.MethodType.Instantiating
-        };
+        new Method(name, Enums.MethodType.Instantiating);
 
     protected Method BuildChainingMethod(string name) =>
-        new Method
-        {
-            Name = name,
-            Type = Enums.MethodType.Chaining
-        };
+        new Method(name, Enums.MethodType.Chaining);
 
     protected Method BuildExecutingMethod(string name, string returnDataType) =>
-        new Method
-        {
-            Name = name,
-            Type = Enums.MethodType.Executing,
-            ReturnDataType = GetDataTypeWithName(returnDataType)
-        };
+        new Method(name, Enums.MethodType.Executing, GetDataTypeWithName(returnDataType));
 
     protected Parameter BuildParameter(string name, string dataType) =>
         new Parameter
