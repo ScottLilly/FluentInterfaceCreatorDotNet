@@ -9,11 +9,14 @@ public class Parameter : INotifyPropertyChanged
     public bool UseIEnumerable { get; set; }
     public DataType DataType { get; set; }
     public string Name { get; set; }
+    public string DefaultValue { get; set; }
 
     public string FormattedDataType =>
         UseIEnumerable ? $"IEnumerable<{DataType.Name}>" : DataType.Name;
     public string FormattedDataTypeAndName =>
-        $"{FormattedDataType} {Name}";
+        DefaultValue.IsEmpty()
+            ? $"{FormattedDataType} {Name}"
+            : $"{FormattedDataType} {Name} = {DefaultValue}";
     public IEnumerable<string> RequiredNamespaces =>
         new List<string>
         {
@@ -27,10 +30,28 @@ public class Parameter : INotifyPropertyChanged
     {
     }
 
-    public Parameter(string name, DataType dataType, bool useIEnumerable = false)
+    public Parameter(string name, DataType dataType, 
+        bool useIEnumerable = false)
     {
         Name = name;
         DataType = dataType;
+        UseIEnumerable = useIEnumerable;
+    }
+
+    public Parameter(string name, DataType dataType, 
+        string defaultValue)
+    {
+        Name = name;
+        DataType = dataType;
+        DefaultValue = defaultValue;
+    }
+
+    public Parameter(string name, DataType dataType, 
+        string defaultValue, bool useIEnumerable)
+    {
+        Name = name;
+        DataType = dataType;
+        DefaultValue = defaultValue;
         UseIEnumerable = useIEnumerable;
     }
 

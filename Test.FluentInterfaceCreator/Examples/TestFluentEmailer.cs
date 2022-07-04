@@ -22,6 +22,13 @@ public class TestFluentEmailer : BaseTestClass
         #region Add DataTypes
 
         // Add non-standard DataTypes
+        DataType mailPriorityDataType = new DataType
+        {
+            ContainingNamespace = "System.Net.Mail",
+            Name = "MailPriority",
+            IsNative = false
+        };
+
         DataType mailMessageDataType = new DataType
         {
             ContainingNamespace = "System.Net.Mail",
@@ -51,6 +58,9 @@ public class TestFluentEmailer : BaseTestClass
         Parameter parameterEmailAddressDisplayNameString =
             new Parameter("displayName", GetDataTypeWithName("string"));
 
+        Parameter parameterMailPriority =
+            new Parameter("priority", mailPriorityDataType, "MailPriority.Normal");
+
         #endregion
 
         #region Add Instanatiating methods
@@ -58,11 +68,13 @@ public class TestFluentEmailer : BaseTestClass
         // Create
         Method createMailMessageMethod = 
             new Method("CreateMailMessage", Enums.MethodType.Instantiating);
+        createMailMessageMethod.Parameters.Add(parameterMailPriority);
 
         project.Methods.Add(createMailMessageMethod);
 
         Method createHtmlMailMessageMethod = 
             new Method("CreateHtmlMailMessage", Enums.MethodType.Instantiating);
+        createHtmlMailMessageMethod.Parameters.Add(parameterMailPriority);
 
         project.Methods.Add(createHtmlMailMessageMethod);
 
