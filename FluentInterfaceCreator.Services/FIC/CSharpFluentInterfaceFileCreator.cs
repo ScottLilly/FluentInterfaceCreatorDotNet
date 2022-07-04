@@ -116,7 +116,7 @@ internal sealed class CSharpFluentInterfaceFileCreator :
                 _project.InterfaceSpecs.First(i => i.CalledByMethodId.Contains(method.Id));
 
             builder.AddLineAfterBlankLine(2,
-                $"public static {interfaceSpec.Name} {method.FullSignature}");
+                $"public {interfaceSpec.Name} {method.FullSignature}");
             builder.AddLine(2, "{");
             builder.AddLine(3, "return this;");
             builder.AddLine(2, "}");
@@ -138,6 +138,8 @@ internal sealed class CSharpFluentInterfaceFileCreator :
 
     private static void AddRequiredUsingStatements(FluentInterfaceFile builder, List<string> namespaces)
     {
+        builder.AddLine(0, "using System.ComponentModel;");
+
         foreach (string ns in namespaces.Distinct().OrderBy(n => n))
         {
             builder.AddLine(0, $"using {ns};");
@@ -155,19 +157,19 @@ internal sealed class CSharpFluentInterfaceFileCreator :
         builder.AddLine(2, "// Hide default functions from appearing with IntelliSense");
         builder.AddLine(2, "");
         builder.AddLine(2, "[EditorBrowsable(EditorBrowsableState.Never)]");
-        builder.AddLine(2, "public override Boolean Equals(Object obj)");
+        builder.AddLine(2, "public override bool Equals(object obj)");
         builder.AddLine(2, "{");
         builder.AddLine(3, "return base.Equals(obj);");
         builder.AddLine(2, "}");
         builder.AddLine(2, "");
         builder.AddLine(2, "[EditorBrowsable(EditorBrowsableState.Never)]");
-        builder.AddLine(2, "public override Int32 GetHashCode()");
+        builder.AddLine(2, "public override int GetHashCode()");
         builder.AddLine(2, "{");
         builder.AddLine(3, "return base.GetHashCode();");
         builder.AddLine(2, "}");
         builder.AddLine(2, "");
         builder.AddLine(2, "[EditorBrowsable(EditorBrowsableState.Never)]");
-        builder.AddLine(2, "public override String ToString()");
+        builder.AddLine(2, "public override string ToString()");
         builder.AddLine(2, "{");
         builder.AddLine(3, "return base.ToString();");
         builder.AddLine(2, "}");

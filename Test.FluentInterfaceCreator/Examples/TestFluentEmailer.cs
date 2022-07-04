@@ -14,8 +14,8 @@ public class TestFluentEmailer : BaseTestClass
         Project project = new Project();
         project.OutputLanguage = GetOutputLanguage();
         project.Name = "FluentMailMessage";
-        project.NamespaceForFactoryClass = "FluentMailMessage";
-        project.FactoryClassName = "FluentMailMessageCreator";
+        project.NamespaceForFactoryClass = "FluentEmail";
+        project.FactoryClassName = "FluentMailMessage";
 
         #endregion
 
