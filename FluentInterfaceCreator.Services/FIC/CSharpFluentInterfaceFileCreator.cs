@@ -31,6 +31,8 @@ internal sealed class CSharpFluentInterfaceFileCreator :
         AddChainingFunctions(builder);
         AddExecutingFunctions(builder);
 
+        AddHideIntelliSense(builder);
+
         // Close class
         builder.AddLine(1, "}");
 
@@ -146,4 +148,29 @@ internal sealed class CSharpFluentInterfaceFileCreator :
             builder.AddBlankLine();
         }
     }
+
+    private static void AddHideIntelliSense(FluentInterfaceFile builder)
+    {
+        builder.AddLine(2, "");
+        builder.AddLine(2, "// Hide default functions from appearing with IntelliSense");
+        builder.AddLine(2, "");
+        builder.AddLine(2, "[EditorBrowsable(EditorBrowsableState.Never)]");
+        builder.AddLine(2, "public override Boolean Equals(Object obj)");
+        builder.AddLine(2, "{");
+        builder.AddLine(3, "return base.Equals(obj);");
+        builder.AddLine(2, "}");
+        builder.AddLine(2, "");
+        builder.AddLine(2, "[EditorBrowsable(EditorBrowsableState.Never)]");
+        builder.AddLine(2, "public override Int32 GetHashCode()");
+        builder.AddLine(2, "{");
+        builder.AddLine(3, "return base.GetHashCode();");
+        builder.AddLine(2, "}");
+        builder.AddLine(2, "");
+        builder.AddLine(2, "[EditorBrowsable(EditorBrowsableState.Never)]");
+        builder.AddLine(2, "public override String ToString()");
+        builder.AddLine(2, "{");
+        builder.AddLine(3, "return base.ToString();");
+        builder.AddLine(2, "}");
+    }
+
 }
