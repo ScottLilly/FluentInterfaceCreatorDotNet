@@ -11,4 +11,15 @@ public class TestDataType : BaseTestClass
 
         Assert.NotNull(dataType);
     }
+
+    [Fact] public void Test_IsValid()
+    {
+        var dataType = new DataType();
+
+        Assert.False(dataType.IsValid);
+
+        dataType.Name = "Test";
+
+        Assert.True(dataType.IsValid);
+    }
 }

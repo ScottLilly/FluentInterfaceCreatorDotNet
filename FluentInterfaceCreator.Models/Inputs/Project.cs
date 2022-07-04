@@ -16,11 +16,16 @@ public class Project : INotifyPropertyChanged
     public ObservableCollection<MethodLink> MethodLinks { get; } = new();
     public ObservableCollection<InterfaceSpec> InterfaceSpecs { get; } = new();
 
-    public bool CanCreateOutputFiles =>
-        OutputLanguage != null &&
+    public bool IsValid =>
         Name.IsNotEmpty() &&
         NamespaceForFactoryClass.IsNotEmpty() &&
         FactoryClassName.IsNotEmpty() &&
+        OutputLanguage != null &&
+        DataTypes.All(d => d.IsValid) &&
+        Methods.All(m => m.IsValid);
+
+    public bool CanCreateOutputFiles =>
+        IsValid &&
         InstantiatingMethods.Any() &&
         ChainingMethods.Any() &&
         ExecutingMethods.Any() &&

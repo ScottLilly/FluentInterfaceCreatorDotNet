@@ -8,8 +8,20 @@ public class TestParameter : BaseTestClass
     public void Test_Instantiate()
     {
         var parameter = new Parameter();
-
         Assert.NotNull(parameter);
+    }
+
+    [Fact]
+    public void Test_IsValid()
+    {
+        var parameter = new Parameter();
+        Assert.False(parameter.IsValid);
+
+        parameter.Name = "test";
+        Assert.False(parameter.IsValid);
+
+        parameter.DataType = GetDataTypeWithName("string");
+        Assert.True(parameter.IsValid);
     }
 
     [Theory]
