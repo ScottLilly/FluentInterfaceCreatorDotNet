@@ -15,6 +15,22 @@ public class TestMethod : BaseTestClass
     }
 
     [Fact]
+    public void Test_IsValid()
+    {
+        var method = new Method();
+        Assert.False(method.IsValid);
+
+        method.Type = Enums.MethodType.Instantiating;
+        method.Name = "Test";
+        Assert.True(method.IsValid);
+
+        method.Type = Enums.MethodType.Executing;
+        Assert.False(method.IsValid);
+        method.ReturnDataType = GetDataTypeWithName("string");
+        Assert.True(method.IsValid);
+    }
+
+    [Fact]
     public void Test_MethodTypes()
     {
         var method = new Method();

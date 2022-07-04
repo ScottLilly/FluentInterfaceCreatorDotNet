@@ -7,12 +7,17 @@ namespace FluentInterfaceCreator.Models.Inputs;
 public class Parameter : INotifyPropertyChanged
 {
     public bool UseIEnumerable { get; set; }
-    public DataType DataType { get; set; }
+    public DataType? DataType { get; set; }
     public string Name { get; set; }
     public string DefaultValue { get; set; }
 
+    public bool IsValid =>
+        Name.IsNotEmpty() &&
+        DataType != null &&
+        DataType.IsValid;
+
     public string FormattedDataType =>
-        UseIEnumerable ? $"IEnumerable<{DataType.Name}>" : DataType.Name;
+        UseIEnumerable ? $"IEnumerable<{DataType?.Name}>" : DataType?.Name ?? "";
     public string FormattedDataTypeAndName =>
         DefaultValue.IsEmpty()
             ? $"{FormattedDataType} {Name}"

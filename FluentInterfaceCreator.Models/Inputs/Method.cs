@@ -10,8 +10,17 @@ public class Method : INotifyPropertyChanged
     public Guid Id { get; set; } = Guid.NewGuid();
     public Enums.MethodType Type { get; set; }
     public string Name { get; set; }
+    // Only used for Executing methods
+    public bool UseIEnumerable { get; set; }
+    public DataType? ReturnDataType { get; set; }
 
     public ObservableCollection<Parameter> Parameters { get; } = new();
+
+    public bool IsValid =>
+        Name.IsNotEmpty() &&
+        Parameters.All(p => p.IsValid) &&
+        ((Type == Enums.MethodType.Executing && ReturnDataType != null) || 
+         Type != Enums.MethodType.Executing);
 
     public bool CanStartChainPair =>
         Type is Enums.MethodType.Instantiating or Enums.MethodType.Chaining;
@@ -33,10 +42,6 @@ public class Method : INotifyPropertyChanged
         FormattedReturnDataType + "|" + 
         Name + "=" + 
         string.Join(":", Parameters.Select(p => p.FormattedDataType));
-
-    // Only used for Executing methods
-    public bool UseIEnumerable { get; set; }
-    public DataType? ReturnDataType { get; set; }
     public string FormattedReturnDataType =>
         Type == Enums.MethodType.Executing
             ? UseIEnumerable

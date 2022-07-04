@@ -9,6 +9,9 @@ public class DataType
     public string ContainingNamespace { get; set; } = "";
     public bool IsNative { get; set; } = false;
 
+    public bool IsValid =>
+        Name.IsNotEmpty();
+
     public IEnumerable<string> ValidationErrors()
     {
         if (Name.IsEmpty())
