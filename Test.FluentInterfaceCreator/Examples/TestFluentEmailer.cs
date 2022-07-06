@@ -249,7 +249,7 @@ public class TestFluentEmailer : BaseTestClass
         #region Add MethodLinks that call into To, CC, BCC, or Subject
 
         // Calls into TO
-        List<Guid> fromIds =
+        List<Guid> iCanAddToCcBccOrSubjectCalledByIds =
             new List<Guid> {
                 toAddressStringMethod.Id,
                 toAddressStringStringMethod.Id,
@@ -262,7 +262,7 @@ public class TestFluentEmailer : BaseTestClass
                 bccAddressMailAddressMethod.Id
             };
 
-        List<Guid> toIds =
+        List<Guid> iCanAddToCcBccOrSubjectCallsIntoIds =
             new List<Guid> {
                 toAddressStringMethod.Id,
                 toAddressStringStringMethod.Id,
@@ -276,9 +276,9 @@ public class TestFluentEmailer : BaseTestClass
                 subjectMethod.Id
             };
 
-        foreach(var fromId in fromIds)
+        foreach(var fromId in iCanAddToCcBccOrSubjectCalledByIds)
         {
-            foreach(var toId in toIds)
+            foreach(var toId in iCanAddToCcBccOrSubjectCallsIntoIds)
             {
                 project.AddMethodLink(fromId, toId);
             }
@@ -328,32 +328,11 @@ public class TestFluentEmailer : BaseTestClass
             }).Name = "IMustAddToAddress";
 
         // To, CC, BCC to To, CC, BCC, or Subject
-        GetInterfaceSpec(project,
-            new List<Guid>
-            {
-                toAddressStringMethod.Id,
-                toAddressStringStringMethod.Id,
-                toAddressMailAddressMethod.Id,
-                ccAddressStringMethod.Id,
-                ccAddressStringStringMethod.Id,
-                ccAddressMailAddressMethod.Id,
-                bccAddressStringMethod.Id,
-                bccAddressStringStringMethod.Id,
-                bccAddressMailAddressMethod.Id
-            },
-            new List<Guid>
-            {
-                toAddressStringMethod.Id,
-                toAddressStringStringMethod.Id,
-                toAddressMailAddressMethod.Id,
-                ccAddressStringMethod.Id,
-                ccAddressStringStringMethod.Id,
-                ccAddressMailAddressMethod.Id,
-                bccAddressStringMethod.Id,
-                bccAddressStringStringMethod.Id,
-                bccAddressMailAddressMethod.Id,
-                subjectMethod.Id
-            }).Name = "ICanAddToCcBccOrSubject";
+        GetInterfaceSpec(
+            project, 
+            iCanAddToCcBccOrSubjectCalledByIds, 
+            iCanAddToCcBccOrSubjectCallsIntoIds)
+            .Name = "ICanAddToCcBccOrSubject";
 
         // Subject to Build
         GetInterfaceSpec(project,
@@ -377,13 +356,13 @@ public class TestFluentEmailer : BaseTestClass
 
         Assert.NotNull(fluentInterfaceFileCreator);
 
-        //File.WriteAllText(
-        //    Path.Combine(@"e:\temp\output",
-        //        $"{project.FactoryClassName}.{project.OutputLanguage.FileExtension}"),
-        //    fluentInterfaceFileCreator.CreateFluentInterfaceFile().FormattedText());
+        File.WriteAllText(
+            Path.Combine(@"e:\temp\output",
+                $"{project.FactoryClassName}.{project.OutputLanguage.FileExtension}"),
+            fluentInterfaceFileCreator.CreateFluentInterfaceFile().FormattedText());
 
-        //PersistenceService.SaveProjectToDisk(project,
-        //    @"E:\temp\output\project.json");
+        PersistenceService.SaveProjectToDisk(project,
+            @"E:\temp\output\project.json");
 
         #endregion
     }
