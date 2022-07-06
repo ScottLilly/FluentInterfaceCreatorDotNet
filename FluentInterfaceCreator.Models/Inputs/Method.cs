@@ -2,14 +2,16 @@
 using System.ComponentModel;
 using FluentInterfaceCreator.Core;
 using FluentInterfaceCreator.Models.Resources;
+using PropertyChanged;
 
 namespace FluentInterfaceCreator.Models.Inputs;
 
+[SuppressPropertyChangedWarnings]
 public class Method : INotifyPropertyChanged
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public Enums.MethodType Type { get; set; }
-    public string Name { get; set; }
+    public string Name { get; set; } = "";
     // Only used for Executing methods
     public bool UseIEnumerable { get; set; }
     public DataType? ReturnDataType { get; set; }
