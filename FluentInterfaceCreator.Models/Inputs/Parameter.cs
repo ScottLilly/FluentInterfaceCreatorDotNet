@@ -1,15 +1,17 @@
 ﻿using System.ComponentModel;
 using FluentInterfaceCreator.Core;
 using FluentInterfaceCreator.Models.Resources;
+using PropertyChanged;
 
 namespace FluentInterfaceCreator.Models.Inputs;
 
+[SuppressPropertyChangedWarnings]
 public class Parameter : INotifyPropertyChanged
 {
     public bool UseIEnumerable { get; set; }
     public DataType? DataType { get; set; }
-    public string Name { get; set; }
-    public string DefaultValue { get; set; }
+    public string Name { get; set; } = "";
+    public string DefaultValue { get; set; } = "";
 
     public bool IsValid =>
         Name.IsNotEmpty() &&

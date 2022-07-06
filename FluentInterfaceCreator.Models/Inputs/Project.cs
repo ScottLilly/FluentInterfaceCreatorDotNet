@@ -2,9 +2,11 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 using FluentInterfaceCreator.Core;
+using PropertyChanged;
 
 namespace FluentInterfaceCreator.Models.Inputs;
 
+[SuppressPropertyChangedWarnings]
 public class Project : INotifyPropertyChanged
 {
     public string Name { get; set; } = "";
