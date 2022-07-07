@@ -174,6 +174,13 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(bodyMethod);
 
+        // Attachment
+        Method attachmentMethod =
+            new Method("AddAttachment", Enums.MethodType.Chaining);
+        attachmentMethod.Parameters.Add(new Parameter("filename", GetDataTypeWithName("string")));
+
+        project.Methods.Add(attachmentMethod);
+
         // Build
         Method buildMethod = 
             new Method("Build", Enums.MethodType.Executing, mailMessageDataType);
@@ -298,13 +305,29 @@ public class TestFluentEmailer : BaseTestClass
         project.AddMethodLink(
             subjectMethod.Id,
             bodyMethod.Id);
-        
+
+        #endregion
+
+        #region CallsIntoAttachment
+
+        project.AddMethodLink(
+            bodyMethod.Id,
+            attachmentMethod.Id);
+
+        project.AddMethodLink(
+            attachmentMethod.Id,
+            attachmentMethod.Id);
+
         #endregion
 
         #region Calls into Build
 
         project.AddMethodLink(
             bodyMethod.Id,
+            buildMethod.Id);
+
+        project.AddMethodLink(
+            attachmentMethod.Id,
             buildMethod.Id);
 
         #endregion
@@ -360,16 +383,18 @@ public class TestFluentEmailer : BaseTestClass
                 bodyMethod.Id
             }).Name = "IMustAddBody";
 
-        // Body to Build
+        // Body or Attachment to Build
         GetInterfaceSpec(project,
             new List<Guid>
             {
-                bodyMethod.Id
+                bodyMethod.Id,
+                attachmentMethod.Id
             },
             new List<Guid>
             {
+                attachmentMethod.Id,
                 buildMethod.Id
-            }).Name = "ICanBuild";
+            }).Name = "ICanAddAttachmentOrBuild";
 
         #endregion
 
@@ -382,13 +407,13 @@ public class TestFluentEmailer : BaseTestClass
 
         Assert.NotNull(fluentInterfaceFileCreator);
 
-        File.WriteAllText(
-            Path.Combine(@"e:\temp\output",
-                $"{project.FactoryClassName}.{project.OutputLanguage.FileExtension}"),
-            fluentInterfaceFileCreator.CreateFluentInterfaceFile().FormattedText());
+        //File.WriteAllText(
+        //    Path.Combine(@"e:\temp\output",
+        //        $"{project.FactoryClassName}.{project.OutputLanguage.FileExtension}"),
+        //    fluentInterfaceFileCreator.CreateFluentInterfaceFile().FormattedText());
 
-        PersistenceService.SaveProjectToDisk(project,
-            @"E:\temp\output\project.json");
+        //PersistenceService.SaveProjectToDisk(project,
+        //    @"E:\temp\output\project.json");
 
         #endregion
     }
