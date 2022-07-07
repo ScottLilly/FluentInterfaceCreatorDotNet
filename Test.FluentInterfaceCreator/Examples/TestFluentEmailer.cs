@@ -167,6 +167,20 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(subjectMethod);
 
+        // Body
+        Method bodyMethod =
+            new Method("Body", Enums.MethodType.Chaining);
+        bodyMethod.Parameters.Add(new Parameter("body", GetDataTypeWithName("string")));
+
+        project.Methods.Add(bodyMethod);
+
+        // Attachment
+        Method attachmentMethod =
+            new Method("AddAttachment", Enums.MethodType.Chaining);
+        attachmentMethod.Parameters.Add(new Parameter("filename", GetDataTypeWithName("string")));
+
+        project.Methods.Add(attachmentMethod);
+
         // Build
         Method buildMethod = 
             new Method("Build", Enums.MethodType.Executing, mailMessageDataType);
@@ -286,10 +300,34 @@ public class TestFluentEmailer : BaseTestClass
 
         #endregion
 
-        #region Calls into Build
+        #region Calls into Body
 
         project.AddMethodLink(
             subjectMethod.Id,
+            bodyMethod.Id);
+
+        #endregion
+
+        #region CallsIntoAttachment
+
+        project.AddMethodLink(
+            bodyMethod.Id,
+            attachmentMethod.Id);
+
+        project.AddMethodLink(
+            attachmentMethod.Id,
+            attachmentMethod.Id);
+
+        #endregion
+
+        #region Calls into Build
+
+        project.AddMethodLink(
+            bodyMethod.Id,
+            buildMethod.Id);
+
+        project.AddMethodLink(
+            attachmentMethod.Id,
             buildMethod.Id);
 
         #endregion
@@ -334,7 +372,7 @@ public class TestFluentEmailer : BaseTestClass
             iCanAddToCcBccOrSubjectCallsIntoIds)
             .Name = "ICanAddToCcBccOrSubject";
 
-        // Subject to Build
+        // Subject to Body
         GetInterfaceSpec(project,
             new List<Guid>
             {
@@ -342,8 +380,21 @@ public class TestFluentEmailer : BaseTestClass
             },
             new List<Guid>
             {
+                bodyMethod.Id
+            }).Name = "IMustAddBody";
+
+        // Body or Attachment to Build
+        GetInterfaceSpec(project,
+            new List<Guid>
+            {
+                bodyMethod.Id,
+                attachmentMethod.Id
+            },
+            new List<Guid>
+            {
+                attachmentMethod.Id,
                 buildMethod.Id
-            }).Name = "ICanBuild";
+            }).Name = "ICanAddAttachmentOrBuild";
 
         #endregion
 
