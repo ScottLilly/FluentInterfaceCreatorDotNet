@@ -119,6 +119,14 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(fromAddressStringStringMethod);
 
+        Method fromAddressStringStringEncodingMethod =
+            new Method("From", Enums.MethodType.Chaining);
+        fromAddressStringStringEncodingMethod.Parameters.Add(parameterEmailAddressString);
+        fromAddressStringStringEncodingMethod.Parameters.Add(parameterEmailAddressDisplayNameString);
+        fromAddressStringStringEncodingMethod.Parameters.Add(parameterEncodingType);
+
+        project.Methods.Add(fromAddressStringStringEncodingMethod);
+
         Method fromAddressMailAddressMethod = 
             new Method("From", Enums.MethodType.Chaining);
         fromAddressMailAddressMethod.Parameters.Add(parameterEmailAddressMailAddress);
@@ -129,6 +137,7 @@ public class TestFluentEmailer : BaseTestClass
         {
             fromAddressStringMethod.Id,
             fromAddressStringStringMethod.Id,
+            fromAddressStringStringEncodingMethod.Id,
             fromAddressMailAddressMethod.Id
         };
 
@@ -156,6 +165,14 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(toAddressStringStringMethod);
 
+        Method toAddressStringStringEncodingMethod =
+            new Method("To", Enums.MethodType.Chaining);
+        toAddressStringStringEncodingMethod.Parameters.Add(parameterEmailAddressString);
+        toAddressStringStringEncodingMethod.Parameters.Add(parameterEmailAddressDisplayNameString);
+        toAddressStringStringEncodingMethod.Parameters.Add(parameterEncodingType);
+
+        project.Methods.Add(toAddressStringStringEncodingMethod);
+
         Method toAddressMailAddressMethod = 
             new Method("To", Enums.MethodType.Chaining);
         toAddressMailAddressMethod.Parameters.Add(parameterEmailAddressMailAddress);
@@ -173,6 +190,7 @@ public class TestFluentEmailer : BaseTestClass
             toAddressStringMethod.Id,
             toAddressIEnumerableStringMethod.Id,
             toAddressStringStringMethod.Id,
+            toAddressStringStringEncodingMethod.Id,
             toAddressMailAddressMethod.Id,
             toAddressIEnumerableMailAddressMethod.Id
         };
@@ -201,6 +219,14 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(ccAddressStringStringMethod);
 
+        Method ccAddressStringStringEncodingMethod =
+            new Method("CC", Enums.MethodType.Chaining);
+        ccAddressStringStringEncodingMethod.Parameters.Add(parameterEmailAddressString);
+        ccAddressStringStringEncodingMethod.Parameters.Add(parameterEmailAddressDisplayNameString);
+        ccAddressStringStringEncodingMethod.Parameters.Add(parameterEncodingType);
+
+        project.Methods.Add(ccAddressStringStringEncodingMethod);
+
         Method ccAddressMailAddressMethod =
             new Method("CC", Enums.MethodType.Chaining);
         ccAddressMailAddressMethod.Parameters.Add(parameterEmailAddressMailAddress);
@@ -218,6 +244,7 @@ public class TestFluentEmailer : BaseTestClass
             ccAddressStringMethod.Id,
             ccAddressIEnumerableStringMethod.Id,
             ccAddressStringStringMethod.Id,
+            ccAddressStringStringEncodingMethod.Id,
             ccAddressMailAddressMethod.Id,
             ccAddressIEnumerableMailAddressMethod.Id
         };
@@ -246,6 +273,14 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(bccAddressStringStringMethod);
 
+        Method bccAddressStringStringEncodingMethod =
+            new Method("BCC", Enums.MethodType.Chaining);
+        bccAddressStringStringEncodingMethod.Parameters.Add(parameterEmailAddressString);
+        bccAddressStringStringEncodingMethod.Parameters.Add(parameterEmailAddressDisplayNameString);
+        bccAddressStringStringEncodingMethod.Parameters.Add(parameterEncodingType);
+
+        project.Methods.Add(bccAddressStringStringEncodingMethod);
+
         Method bccAddressMailAddressMethod =
             new Method("BCC", Enums.MethodType.Chaining);
         bccAddressMailAddressMethod.Parameters.Add(parameterEmailAddressMailAddress);
@@ -263,6 +298,7 @@ public class TestFluentEmailer : BaseTestClass
             bccAddressStringMethod.Id,
             bccAddressIEnumerableStringMethod.Id,
             bccAddressStringStringMethod.Id,
+            bccAddressStringStringEncodingMethod.Id,
             bccAddressMailAddressMethod.Id,
             bccAddressIEnumerableMailAddressMethod.Id
         };
@@ -278,9 +314,17 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(subjectMethod);
 
+        Method subjectWithEncodingMethod =
+            new Method("Subject", Enums.MethodType.Chaining);
+        subjectWithEncodingMethod.Parameters.Add(new Parameter("subject", GetDataTypeWithName("string")));
+        subjectWithEncodingMethod.Parameters.Add(parameterEncodingType);
+
+        project.Methods.Add(subjectWithEncodingMethod);
+
         var subjectMethodIds = new List<Guid>
         {
-            subjectMethod.Id
+            subjectMethod.Id,
+            subjectWithEncodingMethod.Id
         };
 
         #endregion
@@ -294,9 +338,17 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(bodyMethod);
 
+        Method bodyWithEncodingMethod =
+            new Method("Body", Enums.MethodType.Chaining);
+        bodyWithEncodingMethod.Parameters.Add(new Parameter("body", GetDataTypeWithName("string")));
+        bodyWithEncodingMethod.Parameters.Add(parameterEncodingType);
+
+        project.Methods.Add(bodyWithEncodingMethod);
+
         var bodyMethodIds = new List<Guid>
         {
-            bodyMethod.Id
+            bodyMethod.Id,
+            bodyWithEncodingMethod.Id
         };
 
         #endregion
