@@ -27,6 +27,12 @@ internal sealed class CSharpFluentInterfaceFileCreator :
         builder.AddLine(1, $"public class {_project.FactoryClassName} : {_project.ListOfInterfaces}");
         builder.AddLine(1, "{");
 
+        builder.AddLine(2, "// Private constructor");
+        builder.AddLine(2, $"private {_project.FactoryClassName}()");
+        builder.AddLine(2, "{");
+        builder.AddLine(2, "}");
+        builder.AddBlankLine();
+
         AddInstantiatingFunctions(builder);
         AddChainingFunctions(builder);
         AddExecutingFunctions(builder);
@@ -37,11 +43,12 @@ internal sealed class CSharpFluentInterfaceFileCreator :
         builder.AddLine(1, "}");
 
         // Append interfaces
-        builder.AddLineAfterBlankLine(1, "// Interfaces");
+        builder.AddBlankLine();
+        builder.AddLine(1, "// Interfaces");
 
         foreach (FluentInterfaceFile interfaceFile in CreateInterfaceFiles())
         {
-            builder.AddLineAfterBlankLine(0, interfaceFile.FormattedText());
+            builder.AddLine(0, interfaceFile.FormattedText());
         }
 
         // Close namespace
@@ -98,41 +105,42 @@ internal sealed class CSharpFluentInterfaceFileCreator :
             var interfaceSpec =
                 _project.InterfaceSpecs.First(i => i.CalledByMethodId.Contains(method.Id));
 
-            builder.AddLineAfterBlankLine(2, 
-                $"public static {interfaceSpec.Name} {method.FullSignature}");
+            builder.AddLine(2, $"public static {interfaceSpec.Name} {method.FullSignature}");
             builder.AddLine(2, "{");
             builder.AddLine(3, $"return new {_project.FactoryClassName}();");
             builder.AddLine(2, "}");
+            builder.AddBlankLine();
         }
     }
 
     private void AddChainingFunctions(FluentInterfaceFile builder)
     {
-        builder.AddLineAfterBlankLine(2, "// Chaining functions");
+        builder.AddLine(2, "// Chaining functions");
 
         foreach (Method method in _project.ChainingMethods)
         {
             var interfaceSpec =
                 _project.InterfaceSpecs.First(i => i.CalledByMethodId.Contains(method.Id));
 
-            builder.AddLineAfterBlankLine(2,
-                $"public {interfaceSpec.Name} {method.FullSignature}");
+            builder.AddLine(2, $"public {interfaceSpec.Name} {method.FullSignature}");
             builder.AddLine(2, "{");
             builder.AddLine(3, "return this;");
             builder.AddLine(2, "}");
+            builder.AddBlankLine();
         }
     }
 
     private void AddExecutingFunctions(FluentInterfaceFile builder)
     {
-        builder.AddLineAfterBlankLine(2, "// Executing functions");
+        builder.AddLine(2, "// Executing functions");
 
         foreach (Method method in _project.ExecutingMethods)
         {
-            builder.AddLineAfterBlankLine(2, 
+            builder.AddLine(2, 
                 $"public {method.FormattedReturnDataType} {method.FullSignature}");
             builder.AddLine(2, "{");
             builder.AddLine(2, "}");
+            builder.AddBlankLine();
         }
     }
 
@@ -153,9 +161,7 @@ internal sealed class CSharpFluentInterfaceFileCreator :
 
     private static void AddHideIntelliSense(FluentInterfaceFile builder)
     {
-        builder.AddLine(2, "");
         builder.AddLine(2, "// Hide default functions from appearing with IntelliSense");
-        builder.AddLine(2, "");
         builder.AddLine(2, "[EditorBrowsable(EditorBrowsableState.Never)]");
         builder.AddLine(2, "public override bool Equals(object obj)");
         builder.AddLine(2, "{");

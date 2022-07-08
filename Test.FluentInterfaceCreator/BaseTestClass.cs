@@ -75,4 +75,27 @@ public abstract class BaseTestClass
         yield return new object[] { Enums.MethodType.Chaining };
         yield return new object[] { Enums.MethodType.Executing };
     }
+
+    protected static void AddMethodLinks(Project project, 
+        IEnumerable<Guid> fromMethodIds,
+        IEnumerable<Guid> toMethodIds)
+    {
+        foreach (Guid fromMethodId in fromMethodIds)
+        {
+            foreach (Guid toMethodId in toMethodIds)
+            {
+                project.AddMethodLink(fromMethodId, toMethodId);
+            }
+        }
+    }
+
+    protected static InterfaceSpec GetInterfaceSpec(
+        Project project,
+        IEnumerable<Guid> calledByMethodIds,
+        IEnumerable<Guid> callsIntoMethodIds) =>
+        project.InterfaceSpecs
+            .First(i => i.CalledByMethodId.OrderBy(id => id)
+                            .SequenceEqual(calledByMethodIds.OrderBy(id => id)) &&
+                        i.CallsIntoMethodIds.OrderBy(id => id)
+                            .SequenceEqual(callsIntoMethodIds.OrderBy(id => id)));
 }

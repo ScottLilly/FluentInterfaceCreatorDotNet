@@ -25,25 +25,29 @@ public class TestFluentEmailer : BaseTestClass
         DataType mailPriorityDataType = new DataType
         {
             ContainingNamespace = "System.Net.Mail",
-            Name = "MailPriority",
-            IsNative = false
+            Name = "MailPriority"
         };
 
         DataType mailMessageDataType = new DataType
         {
             ContainingNamespace = "System.Net.Mail",
-            Name = "MailMessage",
-            IsNative = false
+            Name = "MailMessage"
         };
         project.DataTypes.Add(mailMessageDataType);
 
         DataType mailAddressDataType = new DataType
         {
             ContainingNamespace = "System.Net.Mail",
-            Name = "MailAddress",
-            IsNative = false
+            Name = "MailAddress"
         };
         project.DataTypes.Add(mailAddressDataType);
+
+        DataType encodingDataType = new DataType
+        {
+            ContainingNamespace = "System.Text",
+            Name = "Encoding"
+        };
+        project.DataTypes.Add(encodingDataType);
 
         #endregion
 
@@ -61,9 +65,10 @@ public class TestFluentEmailer : BaseTestClass
         Parameter parameterMailPriority =
             new Parameter("priority", mailPriorityDataType, "MailPriority.Normal");
 
-        #endregion
+        Parameter parameterEncodingType =
+            new Parameter("encodingType", encodingDataType);
 
-        #region Add Instanatiating methods
+        #endregion
 
         // Create
         Method createMailMessageMethod = 
@@ -78,7 +83,11 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(createHtmlMailMessageMethod);
 
-        #endregion
+        var createMethodIds = new List<Guid>
+        {
+            createMailMessageMethod.Id,
+            createHtmlMailMessageMethod.Id
+        };
 
         // From
         Method fromAddressStringMethod = 
@@ -100,6 +109,13 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(fromAddressMailAddressMethod);
 
+        var fromMethodIds = new List<Guid>
+        {
+            fromAddressStringMethod.Id,
+            fromAddressStringStringMethod.Id,
+            fromAddressMailAddressMethod.Id
+        };
+
         // To
         Method toAddressStringMethod = 
             new Method("To", Enums.MethodType.Chaining);
@@ -119,6 +135,13 @@ public class TestFluentEmailer : BaseTestClass
         toAddressMailAddressMethod.Parameters.Add(parameterEmailAddressMailAddress);
 
         project.Methods.Add(toAddressMailAddressMethod);
+
+        var toMethodIds = new List<Guid>
+        {
+            toAddressStringMethod.Id,
+            toAddressStringStringMethod.Id,
+            toAddressMailAddressMethod.Id
+        };
 
         // CC
         Method ccAddressStringMethod =
@@ -140,6 +163,13 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(ccAddressMailAddressMethod);
 
+        var ccMethodIds = new List<Guid>
+        {
+            ccAddressStringMethod.Id,
+            ccAddressStringStringMethod.Id,
+            ccAddressMailAddressMethod.Id
+        };
+
         // BCC
         Method bccAddressStringMethod =
             new Method("BCC", Enums.MethodType.Chaining);
@@ -160,12 +190,24 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(bccAddressMailAddressMethod);
 
+        var bccMethodIds = new List<Guid>
+        {
+            bccAddressStringMethod.Id,
+            bccAddressStringStringMethod.Id,
+            bccAddressMailAddressMethod.Id
+        };
+
         // Subject
         Method subjectMethod =
             new Method("Subject", Enums.MethodType.Chaining);
         subjectMethod.Parameters.Add(new Parameter("subject", GetDataTypeWithName("string")));
 
         project.Methods.Add(subjectMethod);
+
+        var subjectMethodIds = new List<Guid>
+        {
+            subjectMethod.Id
+        };
 
         // Body
         Method bodyMethod =
@@ -174,6 +216,11 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(bodyMethod);
 
+        var bodyMethodIds = new List<Guid>
+        {
+            bodyMethod.Id
+        };
+
         // Attachment
         Method attachmentMethod =
             new Method("AddAttachment", Enums.MethodType.Chaining);
@@ -181,156 +228,45 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(attachmentMethod);
 
+        var attachmentMethodIds = new List<Guid>
+        {
+            attachmentMethod.Id
+        };
+
         // Build
         Method buildMethod = 
             new Method("Build", Enums.MethodType.Executing, mailMessageDataType);
 
         project.Methods.Add(buildMethod);
 
+        var buildMethodIds = new List<Guid>
+        {
+            buildMethod.Id
+        };
+
         #region Add MethodLinks
 
-        #region Add MethodLinks that call into From
+        // Calls into From
+        AddMethodLinks(project, createMethodIds, fromMethodIds);
 
-        project.AddMethodLink(
-            createMailMessageMethod.Id, 
-            fromAddressStringMethod.Id);
+        // Calls into To
+        AddMethodLinks(project, fromMethodIds, toMethodIds);
 
-        project.AddMethodLink(
-            createMailMessageMethod.Id, 
-            fromAddressStringStringMethod.Id);
+        // Calls into To, CC, BCC, or Subject
+        AddMethodLinks(project,
+            toMethodIds.Concat(ccMethodIds).Concat(bccMethodIds),
+            toMethodIds.Concat(ccMethodIds).Concat(bccMethodIds).Concat(subjectMethodIds));
 
-        project.AddMethodLink(
-            createMailMessageMethod.Id,
-            fromAddressMailAddressMethod.Id);
+        // Calls into Body
+        AddMethodLinks(project, subjectMethodIds, bodyMethodIds);
 
-        project.AddMethodLink(
-            createHtmlMailMessageMethod.Id,
-            fromAddressStringMethod.Id);
+        // Calls into Attachment
+        AddMethodLinks(project, 
+            bodyMethodIds.Concat(attachmentMethodIds), attachmentMethodIds);
 
-        project.AddMethodLink(
-            createHtmlMailMessageMethod.Id,
-            fromAddressStringStringMethod.Id);
-
-        project.AddMethodLink(
-            createHtmlMailMessageMethod.Id,
-            fromAddressMailAddressMethod.Id);
-
-        #endregion
-
-        #region Add MethodLinks that only call into To
-
-        // fromAddressStringMethod
-        project.AddMethodLink(
-            fromAddressStringMethod.Id,
-            toAddressStringMethod.Id);
-
-        project.AddMethodLink(
-            fromAddressStringMethod.Id,
-            toAddressStringStringMethod.Id);
-
-        project.AddMethodLink(
-            fromAddressStringMethod.Id,
-            toAddressMailAddressMethod.Id);
-
-        // fromAddressStringStringMethod
-        project.AddMethodLink(
-            fromAddressStringStringMethod.Id,
-            toAddressStringMethod.Id);
-
-        project.AddMethodLink(
-            fromAddressStringStringMethod.Id,
-            toAddressStringStringMethod.Id);
-
-        project.AddMethodLink(
-            fromAddressStringStringMethod.Id,
-            toAddressMailAddressMethod.Id);
-
-        // fromAddressMailAddressMethod
-        project.AddMethodLink(
-            fromAddressMailAddressMethod.Id,
-            toAddressStringMethod.Id);
-
-        project.AddMethodLink(
-            fromAddressMailAddressMethod.Id,
-            toAddressStringStringMethod.Id);
-
-        project.AddMethodLink(
-            fromAddressMailAddressMethod.Id,
-            toAddressMailAddressMethod.Id);
-
-        #endregion
-
-        #region Add MethodLinks that call into To, CC, BCC, or Subject
-
-        // Calls into TO
-        List<Guid> iCanAddToCcBccOrSubjectCalledByIds =
-            new List<Guid> {
-                toAddressStringMethod.Id,
-                toAddressStringStringMethod.Id,
-                toAddressMailAddressMethod.Id,
-                ccAddressStringMethod.Id,
-                ccAddressStringStringMethod.Id,
-                ccAddressMailAddressMethod.Id,
-                bccAddressStringMethod.Id,
-                bccAddressStringStringMethod.Id,
-                bccAddressMailAddressMethod.Id
-            };
-
-        List<Guid> iCanAddToCcBccOrSubjectCallsIntoIds =
-            new List<Guid> {
-                toAddressStringMethod.Id,
-                toAddressStringStringMethod.Id,
-                toAddressMailAddressMethod.Id,
-                ccAddressStringMethod.Id,
-                ccAddressStringStringMethod.Id,
-                ccAddressMailAddressMethod.Id,
-                bccAddressStringMethod.Id,
-                bccAddressStringStringMethod.Id,
-                bccAddressMailAddressMethod.Id,
-                subjectMethod.Id
-            };
-
-        foreach(var fromId in iCanAddToCcBccOrSubjectCalledByIds)
-        {
-            foreach(var toId in iCanAddToCcBccOrSubjectCallsIntoIds)
-            {
-                project.AddMethodLink(fromId, toId);
-            }
-        }
-
-        #endregion
-
-        #region Calls into Body
-
-        project.AddMethodLink(
-            subjectMethod.Id,
-            bodyMethod.Id);
-
-        #endregion
-
-        #region CallsIntoAttachment
-
-        project.AddMethodLink(
-            bodyMethod.Id,
-            attachmentMethod.Id);
-
-        project.AddMethodLink(
-            attachmentMethod.Id,
-            attachmentMethod.Id);
-
-        #endregion
-
-        #region Calls into Build
-
-        project.AddMethodLink(
-            bodyMethod.Id,
-            buildMethod.Id);
-
-        project.AddMethodLink(
-            attachmentMethod.Id,
-            buildMethod.Id);
-
-        #endregion
+        // Calls into Build
+        AddMethodLinks(project,
+            bodyMethodIds.Concat(attachmentMethodIds), buildMethodIds);
 
         #endregion
 
@@ -339,62 +275,31 @@ public class TestFluentEmailer : BaseTestClass
         #region Set InterfaceSpecs Names
 
         GetInterfaceSpec(project,
-            new List<Guid>
-            {
-                createMailMessageMethod.Id,
-                createHtmlMailMessageMethod.Id
-            },
-            new List<Guid>
-            {
-                fromAddressStringMethod.Id,
-                fromAddressStringStringMethod.Id,
-                fromAddressMailAddressMethod.Id
-            }).Name = "IMustAddFromAddress";
+            createMethodIds, fromMethodIds)
+            .Name = "IMustAddFromAddress";
 
         GetInterfaceSpec(project,
-            new List<Guid>
-            {
-                fromAddressStringMethod.Id,
-                fromAddressStringStringMethod.Id,
-                fromAddressMailAddressMethod.Id
-            },
-            new List<Guid>
-            {
-                toAddressStringMethod.Id,
-                toAddressStringStringMethod.Id,
-                toAddressMailAddressMethod.Id
-            }).Name = "IMustAddToAddress";
+            fromMethodIds, toMethodIds)
+            .Name = "IMustAddToAddress";
 
         // To, CC, BCC to To, CC, BCC, or Subject
         GetInterfaceSpec(
-            project, 
-            iCanAddToCcBccOrSubjectCalledByIds, 
-            iCanAddToCcBccOrSubjectCallsIntoIds)
+            project,
+            toMethodIds.Concat(ccMethodIds).Concat(bccMethodIds),
+            toMethodIds.Concat(ccMethodIds).Concat(bccMethodIds).Concat(subjectMethodIds))
             .Name = "ICanAddToCcBccOrSubject";
 
         // Subject to Body
         GetInterfaceSpec(project,
-            new List<Guid>
-            {
-                subjectMethod.Id
-            },
-            new List<Guid>
-            {
-                bodyMethod.Id
-            }).Name = "IMustAddBody";
+            subjectMethodIds,
+            bodyMethodIds)
+            .Name = "IMustAddBody";
 
         // Body or Attachment to Build
         GetInterfaceSpec(project,
-            new List<Guid>
-            {
-                bodyMethod.Id,
-                attachmentMethod.Id
-            },
-            new List<Guid>
-            {
-                attachmentMethod.Id,
-                buildMethod.Id
-            }).Name = "ICanAddAttachmentOrBuild";
+            bodyMethodIds.Concat(attachmentMethodIds),
+            attachmentMethodIds.Concat(buildMethodIds))
+            .Name = "ICanAddAttachmentOrBuild";
 
         #endregion
 
@@ -417,14 +322,4 @@ public class TestFluentEmailer : BaseTestClass
 
         #endregion
     }
-
-    private static InterfaceSpec GetInterfaceSpec(
-        Project project, 
-        IReadOnlyCollection<Guid> calledByMethodIds,
-        IReadOnlyCollection<Guid> callsIntoMethodIds) =>
-        project.InterfaceSpecs
-            .First(i => i.CalledByMethodId.OrderBy(id => id)
-                            .SequenceEqual(calledByMethodIds.OrderBy(id => id)) &&
-                        i.CallsIntoMethodIds.OrderBy(id => id)
-                            .SequenceEqual(callsIntoMethodIds.OrderBy(id => id)));
 }
