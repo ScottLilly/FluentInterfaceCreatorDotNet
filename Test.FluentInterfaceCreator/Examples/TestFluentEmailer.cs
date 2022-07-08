@@ -56,8 +56,16 @@ public class TestFluentEmailer : BaseTestClass
         Parameter parameterEmailAddressString = 
             new Parameter("emailAddress", GetDataTypeWithName("string"));
 
-        Parameter parameterEmailAddressMailAddress = 
+        Parameter parameterEmailAddressIEnumerableString =
+            new Parameter("emailAddress", GetDataTypeWithName("string"));
+        parameterEmailAddressIEnumerableString.UseIEnumerable = true;
+
+        Parameter parameterEmailAddressMailAddress =
             new Parameter("emailAddress", mailAddressDataType);
+
+        Parameter parameterEmailAddressIEnumerableMailAddress = 
+            new Parameter("emailAddress", mailAddressDataType);
+        parameterEmailAddressIEnumerableMailAddress.UseIEnumerable = true;
 
         Parameter parameterEmailAddressDisplayNameString =
             new Parameter("displayName", GetDataTypeWithName("string"));
@@ -69,6 +77,8 @@ public class TestFluentEmailer : BaseTestClass
             new Parameter("encodingType", encodingDataType);
 
         #endregion
+
+        #region Add Instantiating methods
 
         // Create
         Method createMailMessageMethod = 
@@ -88,6 +98,12 @@ public class TestFluentEmailer : BaseTestClass
             createMailMessageMethod.Id,
             createHtmlMailMessageMethod.Id
         };
+
+        #endregion
+
+        #region Add Chaining methods
+
+        #region From methods
 
         // From
         Method fromAddressStringMethod = 
@@ -116,12 +132,22 @@ public class TestFluentEmailer : BaseTestClass
             fromAddressMailAddressMethod.Id
         };
 
+        #endregion
+
+        #region To methods
+
         // To
         Method toAddressStringMethod = 
             new Method("To", Enums.MethodType.Chaining);
         toAddressStringMethod.Parameters.Add(parameterEmailAddressString);
 
         project.Methods.Add(toAddressStringMethod);
+
+        Method toAddressIEnumerableStringMethod =
+            new Method("To", Enums.MethodType.Chaining);
+        toAddressIEnumerableStringMethod.Parameters.Add(parameterEmailAddressIEnumerableString);
+
+        project.Methods.Add(toAddressIEnumerableStringMethod);
 
         Method toAddressStringStringMethod =
             new Method("To", Enums.MethodType.Chaining);
@@ -136,12 +162,24 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(toAddressMailAddressMethod);
 
+        Method toAddressIEnumerableMailAddressMethod =
+            new Method("To", Enums.MethodType.Chaining);
+        toAddressIEnumerableMailAddressMethod.Parameters.Add(parameterEmailAddressIEnumerableMailAddress);
+
+        project.Methods.Add(toAddressIEnumerableMailAddressMethod);
+
         var toMethodIds = new List<Guid>
         {
             toAddressStringMethod.Id,
+            toAddressIEnumerableStringMethod.Id,
             toAddressStringStringMethod.Id,
-            toAddressMailAddressMethod.Id
+            toAddressMailAddressMethod.Id,
+            toAddressIEnumerableMailAddressMethod.Id
         };
+
+        #endregion
+
+        #region CC methods
 
         // CC
         Method ccAddressStringMethod =
@@ -149,6 +187,12 @@ public class TestFluentEmailer : BaseTestClass
         ccAddressStringMethod.Parameters.Add(parameterEmailAddressString);
 
         project.Methods.Add(ccAddressStringMethod);
+
+        Method ccAddressIEnumerableStringMethod =
+            new Method("CC", Enums.MethodType.Chaining);
+        ccAddressIEnumerableStringMethod.Parameters.Add(parameterEmailAddressIEnumerableString);
+
+        project.Methods.Add(ccAddressIEnumerableStringMethod);
 
         Method ccAddressStringStringMethod =
             new Method("CC", Enums.MethodType.Chaining);
@@ -163,12 +207,24 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(ccAddressMailAddressMethod);
 
+        Method ccAddressIEnumerableMailAddressMethod =
+            new Method("CC", Enums.MethodType.Chaining);
+        ccAddressIEnumerableMailAddressMethod.Parameters.Add(parameterEmailAddressIEnumerableMailAddress);
+
+        project.Methods.Add(ccAddressIEnumerableMailAddressMethod);
+
         var ccMethodIds = new List<Guid>
         {
             ccAddressStringMethod.Id,
+            ccAddressIEnumerableStringMethod.Id,
             ccAddressStringStringMethod.Id,
-            ccAddressMailAddressMethod.Id
+            ccAddressMailAddressMethod.Id,
+            ccAddressIEnumerableMailAddressMethod.Id
         };
+
+        #endregion
+
+        #region BCC methods
 
         // BCC
         Method bccAddressStringMethod =
@@ -176,6 +232,12 @@ public class TestFluentEmailer : BaseTestClass
         bccAddressStringMethod.Parameters.Add(parameterEmailAddressString);
 
         project.Methods.Add(bccAddressStringMethod);
+
+        Method bccAddressIEnumerableStringMethod =
+            new Method("BCC", Enums.MethodType.Chaining);
+        bccAddressIEnumerableStringMethod.Parameters.Add(parameterEmailAddressIEnumerableString);
+
+        project.Methods.Add(bccAddressIEnumerableStringMethod);
 
         Method bccAddressStringStringMethod =
             new Method("BCC", Enums.MethodType.Chaining);
@@ -190,12 +252,24 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(bccAddressMailAddressMethod);
 
+        Method bccAddressIEnumerableMailAddressMethod =
+            new Method("BCC", Enums.MethodType.Chaining);
+        bccAddressIEnumerableMailAddressMethod.Parameters.Add(parameterEmailAddressIEnumerableMailAddress);
+
+        project.Methods.Add(bccAddressIEnumerableMailAddressMethod);
+
         var bccMethodIds = new List<Guid>
         {
             bccAddressStringMethod.Id,
+            bccAddressIEnumerableStringMethod.Id,
             bccAddressStringStringMethod.Id,
-            bccAddressMailAddressMethod.Id
+            bccAddressMailAddressMethod.Id,
+            bccAddressIEnumerableMailAddressMethod.Id
         };
+
+        #endregion
+
+        #region Subject methods
 
         // Subject
         Method subjectMethod =
@@ -209,6 +283,10 @@ public class TestFluentEmailer : BaseTestClass
             subjectMethod.Id
         };
 
+        #endregion
+
+        #region Body methods
+
         // Body
         Method bodyMethod =
             new Method("Body", Enums.MethodType.Chaining);
@@ -220,6 +298,10 @@ public class TestFluentEmailer : BaseTestClass
         {
             bodyMethod.Id
         };
+
+        #endregion
+
+        #region Attachment methods
 
         // Attachment
         Method attachmentMethod =
@@ -233,6 +315,12 @@ public class TestFluentEmailer : BaseTestClass
             attachmentMethod.Id
         };
 
+        #endregion
+
+        #endregion
+
+        #region Add Executing methods
+
         // Build
         Method buildMethod = 
             new Method("Build", Enums.MethodType.Executing, mailMessageDataType);
@@ -244,13 +332,19 @@ public class TestFluentEmailer : BaseTestClass
             buildMethod.Id
         };
 
+        #endregion
+
         #region Add MethodLinks
 
         // Calls into From
-        AddMethodLinks(project, createMethodIds, fromMethodIds);
+        AddMethodLinks(project, 
+            createMethodIds, 
+            fromMethodIds);
 
         // Calls into To
-        AddMethodLinks(project, fromMethodIds, toMethodIds);
+        AddMethodLinks(project, 
+            fromMethodIds, 
+            toMethodIds);
 
         // Calls into To, CC, BCC, or Subject
         AddMethodLinks(project,
@@ -258,28 +352,34 @@ public class TestFluentEmailer : BaseTestClass
             toMethodIds.Concat(ccMethodIds).Concat(bccMethodIds).Concat(subjectMethodIds));
 
         // Calls into Body
-        AddMethodLinks(project, subjectMethodIds, bodyMethodIds);
+        AddMethodLinks(project, 
+            subjectMethodIds, 
+            bodyMethodIds);
 
         // Calls into Attachment
         AddMethodLinks(project, 
-            bodyMethodIds.Concat(attachmentMethodIds), attachmentMethodIds);
+            bodyMethodIds.Concat(attachmentMethodIds), 
+            attachmentMethodIds);
 
         // Calls into Build
         AddMethodLinks(project,
-            bodyMethodIds.Concat(attachmentMethodIds), buildMethodIds);
+            bodyMethodIds.Concat(attachmentMethodIds), 
+            buildMethodIds);
 
         #endregion
 
         Assert.False(project.CanCreateOutputFiles);
 
-        #region Set InterfaceSpecs Names
+        #region Set InterfaceSpec Names
 
         GetInterfaceSpec(project,
-            createMethodIds, fromMethodIds)
+            createMethodIds, 
+            fromMethodIds)
             .Name = "IMustAddFromAddress";
 
         GetInterfaceSpec(project,
-            fromMethodIds, toMethodIds)
+            fromMethodIds, 
+            toMethodIds)
             .Name = "IMustAddToAddress";
 
         // To, CC, BCC to To, CC, BCC, or Subject
@@ -295,7 +395,7 @@ public class TestFluentEmailer : BaseTestClass
             bodyMethodIds)
             .Name = "IMustAddBody";
 
-        // Body or Attachment to Build
+        // Body or Attachment to Attachment or Build
         GetInterfaceSpec(project,
             bodyMethodIds.Concat(attachmentMethodIds),
             attachmentMethodIds.Concat(buildMethodIds))
@@ -303,9 +403,9 @@ public class TestFluentEmailer : BaseTestClass
 
         #endregion
 
-        #region Build output files
-
         Assert.True(project.CanCreateOutputFiles);
+
+        #region Build output files
 
         var fluentInterfaceFileCreator =
             FluentInterfaceCreatorFactory.GetFluentInterfaceFileCreator(project);
