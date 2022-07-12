@@ -57,14 +57,14 @@ public class TestFluentEmailer : BaseTestClass
             new Parameter("emailAddress", GetDataTypeWithName("string"));
 
         Parameter parameterEmailAddressIEnumerableString =
-            new Parameter("emailAddress", GetDataTypeWithName("string"));
+            new Parameter("emailAddresses", GetDataTypeWithName("string"));
         parameterEmailAddressIEnumerableString.UseIEnumerable = true;
 
         Parameter parameterEmailAddressMailAddress =
             new Parameter("emailAddress", mailAddressDataType);
 
         Parameter parameterEmailAddressIEnumerableMailAddress = 
-            new Parameter("emailAddress", mailAddressDataType);
+            new Parameter("emailAddresses", mailAddressDataType);
         parameterEmailAddressIEnumerableMailAddress.UseIEnumerable = true;
 
         Parameter parameterEmailAddressDisplayNameString =
@@ -75,6 +75,10 @@ public class TestFluentEmailer : BaseTestClass
 
         Parameter parameterEncodingType =
             new Parameter("encodingType", encodingDataType);
+
+        Parameter parameterAttachments =
+            new Parameter("attachments", GetDataTypeWithName("string"));
+        parameterAttachments.UseIEnumerable = true;
 
         #endregion
 
@@ -362,9 +366,16 @@ public class TestFluentEmailer : BaseTestClass
 
         project.Methods.Add(attachmentMethod);
 
+        Method attachmentsMethod =
+            new Method("AddAttachments", Enums.MethodType.Chaining);
+        attachmentMethod.Parameters.Add(parameterAttachments);
+
+        project.Methods.Add(attachmentsMethod);
+
         var attachmentMethodIds = new List<Guid>
         {
-            attachmentMethod.Id
+            attachmentMethod.Id,
+            attachmentsMethod.Id
         };
 
         #endregion
