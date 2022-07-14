@@ -94,7 +94,10 @@ public class TestFluentEmailer : BaseTestClass
             new Parameter("attachments", GetDataTypeWithName("string"));
         parameterAttachments.UseIEnumerable = true;
 
-        Parameter contentTypeParameter =
+        Parameter parameterStream =
+            new Parameter("stream", streamDataType);
+
+        Parameter parameterContentType =
             new Parameter("contentType", contentTypeDataType);
 
         #endregion
@@ -394,7 +397,7 @@ public class TestFluentEmailer : BaseTestClass
         Method attachmentStringContentTypeMethod =
             new Method("AddAttachment", Enums.MethodType.Chaining);
         attachmentStringContentTypeMethod.Parameters.Add(new Parameter("filename", GetDataTypeWithName("string")));
-        attachmentStringContentTypeMethod.Parameters.Add(contentTypeParameter);
+        attachmentStringContentTypeMethod.Parameters.Add(parameterContentType);
 
         project.Methods.Add(attachmentStringContentTypeMethod);
 
@@ -402,14 +405,14 @@ public class TestFluentEmailer : BaseTestClass
 
         Method attachmentStreamStringMethod =
             new Method("AddAttachment", Enums.MethodType.Chaining);
-        attachmentStreamStringMethod.Parameters.Add(new Parameter("stream", streamDataType));
+        attachmentStreamStringMethod.Parameters.Add(parameterStream);
         attachmentStreamStringMethod.Parameters.Add(new Parameter("name", GetDataTypeWithName("string")));
 
         project.Methods.Add(attachmentStreamStringMethod);
 
         Method attachmentStreamStringMimeTypeMethod =
             new Method("AddAttachment", Enums.MethodType.Chaining);
-        attachmentStreamStringMimeTypeMethod.Parameters.Add(new Parameter("stream", streamDataType));
+        attachmentStreamStringMimeTypeMethod.Parameters.Add(parameterStream);
         attachmentStreamStringMimeTypeMethod.Parameters.Add(new Parameter("name", GetDataTypeWithName("string")));
         attachmentStreamStringMimeTypeMethod.Parameters.Add(new Parameter("mimeType", GetDataTypeWithName("string")));
 
@@ -417,8 +420,8 @@ public class TestFluentEmailer : BaseTestClass
 
         Method attachmentStreamContentTypeMethod =
             new Method("AddAttachment", Enums.MethodType.Chaining);
-        attachmentStreamContentTypeMethod.Parameters.Add(new Parameter("stream", streamDataType));
-        attachmentStreamContentTypeMethod.Parameters.Add(contentTypeParameter);
+        attachmentStreamContentTypeMethod.Parameters.Add(parameterStream);
+        attachmentStreamContentTypeMethod.Parameters.Add(parameterContentType);
 
         project.Methods.Add(attachmentStreamContentTypeMethod);
 
@@ -432,6 +435,11 @@ public class TestFluentEmailer : BaseTestClass
         var attachmentMethodIds = new List<Guid>
         {
             attachmentMethod.Id,
+            attachmentStringMimeTypeMethod.Id,
+            attachmentStringContentTypeMethod.Id,
+            attachmentStreamStringMethod.Id,
+            attachmentStreamStringMimeTypeMethod.Id,
+            attachmentStreamContentTypeMethod.Id,
             attachmentsMethod.Id
         };
 
