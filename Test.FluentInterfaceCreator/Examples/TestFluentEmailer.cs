@@ -49,6 +49,20 @@ public class TestFluentEmailer : BaseTestClass
         };
         project.DataTypes.Add(encodingDataType);
 
+        DataType streamDataType = new DataType
+        {
+            ContainingNamespace = "System.IO",
+            Name = "Stream"
+        };
+        project.DataTypes.Add(streamDataType);
+
+        DataType contentTypeDataType = new DataType
+        {
+            ContainingNamespace = "System.Net.Mime",
+            Name = "ContentType"
+        };
+        project.DataTypes.Add(contentTypeDataType);
+
         #endregion
 
         #region Add Parameters
@@ -79,6 +93,9 @@ public class TestFluentEmailer : BaseTestClass
         Parameter parameterAttachments =
             new Parameter("attachments", GetDataTypeWithName("string"));
         parameterAttachments.UseIEnumerable = true;
+
+        Parameter contentTypeParameter =
+            new Parameter("contentType", contentTypeDataType);
 
         #endregion
 
@@ -360,12 +377,52 @@ public class TestFluentEmailer : BaseTestClass
         #region Attachment methods
 
         // Attachment
+        // String filename methods
         Method attachmentMethod =
             new Method("AddAttachment", Enums.MethodType.Chaining);
         attachmentMethod.Parameters.Add(new Parameter("filename", GetDataTypeWithName("string")));
 
         project.Methods.Add(attachmentMethod);
 
+        Method attachmentStringMimeTypeMethod =
+            new Method("AddAttachment", Enums.MethodType.Chaining);
+        attachmentStringMimeTypeMethod.Parameters.Add(new Parameter("filename", GetDataTypeWithName("string")));
+        attachmentStringMimeTypeMethod.Parameters.Add(new Parameter("mimeType", GetDataTypeWithName("string")));
+
+        project.Methods.Add(attachmentStringMimeTypeMethod);
+
+        Method attachmentStringContentTypeMethod =
+            new Method("AddAttachment", Enums.MethodType.Chaining);
+        attachmentStringContentTypeMethod.Parameters.Add(new Parameter("filename", GetDataTypeWithName("string")));
+        attachmentStringContentTypeMethod.Parameters.Add(contentTypeParameter);
+
+        project.Methods.Add(attachmentStringContentTypeMethod);
+
+        // Stream methods
+
+        Method attachmentStreamStringMethod =
+            new Method("AddAttachment", Enums.MethodType.Chaining);
+        attachmentStreamStringMethod.Parameters.Add(new Parameter("stream", streamDataType));
+        attachmentStreamStringMethod.Parameters.Add(new Parameter("name", GetDataTypeWithName("string")));
+
+        project.Methods.Add(attachmentStreamStringMethod);
+
+        Method attachmentStreamStringMimeTypeMethod =
+            new Method("AddAttachment", Enums.MethodType.Chaining);
+        attachmentStreamStringMimeTypeMethod.Parameters.Add(new Parameter("stream", streamDataType));
+        attachmentStreamStringMimeTypeMethod.Parameters.Add(new Parameter("name", GetDataTypeWithName("string")));
+        attachmentStreamStringMimeTypeMethod.Parameters.Add(new Parameter("mimeType", GetDataTypeWithName("string")));
+
+        project.Methods.Add(attachmentStreamStringMimeTypeMethod);
+
+        Method attachmentStreamContentTypeMethod =
+            new Method("AddAttachment", Enums.MethodType.Chaining);
+        attachmentStreamContentTypeMethod.Parameters.Add(new Parameter("stream", streamDataType));
+        attachmentStreamContentTypeMethod.Parameters.Add(contentTypeParameter);
+
+        project.Methods.Add(attachmentStreamContentTypeMethod);
+
+        // Multiple file names method
         Method attachmentsMethod =
             new Method("AddAttachments", Enums.MethodType.Chaining);
         attachmentMethod.Parameters.Add(parameterAttachments);
