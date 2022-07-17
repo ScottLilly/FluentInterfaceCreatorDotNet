@@ -53,6 +53,32 @@ public class TestMethod : BaseTestClass
         Assert.True(method.RequiresReturnDataType);
     }
 
+    [Fact]
+    public void Test_NameIsValid()
+    {
+        var method = new Method();
+        Assert.False(method.IsValid);
+
+        method.Type = Enums.MethodType.Instantiating;
+        method.Name = "Test Method";
+        Assert.False(method.IsValid);
+
+        method.Name = " TestMethod";
+        Assert.False(method.IsValid);
+
+        method.Name = "TestMethod ";
+        Assert.False(method.IsValid);
+
+        method.Name = "1TestMethod";
+        Assert.False(method.IsValid);
+
+        method.Name = "Test_Method";
+        Assert.True(method.IsValid);
+
+        method.Name = "TestMethod";
+        Assert.True(method.IsValid);
+    }
+
     [Theory]
     [MemberData(nameof(DataTypeNames))]
     public void Test_ExecutingMethodReturnValues_NonEnumerable(string dataTypeName)

@@ -22,4 +22,29 @@ public class TestDataType : BaseTestClass
 
         Assert.True(dataType.IsValid);
     }
+
+    [Fact]
+    public void Test_NameIsValid()
+    {
+        var dataType = new DataType();
+        Assert.False(dataType.IsValid);
+
+        dataType.Name = "Test Method";
+        Assert.False(dataType.IsValid);
+
+        dataType.Name = " TestMethod";
+        Assert.False(dataType.IsValid);
+
+        dataType.Name = "TestMethod ";
+        Assert.False(dataType.IsValid);
+
+        dataType.Name = "1TestMethod";
+        Assert.False(dataType.IsValid);
+
+        dataType.Name = "Test_Method";
+        Assert.True(dataType.IsValid);
+
+        dataType.Name = "TestMethod";
+        Assert.True(dataType.IsValid);
+    }
 }
