@@ -540,6 +540,8 @@ public class TestFluentEmailer : BaseTestClass
 
         Assert.NotNull(fluentInterfaceFileCreator);
 
+        //PersistenceService.SaveProjectToDisk(project, @"E:\temp\output\savedProject.json");
+
         //File.WriteAllText(
         //    Path.Combine(@"e:\temp\output",
         //        $"{project.FactoryClassName}.{project.OutputLanguage.FileExtension}"),
