@@ -7,7 +7,7 @@ namespace FluentInterfaceCreator.ViewModels;
 [AddINotifyPropertyChangedInterface]
 public class ProjectEditor
 {
-    public List<OutputLanguage> OutputLanguages { get; }
+    public List<OutputLanguage>? OutputLanguages { get; }
 
     public Project Project { get; private set; }
 

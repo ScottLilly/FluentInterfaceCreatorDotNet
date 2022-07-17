@@ -1,0 +1,5343 @@
+{
+  "Name": "FluentMailMessage",
+  "OutputLanguage": {
+    "Name": "C#",
+    "FileExtension": "cs",
+    "IsCaseSensitive": true,
+    "NativeDataTypes": [
+      {
+        "Name": "void",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "byte",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "sbyte",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "short",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "ushort",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "int",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "uint",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "long",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "ulong",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "float",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "double",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "object",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "char",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "string",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "decimal",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "bool",
+        "ContainingNamespace": "",
+        "IsNative": true,
+        "IsValid": true
+      },
+      {
+        "Name": "DateTime",
+        "ContainingNamespace": "System",
+        "IsNative": true,
+        "IsValid": true
+      }
+    ]
+  },
+  "NamespaceForFactoryClass": "FluentEmail",
+  "FactoryClassName": "FluentMailMessage",
+  "DataTypes": [
+    {
+      "Name": "void",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "byte",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "sbyte",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "short",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "ushort",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "int",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "uint",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "long",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "ulong",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "float",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "double",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "object",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "char",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "string",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "decimal",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "bool",
+      "ContainingNamespace": "",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "DateTime",
+      "ContainingNamespace": "System",
+      "IsNative": true,
+      "IsValid": true
+    },
+    {
+      "Name": "MailMessage",
+      "ContainingNamespace": "System.Net.Mail",
+      "IsNative": false,
+      "IsValid": true
+    },
+    {
+      "Name": "MailAddress",
+      "ContainingNamespace": "System.Net.Mail",
+      "IsNative": false,
+      "IsValid": true
+    },
+    {
+      "Name": "Encoding",
+      "ContainingNamespace": "System.Text",
+      "IsNative": false,
+      "IsValid": true
+    },
+    {
+      "Name": "Stream",
+      "ContainingNamespace": "System.IO",
+      "IsNative": false,
+      "IsValid": true
+    },
+    {
+      "Name": "ContentType",
+      "ContainingNamespace": "System.Net.Mime",
+      "IsNative": false,
+      "IsValid": true
+    }
+  ],
+  "Methods": [
+    {
+      "Id": "b8ac7d91-095f-4bfd-a701-44decc621300",
+      "Type": 0,
+      "Name": "CreateMailMessage",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailPriority",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "priority",
+          "DefaultValue": "MailPriority.Normal",
+          "IsValid": true,
+          "FormattedDataType": "MailPriority",
+          "FormattedDataTypeAndName": "MailPriority priority = MailPriority.Normal",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": false,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|CreateMailMessage=MailPriority",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CreateMailMessage(MailPriority priority = MailPriority.Normal)"
+    },
+    {
+      "Id": "9b3f7d13-7525-4b71-9510-f8f04a86f608",
+      "Type": 0,
+      "Name": "CreateHtmlMailMessage",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailPriority",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "priority",
+          "DefaultValue": "MailPriority.Normal",
+          "IsValid": true,
+          "FormattedDataType": "MailPriority",
+          "FormattedDataTypeAndName": "MailPriority priority = MailPriority.Normal",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": false,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|CreateHtmlMailMessage=MailPriority",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CreateHtmlMailMessage(MailPriority priority = MailPriority.Normal)"
+    },
+    {
+      "Id": "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+      "Type": 1,
+      "Name": "From",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|From=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "From(string emailAddress)"
+    },
+    {
+      "Id": "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+      "Type": 1,
+      "Name": "From",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|From=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "From(string emailAddress, string displayName)"
+    },
+    {
+      "Id": "074cd771-a368-4463-a677-65eb2b253ed6",
+      "Type": 1,
+      "Name": "From",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|From=string:string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "From(string emailAddress, string displayName, Encoding encodingType)"
+    },
+    {
+      "Id": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45",
+      "Type": 1,
+      "Name": "From",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "MailAddress",
+          "FormattedDataTypeAndName": "MailAddress emailAddress",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|From=MailAddress",
+      "FormattedReturnDataType": "",
+      "FullSignature": "From(MailAddress emailAddress)"
+    },
+    {
+      "Id": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|To=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(string emailAddress)"
+    },
+    {
+      "Id": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003Cstring\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003Cstring\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|To=IEnumerable\u003Cstring\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(IEnumerable\u003Cstring\u003E emailAddresses)"
+    },
+    {
+      "Id": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|To=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(string emailAddress, string displayName)"
+    },
+    {
+      "Id": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|To=string:string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(string emailAddress, string displayName, Encoding encodingType)"
+    },
+    {
+      "Id": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "MailAddress",
+          "FormattedDataTypeAndName": "MailAddress emailAddress",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|To=MailAddress",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(MailAddress emailAddress)"
+    },
+    {
+      "Id": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003CMailAddress\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003CMailAddress\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Net.Mail",
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail",
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|To=IEnumerable\u003CMailAddress\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(IEnumerable\u003CMailAddress\u003E emailAddresses)"
+    },
+    {
+      "Id": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|CC=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(string emailAddress)"
+    },
+    {
+      "Id": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003Cstring\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003Cstring\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|CC=IEnumerable\u003Cstring\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(IEnumerable\u003Cstring\u003E emailAddresses)"
+    },
+    {
+      "Id": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|CC=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(string emailAddress, string displayName)"
+    },
+    {
+      "Id": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|CC=string:string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(string emailAddress, string displayName, Encoding encodingType)"
+    },
+    {
+      "Id": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "MailAddress",
+          "FormattedDataTypeAndName": "MailAddress emailAddress",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|CC=MailAddress",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(MailAddress emailAddress)"
+    },
+    {
+      "Id": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003CMailAddress\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003CMailAddress\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Net.Mail",
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail",
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|CC=IEnumerable\u003CMailAddress\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(IEnumerable\u003CMailAddress\u003E emailAddresses)"
+    },
+    {
+      "Id": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|BCC=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(string emailAddress)"
+    },
+    {
+      "Id": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003Cstring\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003Cstring\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|BCC=IEnumerable\u003Cstring\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(IEnumerable\u003Cstring\u003E emailAddresses)"
+    },
+    {
+      "Id": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|BCC=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(string emailAddress, string displayName)"
+    },
+    {
+      "Id": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|BCC=string:string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(string emailAddress, string displayName, Encoding encodingType)"
+    },
+    {
+      "Id": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "MailAddress",
+          "FormattedDataTypeAndName": "MailAddress emailAddress",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|BCC=MailAddress",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(MailAddress emailAddress)"
+    },
+    {
+      "Id": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003CMailAddress\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003CMailAddress\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Net.Mail",
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail",
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|BCC=IEnumerable\u003CMailAddress\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(IEnumerable\u003CMailAddress\u003E emailAddresses)"
+    },
+    {
+      "Id": "f2f385a2-2a28-428c-a0fd-7273c40df913",
+      "Type": 1,
+      "Name": "Subject",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "subject",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string subject",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|Subject=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "Subject(string subject)"
+    },
+    {
+      "Id": "6531d4e3-1e6d-4066-818d-d56f552ee35b",
+      "Type": 1,
+      "Name": "Subject",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "subject",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string subject",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|Subject=string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "Subject(string subject, Encoding encodingType)"
+    },
+    {
+      "Id": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "Type": 1,
+      "Name": "Body",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "body",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string body",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|Body=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "Body(string body)"
+    },
+    {
+      "Id": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "Type": 1,
+      "Name": "Body",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "body",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string body",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|Body=string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "Body(string body, Encoding encodingType)"
+    },
+    {
+      "Id": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "filename",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string filename",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "attachments",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003Cstring\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003Cstring\u003E attachments",
+          "RequiredNamespaces": [
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=string:IEnumerable\u003Cstring\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(string filename, IEnumerable\u003Cstring\u003E attachments)"
+    },
+    {
+      "Id": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "filename",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string filename",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "mimeType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string mimeType",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|AddAttachment=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(string filename, string mimeType)"
+    },
+    {
+      "Id": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "filename",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string filename",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "ContentType",
+            "ContainingNamespace": "System.Net.Mime",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "contentType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "ContentType",
+          "FormattedDataTypeAndName": "ContentType contentType",
+          "RequiredNamespaces": [
+            "System.Net.Mime"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mime"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=string:ContentType",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(string filename, ContentType contentType)"
+    },
+    {
+      "Id": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Stream",
+            "ContainingNamespace": "System.IO",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "stream",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Stream",
+          "FormattedDataTypeAndName": "Stream stream",
+          "RequiredNamespaces": [
+            "System.IO"
+          ]
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "name",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string name",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.IO"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=Stream:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(Stream stream, string name)"
+    },
+    {
+      "Id": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Stream",
+            "ContainingNamespace": "System.IO",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "stream",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Stream",
+          "FormattedDataTypeAndName": "Stream stream",
+          "RequiredNamespaces": [
+            "System.IO"
+          ]
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "name",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string name",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "mimeType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string mimeType",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.IO"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=Stream:string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(Stream stream, string name, string mimeType)"
+    },
+    {
+      "Id": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Stream",
+            "ContainingNamespace": "System.IO",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "stream",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Stream",
+          "FormattedDataTypeAndName": "Stream stream",
+          "RequiredNamespaces": [
+            "System.IO"
+          ]
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "ContentType",
+            "ContainingNamespace": "System.Net.Mime",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "contentType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "ContentType",
+          "FormattedDataTypeAndName": "ContentType contentType",
+          "RequiredNamespaces": [
+            "System.Net.Mime"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.IO",
+        "System.Net.Mime"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=Stream:ContentType",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(Stream stream, ContentType contentType)"
+    },
+    {
+      "Id": "9338372b-3d9d-4756-a570-987797fe227a",
+      "Type": 1,
+      "Name": "AddAttachments",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|AddAttachments=",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachments()"
+    },
+    {
+      "Id": "54135dc4-4a52-49c7-9479-a24d79f8c4ec",
+      "Type": 2,
+      "Name": "Build",
+      "UseIEnumerable": false,
+      "ReturnDataType": {
+        "Name": "MailMessage",
+        "ContainingNamespace": "System.Net.Mail",
+        "IsNative": false,
+        "IsValid": true
+      },
+      "Parameters": [],
+      "IsValid": true,
+      "CanStartChainPair": false,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": true,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "MailMessage|Build=",
+      "FormattedReturnDataType": "MailMessage",
+      "FullSignature": "Build()"
+    }
+  ],
+  "MethodLinks": [
+    {
+      "StartingMethodId": "b8ac7d91-095f-4bfd-a701-44decc621300",
+      "EndingMethodId": "3da20ade-ccbe-467c-b82f-ae30a117b4a4"
+    },
+    {
+      "StartingMethodId": "b8ac7d91-095f-4bfd-a701-44decc621300",
+      "EndingMethodId": "3244b70b-fa5f-4c99-b0e0-32f065433e03"
+    },
+    {
+      "StartingMethodId": "b8ac7d91-095f-4bfd-a701-44decc621300",
+      "EndingMethodId": "074cd771-a368-4463-a677-65eb2b253ed6"
+    },
+    {
+      "StartingMethodId": "b8ac7d91-095f-4bfd-a701-44decc621300",
+      "EndingMethodId": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45"
+    },
+    {
+      "StartingMethodId": "9b3f7d13-7525-4b71-9510-f8f04a86f608",
+      "EndingMethodId": "3da20ade-ccbe-467c-b82f-ae30a117b4a4"
+    },
+    {
+      "StartingMethodId": "9b3f7d13-7525-4b71-9510-f8f04a86f608",
+      "EndingMethodId": "3244b70b-fa5f-4c99-b0e0-32f065433e03"
+    },
+    {
+      "StartingMethodId": "9b3f7d13-7525-4b71-9510-f8f04a86f608",
+      "EndingMethodId": "074cd771-a368-4463-a677-65eb2b253ed6"
+    },
+    {
+      "StartingMethodId": "9b3f7d13-7525-4b71-9510-f8f04a86f608",
+      "EndingMethodId": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45"
+    },
+    {
+      "StartingMethodId": "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "074cd771-a368-4463-a677-65eb2b253ed6",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "074cd771-a368-4463-a677-65eb2b253ed6",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "074cd771-a368-4463-a677-65eb2b253ed6",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "074cd771-a368-4463-a677-65eb2b253ed6",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "074cd771-a368-4463-a677-65eb2b253ed6",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "074cd771-a368-4463-a677-65eb2b253ed6",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "f1c79cb9-7145-4c39-95b3-81e6d9257f23"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "6db6223a-76d6-45f6-bfd9-b2c62f882170"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "5629773c-5b4e-4a07-8f18-902797d94c60"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "13e3257c-75c5-489a-b0a5-c81e33d58536"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "e6b9b547-b763-46c6-a44f-410904dc23f5"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "eac0cae9-9ba9-4238-abee-ddc9ce19d131"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "ac2216d5-44f1-450d-b8c1-5f8f94b92520"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "8ef187da-2719-4b6c-a70c-f46cc968bacd"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "b742a637-b1dc-4d22-8223-e6327ac5b967"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "3984cd50-ae09-435a-98d4-710a53506d36"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "7f1d29b5-4a3a-4861-9196-6c7a4c262531"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913"
+    },
+    {
+      "StartingMethodId": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "EndingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+    },
+    {
+      "StartingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913",
+      "EndingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953"
+    },
+    {
+      "StartingMethodId": "f2f385a2-2a28-428c-a0fd-7273c40df913",
+      "EndingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed"
+    },
+    {
+      "StartingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b",
+      "EndingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953"
+    },
+    {
+      "StartingMethodId": "6531d4e3-1e6d-4066-818d-d56f552ee35b",
+      "EndingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed"
+    },
+    {
+      "StartingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "EndingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1"
+    },
+    {
+      "StartingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "EndingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca"
+    },
+    {
+      "StartingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "EndingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f"
+    },
+    {
+      "StartingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "EndingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c"
+    },
+    {
+      "StartingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "EndingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072"
+    },
+    {
+      "StartingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "EndingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e"
+    },
+    {
+      "StartingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "EndingMethodId": "9338372b-3d9d-4756-a570-987797fe227a"
+    },
+    {
+      "StartingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "EndingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1"
+    },
+    {
+      "StartingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "EndingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca"
+    },
+    {
+      "StartingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "EndingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f"
+    },
+    {
+      "StartingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "EndingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c"
+    },
+    {
+      "StartingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "EndingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072"
+    },
+    {
+      "StartingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "EndingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e"
+    },
+    {
+      "StartingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "EndingMethodId": "9338372b-3d9d-4756-a570-987797fe227a"
+    },
+    {
+      "StartingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "EndingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1"
+    },
+    {
+      "StartingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "EndingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca"
+    },
+    {
+      "StartingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "EndingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f"
+    },
+    {
+      "StartingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "EndingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c"
+    },
+    {
+      "StartingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "EndingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072"
+    },
+    {
+      "StartingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "EndingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e"
+    },
+    {
+      "StartingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "EndingMethodId": "9338372b-3d9d-4756-a570-987797fe227a"
+    },
+    {
+      "StartingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "EndingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1"
+    },
+    {
+      "StartingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "EndingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca"
+    },
+    {
+      "StartingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "EndingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f"
+    },
+    {
+      "StartingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "EndingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c"
+    },
+    {
+      "StartingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "EndingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072"
+    },
+    {
+      "StartingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "EndingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e"
+    },
+    {
+      "StartingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "EndingMethodId": "9338372b-3d9d-4756-a570-987797fe227a"
+    },
+    {
+      "StartingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "EndingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1"
+    },
+    {
+      "StartingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "EndingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca"
+    },
+    {
+      "StartingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "EndingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f"
+    },
+    {
+      "StartingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "EndingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c"
+    },
+    {
+      "StartingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "EndingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072"
+    },
+    {
+      "StartingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "EndingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e"
+    },
+    {
+      "StartingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "EndingMethodId": "9338372b-3d9d-4756-a570-987797fe227a"
+    },
+    {
+      "StartingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "EndingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1"
+    },
+    {
+      "StartingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "EndingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca"
+    },
+    {
+      "StartingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "EndingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f"
+    },
+    {
+      "StartingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "EndingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c"
+    },
+    {
+      "StartingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "EndingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072"
+    },
+    {
+      "StartingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "EndingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e"
+    },
+    {
+      "StartingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "EndingMethodId": "9338372b-3d9d-4756-a570-987797fe227a"
+    },
+    {
+      "StartingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "EndingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1"
+    },
+    {
+      "StartingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "EndingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca"
+    },
+    {
+      "StartingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "EndingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f"
+    },
+    {
+      "StartingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "EndingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c"
+    },
+    {
+      "StartingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "EndingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072"
+    },
+    {
+      "StartingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "EndingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e"
+    },
+    {
+      "StartingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "EndingMethodId": "9338372b-3d9d-4756-a570-987797fe227a"
+    },
+    {
+      "StartingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "EndingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1"
+    },
+    {
+      "StartingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "EndingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca"
+    },
+    {
+      "StartingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "EndingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f"
+    },
+    {
+      "StartingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "EndingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c"
+    },
+    {
+      "StartingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "EndingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072"
+    },
+    {
+      "StartingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "EndingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e"
+    },
+    {
+      "StartingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "EndingMethodId": "9338372b-3d9d-4756-a570-987797fe227a"
+    },
+    {
+      "StartingMethodId": "9338372b-3d9d-4756-a570-987797fe227a",
+      "EndingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1"
+    },
+    {
+      "StartingMethodId": "9338372b-3d9d-4756-a570-987797fe227a",
+      "EndingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca"
+    },
+    {
+      "StartingMethodId": "9338372b-3d9d-4756-a570-987797fe227a",
+      "EndingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f"
+    },
+    {
+      "StartingMethodId": "9338372b-3d9d-4756-a570-987797fe227a",
+      "EndingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c"
+    },
+    {
+      "StartingMethodId": "9338372b-3d9d-4756-a570-987797fe227a",
+      "EndingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072"
+    },
+    {
+      "StartingMethodId": "9338372b-3d9d-4756-a570-987797fe227a",
+      "EndingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e"
+    },
+    {
+      "StartingMethodId": "9338372b-3d9d-4756-a570-987797fe227a",
+      "EndingMethodId": "9338372b-3d9d-4756-a570-987797fe227a"
+    },
+    {
+      "StartingMethodId": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "EndingMethodId": "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+    },
+    {
+      "StartingMethodId": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "EndingMethodId": "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+    },
+    {
+      "StartingMethodId": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "EndingMethodId": "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+    },
+    {
+      "StartingMethodId": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "EndingMethodId": "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+    },
+    {
+      "StartingMethodId": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "EndingMethodId": "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+    },
+    {
+      "StartingMethodId": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "EndingMethodId": "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+    },
+    {
+      "StartingMethodId": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "EndingMethodId": "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+    },
+    {
+      "StartingMethodId": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "EndingMethodId": "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+    },
+    {
+      "StartingMethodId": "9338372b-3d9d-4756-a570-987797fe227a",
+      "EndingMethodId": "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+    }
+  ],
+  "InterfaceSpecs": [
+    {
+      "Id": "e52a3312-57eb-4e23-b40e-cd13daaa8c05",
+      "Name": "IMustAddFromAddress",
+      "CalledByMethodId": [
+        "b8ac7d91-095f-4bfd-a701-44decc621300",
+        "9b3f7d13-7525-4b71-9510-f8f04a86f608"
+      ],
+      "CallsIntoMethodIds": [
+        "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+        "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+        "074cd771-a368-4463-a677-65eb2b253ed6",
+        "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45"
+      ]
+    },
+    {
+      "Id": "0fbb5d7c-773f-4729-b791-7b97682b9382",
+      "Name": "IMustAddToAddress",
+      "CalledByMethodId": [
+        "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+        "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+        "074cd771-a368-4463-a677-65eb2b253ed6",
+        "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45"
+      ],
+      "CallsIntoMethodIds": [
+        "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+        "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+        "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+        "5629773c-5b4e-4a07-8f18-902797d94c60",
+        "13e3257c-75c5-489a-b0a5-c81e33d58536",
+        "e6b9b547-b763-46c6-a44f-410904dc23f5"
+      ]
+    },
+    {
+      "Id": "e8257d91-23eb-4668-a835-4165dc1c22ad",
+      "Name": "ICanAddToCcBccOrSubject",
+      "CalledByMethodId": [
+        "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+        "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+        "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+        "5629773c-5b4e-4a07-8f18-902797d94c60",
+        "13e3257c-75c5-489a-b0a5-c81e33d58536",
+        "e6b9b547-b763-46c6-a44f-410904dc23f5",
+        "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+        "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+        "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+        "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+        "b742a637-b1dc-4d22-8223-e6327ac5b967",
+        "3984cd50-ae09-435a-98d4-710a53506d36",
+        "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+        "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+        "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+        "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+        "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+        "37aa5ce0-dd1b-4e90-8055-4660f223b5ab"
+      ],
+      "CallsIntoMethodIds": [
+        "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+        "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+        "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+        "5629773c-5b4e-4a07-8f18-902797d94c60",
+        "13e3257c-75c5-489a-b0a5-c81e33d58536",
+        "e6b9b547-b763-46c6-a44f-410904dc23f5",
+        "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+        "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+        "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+        "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+        "b742a637-b1dc-4d22-8223-e6327ac5b967",
+        "3984cd50-ae09-435a-98d4-710a53506d36",
+        "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+        "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+        "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+        "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+        "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+        "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+        "f2f385a2-2a28-428c-a0fd-7273c40df913",
+        "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+      ]
+    },
+    {
+      "Id": "35aa6c65-6edc-4642-b613-c307b9e3774f",
+      "Name": "IMustAddBody",
+      "CalledByMethodId": [
+        "f2f385a2-2a28-428c-a0fd-7273c40df913",
+        "6531d4e3-1e6d-4066-818d-d56f552ee35b"
+      ],
+      "CallsIntoMethodIds": [
+        "920ba062-fe6e-4edc-9f8b-fede241fe953",
+        "5047e91c-de3e-49bf-9ee9-2c0d647c13ed"
+      ]
+    },
+    {
+      "Id": "f0b44de8-981d-4ee6-9d20-6f48fd72abe8",
+      "Name": "ICanAddAttachmentOrBuild",
+      "CalledByMethodId": [
+        "920ba062-fe6e-4edc-9f8b-fede241fe953",
+        "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+        "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+        "f0100d4e-871e-4914-8146-78d2abb758ca",
+        "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+        "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+        "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+        "d4338894-1555-4d8b-aba3-5531ed26090e",
+        "9338372b-3d9d-4756-a570-987797fe227a"
+      ],
+      "CallsIntoMethodIds": [
+        "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+        "f0100d4e-871e-4914-8146-78d2abb758ca",
+        "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+        "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+        "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+        "d4338894-1555-4d8b-aba3-5531ed26090e",
+        "9338372b-3d9d-4756-a570-987797fe227a",
+        "54135dc4-4a52-49c7-9479-a24d79f8c4ec"
+      ]
+    }
+  ],
+  "IsValid": true,
+  "CanCreateOutputFiles": true,
+  "InstantiatingMethods": [
+    {
+      "Id": "b8ac7d91-095f-4bfd-a701-44decc621300",
+      "Type": 0,
+      "Name": "CreateMailMessage",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailPriority",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "priority",
+          "DefaultValue": "MailPriority.Normal",
+          "IsValid": true,
+          "FormattedDataType": "MailPriority",
+          "FormattedDataTypeAndName": "MailPriority priority = MailPriority.Normal",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": false,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|CreateMailMessage=MailPriority",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CreateMailMessage(MailPriority priority = MailPriority.Normal)"
+    },
+    {
+      "Id": "9b3f7d13-7525-4b71-9510-f8f04a86f608",
+      "Type": 0,
+      "Name": "CreateHtmlMailMessage",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailPriority",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "priority",
+          "DefaultValue": "MailPriority.Normal",
+          "IsValid": true,
+          "FormattedDataType": "MailPriority",
+          "FormattedDataTypeAndName": "MailPriority priority = MailPriority.Normal",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": false,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|CreateHtmlMailMessage=MailPriority",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CreateHtmlMailMessage(MailPriority priority = MailPriority.Normal)"
+    }
+  ],
+  "ChainingMethods": [
+    {
+      "Id": "3da20ade-ccbe-467c-b82f-ae30a117b4a4",
+      "Type": 1,
+      "Name": "From",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|From=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "From(string emailAddress)"
+    },
+    {
+      "Id": "3244b70b-fa5f-4c99-b0e0-32f065433e03",
+      "Type": 1,
+      "Name": "From",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|From=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "From(string emailAddress, string displayName)"
+    },
+    {
+      "Id": "074cd771-a368-4463-a677-65eb2b253ed6",
+      "Type": 1,
+      "Name": "From",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|From=string:string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "From(string emailAddress, string displayName, Encoding encodingType)"
+    },
+    {
+      "Id": "ef4ad3b1-8525-46cb-9ed4-06ab70c74d45",
+      "Type": 1,
+      "Name": "From",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "MailAddress",
+          "FormattedDataTypeAndName": "MailAddress emailAddress",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|From=MailAddress",
+      "FormattedReturnDataType": "",
+      "FullSignature": "From(MailAddress emailAddress)"
+    },
+    {
+      "Id": "f1c79cb9-7145-4c39-95b3-81e6d9257f23",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|To=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(string emailAddress)"
+    },
+    {
+      "Id": "f8c6bff9-dcc4-4a3b-bdd0-4032b28c9b37",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003Cstring\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003Cstring\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|To=IEnumerable\u003Cstring\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(IEnumerable\u003Cstring\u003E emailAddresses)"
+    },
+    {
+      "Id": "6db6223a-76d6-45f6-bfd9-b2c62f882170",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|To=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(string emailAddress, string displayName)"
+    },
+    {
+      "Id": "5629773c-5b4e-4a07-8f18-902797d94c60",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|To=string:string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(string emailAddress, string displayName, Encoding encodingType)"
+    },
+    {
+      "Id": "13e3257c-75c5-489a-b0a5-c81e33d58536",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "MailAddress",
+          "FormattedDataTypeAndName": "MailAddress emailAddress",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|To=MailAddress",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(MailAddress emailAddress)"
+    },
+    {
+      "Id": "e6b9b547-b763-46c6-a44f-410904dc23f5",
+      "Type": 1,
+      "Name": "To",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003CMailAddress\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003CMailAddress\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Net.Mail",
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail",
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|To=IEnumerable\u003CMailAddress\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "To(IEnumerable\u003CMailAddress\u003E emailAddresses)"
+    },
+    {
+      "Id": "83f2ffe9-257b-4b85-9a30-b51320bd8ecd",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|CC=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(string emailAddress)"
+    },
+    {
+      "Id": "eac0cae9-9ba9-4238-abee-ddc9ce19d131",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003Cstring\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003Cstring\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|CC=IEnumerable\u003Cstring\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(IEnumerable\u003Cstring\u003E emailAddresses)"
+    },
+    {
+      "Id": "ac2216d5-44f1-450d-b8c1-5f8f94b92520",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|CC=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(string emailAddress, string displayName)"
+    },
+    {
+      "Id": "8ef187da-2719-4b6c-a70c-f46cc968bacd",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|CC=string:string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(string emailAddress, string displayName, Encoding encodingType)"
+    },
+    {
+      "Id": "b742a637-b1dc-4d22-8223-e6327ac5b967",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "MailAddress",
+          "FormattedDataTypeAndName": "MailAddress emailAddress",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|CC=MailAddress",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(MailAddress emailAddress)"
+    },
+    {
+      "Id": "3984cd50-ae09-435a-98d4-710a53506d36",
+      "Type": 1,
+      "Name": "CC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003CMailAddress\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003CMailAddress\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Net.Mail",
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail",
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|CC=IEnumerable\u003CMailAddress\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "CC(IEnumerable\u003CMailAddress\u003E emailAddresses)"
+    },
+    {
+      "Id": "7f1d29b5-4a3a-4861-9196-6c7a4c262531",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|BCC=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(string emailAddress)"
+    },
+    {
+      "Id": "cecae0dc-af96-4fe8-8bb3-ac79b16daae0",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003Cstring\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003Cstring\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|BCC=IEnumerable\u003Cstring\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(IEnumerable\u003Cstring\u003E emailAddresses)"
+    },
+    {
+      "Id": "2d83a6ef-6c57-4081-8e0f-efe3d53d7363",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|BCC=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(string emailAddress, string displayName)"
+    },
+    {
+      "Id": "e6a8af07-9396-4ceb-9e4f-d41c0b0b25a8",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string emailAddress",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "displayName",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string displayName",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|BCC=string:string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(string emailAddress, string displayName, Encoding encodingType)"
+    },
+    {
+      "Id": "efa04c6a-ad84-459d-b1d5-b4ccef7a373f",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddress",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "MailAddress",
+          "FormattedDataTypeAndName": "MailAddress emailAddress",
+          "RequiredNamespaces": [
+            "System.Net.Mail"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "|BCC=MailAddress",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(MailAddress emailAddress)"
+    },
+    {
+      "Id": "37aa5ce0-dd1b-4e90-8055-4660f223b5ab",
+      "Type": 1,
+      "Name": "BCC",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "MailAddress",
+            "ContainingNamespace": "System.Net.Mail",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "emailAddresses",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003CMailAddress\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003CMailAddress\u003E emailAddresses",
+          "RequiredNamespaces": [
+            "System.Net.Mail",
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mail",
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|BCC=IEnumerable\u003CMailAddress\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "BCC(IEnumerable\u003CMailAddress\u003E emailAddresses)"
+    },
+    {
+      "Id": "f2f385a2-2a28-428c-a0fd-7273c40df913",
+      "Type": 1,
+      "Name": "Subject",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "subject",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string subject",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|Subject=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "Subject(string subject)"
+    },
+    {
+      "Id": "6531d4e3-1e6d-4066-818d-d56f552ee35b",
+      "Type": 1,
+      "Name": "Subject",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "subject",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string subject",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|Subject=string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "Subject(string subject, Encoding encodingType)"
+    },
+    {
+      "Id": "920ba062-fe6e-4edc-9f8b-fede241fe953",
+      "Type": 1,
+      "Name": "Body",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "body",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string body",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|Body=string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "Body(string body)"
+    },
+    {
+      "Id": "5047e91c-de3e-49bf-9ee9-2c0d647c13ed",
+      "Type": 1,
+      "Name": "Body",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "body",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string body",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Encoding",
+            "ContainingNamespace": "System.Text",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "encodingType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Encoding",
+          "FormattedDataTypeAndName": "Encoding encodingType",
+          "RequiredNamespaces": [
+            "System.Text"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Text"
+      ],
+      "DataTypeOnlySignature": "|Body=string:Encoding",
+      "FormattedReturnDataType": "",
+      "FullSignature": "Body(string body, Encoding encodingType)"
+    },
+    {
+      "Id": "11b86001-9f53-40b5-98d5-dda09d8c67c1",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "filename",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string filename",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": true,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "attachments",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "IEnumerable\u003Cstring\u003E",
+          "FormattedDataTypeAndName": "IEnumerable\u003Cstring\u003E attachments",
+          "RequiredNamespaces": [
+            "System.Collections.Generic"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Collections.Generic"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=string:IEnumerable\u003Cstring\u003E",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(string filename, IEnumerable\u003Cstring\u003E attachments)"
+    },
+    {
+      "Id": "f0100d4e-871e-4914-8146-78d2abb758ca",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "filename",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string filename",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "mimeType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string mimeType",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|AddAttachment=string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(string filename, string mimeType)"
+    },
+    {
+      "Id": "fbb4ed9b-4c17-4278-af1f-6f676593b09f",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "filename",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string filename",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "ContentType",
+            "ContainingNamespace": "System.Net.Mime",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "contentType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "ContentType",
+          "FormattedDataTypeAndName": "ContentType contentType",
+          "RequiredNamespaces": [
+            "System.Net.Mime"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.Net.Mime"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=string:ContentType",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(string filename, ContentType contentType)"
+    },
+    {
+      "Id": "4fa5a5a6-d6ea-4f66-8499-aedf14e3ad7c",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Stream",
+            "ContainingNamespace": "System.IO",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "stream",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Stream",
+          "FormattedDataTypeAndName": "Stream stream",
+          "RequiredNamespaces": [
+            "System.IO"
+          ]
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "name",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string name",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.IO"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=Stream:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(Stream stream, string name)"
+    },
+    {
+      "Id": "f9839c2c-6b77-4cd5-95f4-898c08dd1072",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Stream",
+            "ContainingNamespace": "System.IO",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "stream",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Stream",
+          "FormattedDataTypeAndName": "Stream stream",
+          "RequiredNamespaces": [
+            "System.IO"
+          ]
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "name",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string name",
+          "RequiredNamespaces": []
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "string",
+            "ContainingNamespace": "",
+            "IsNative": true,
+            "IsValid": true
+          },
+          "Name": "mimeType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "string",
+          "FormattedDataTypeAndName": "string mimeType",
+          "RequiredNamespaces": []
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.IO"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=Stream:string:string",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(Stream stream, string name, string mimeType)"
+    },
+    {
+      "Id": "d4338894-1555-4d8b-aba3-5531ed26090e",
+      "Type": 1,
+      "Name": "AddAttachment",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "Stream",
+            "ContainingNamespace": "System.IO",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "stream",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "Stream",
+          "FormattedDataTypeAndName": "Stream stream",
+          "RequiredNamespaces": [
+            "System.IO"
+          ]
+        },
+        {
+          "UseIEnumerable": false,
+          "DataType": {
+            "Name": "ContentType",
+            "ContainingNamespace": "System.Net.Mime",
+            "IsNative": false,
+            "IsValid": true
+          },
+          "Name": "contentType",
+          "DefaultValue": "",
+          "IsValid": true,
+          "FormattedDataType": "ContentType",
+          "FormattedDataTypeAndName": "ContentType contentType",
+          "RequiredNamespaces": [
+            "System.Net.Mime"
+          ]
+        }
+      ],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [
+        "System.IO",
+        "System.Net.Mime"
+      ],
+      "DataTypeOnlySignature": "|AddAttachment=Stream:ContentType",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachment(Stream stream, ContentType contentType)"
+    },
+    {
+      "Id": "9338372b-3d9d-4756-a570-987797fe227a",
+      "Type": 1,
+      "Name": "AddAttachments",
+      "UseIEnumerable": false,
+      "ReturnDataType": null,
+      "Parameters": [],
+      "IsValid": true,
+      "CanStartChainPair": true,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": false,
+      "RequiredNamespaces": [],
+      "DataTypeOnlySignature": "|AddAttachments=",
+      "FormattedReturnDataType": "",
+      "FullSignature": "AddAttachments()"
+    }
+  ],
+  "ExecutingMethods": [
+    {
+      "Id": "54135dc4-4a52-49c7-9479-a24d79f8c4ec",
+      "Type": 2,
+      "Name": "Build",
+      "UseIEnumerable": false,
+      "ReturnDataType": {
+        "Name": "MailMessage",
+        "ContainingNamespace": "System.Net.Mail",
+        "IsNative": false,
+        "IsValid": true
+      },
+      "Parameters": [],
+      "IsValid": true,
+      "CanStartChainPair": false,
+      "CanEndChainPair": true,
+      "RequiresReturnDataType": true,
+      "RequiredNamespaces": [
+        "System.Net.Mail"
+      ],
+      "DataTypeOnlySignature": "MailMessage|Build=",
+      "FormattedReturnDataType": "MailMessage",
+      "FullSignature": "Build()"
+    }
+  ],
+  "ListOfInterfaces": "IMustAddFromAddress, IMustAddToAddress, ICanAddToCcBccOrSubject, IMustAddBody, ICanAddAttachmentOrBuild",
+  "NamespacesNeeded": [
+    "System.Net.Mail",
+    "System.Text",
+    "System.Collections.Generic",
+    "System.Net.Mime",
+    "System.IO"
+  ]
+}
