@@ -15,6 +15,8 @@ public class Parameter : INotifyPropertyChanged
 
     public bool IsValid =>
         Name.IsNotEmpty() &&
+        !Name.ContainsInvalidCharacter() &&
+        !Name.HasAnInternalSpace() &&
         DataType != null &&
         DataType.IsValid;
 

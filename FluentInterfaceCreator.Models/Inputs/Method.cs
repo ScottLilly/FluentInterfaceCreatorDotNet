@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using FluentInterfaceCreator.Core;
-using FluentInterfaceCreator.Models.Resources;
 using PropertyChanged;
 
 namespace FluentInterfaceCreator.Models.Inputs;
@@ -20,6 +19,8 @@ public class Method : INotifyPropertyChanged
 
     public bool IsValid =>
         Name.IsNotEmpty() &&
+        !Name.ContainsInvalidCharacter() &&
+        !Name.HasAnInternalSpace() &&
         Parameters.All(p => p.IsValid) &&
         ((Type == Enums.MethodType.Executing && ReturnDataType != null) || 
          Type != Enums.MethodType.Executing);
@@ -75,38 +76,6 @@ public class Method : INotifyPropertyChanged
         Name = name;
         Type = type;
         ReturnDataType = returnDataType;
-    }
-
-    public IEnumerable<string> ValidationErrors()
-    {
-        if (Type != Enums.MethodType.Instantiating &&
-           Type != Enums.MethodType.Chaining &&
-           Type != Enums.MethodType.Executing)
-        {
-            yield return ErrorMessages.GroupIsNotValid;
-        }
-
-        if (Type == Enums.MethodType.Executing && ReturnDataType == null)
-        {
-            yield return ErrorMessages.ReturnTypeIsRequired;
-        }
-
-        if (Name.IsEmpty())
-        {
-            yield return ErrorMessages.NameIsRequired;
-        }
-        else
-        {
-            if (Name.HasAnInternalSpace())
-            {
-                yield return ErrorMessages.NameCannotContainAnInternalSpace;
-            }
-
-            if (Name.ContainsInvalidCharacter())
-            {
-                yield return ErrorMessages.NameCannotContainSpecialCharacters;
-            }
-        }
     }
 
     public bool Matches(Method method, bool isCaseSensitive = true) =>

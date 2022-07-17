@@ -14,7 +14,9 @@ public static class ExtensionMethods
 
     public static bool ContainsInvalidCharacter(this string text)
     {
-        return !text.All(x => char.IsLetterOrDigit(x) || x.Equals('_') || x.Equals(' '));
+        return text.IndexOf(' ') != -1 || 
+               !text.All(c => char.IsLetterOrDigit(c) || c == '_') || 
+               !char.IsLetter(text[0]);
     }
 
     public static bool IsNotValidNamespace(this string text)

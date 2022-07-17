@@ -10,7 +10,9 @@ public class DataType
     public bool IsNative { get; set; } = false;
 
     public bool IsValid =>
-        Name.IsNotEmpty();
+        Name.IsNotEmpty() &&
+        !Name.ContainsInvalidCharacter() &&
+        !Name.HasAnInternalSpace();
 
     public IEnumerable<string> ValidationErrors()
     {

@@ -24,6 +24,32 @@ public class TestParameter : BaseTestClass
         Assert.True(parameter.IsValid);
     }
 
+    [Fact]
+    public void Test_NameIsValid()
+    {
+        var parameter = new Parameter();
+        parameter.DataType = GetDataTypeWithName("string");
+        Assert.False(parameter.IsValid);
+
+        parameter.Name = "Test Method";
+        Assert.False(parameter.IsValid);
+
+        parameter.Name = " TestMethod";
+        Assert.False(parameter.IsValid);
+
+        parameter.Name = "TestMethod ";
+        Assert.False(parameter.IsValid);
+
+        parameter.Name = "1TestMethod";
+        Assert.False(parameter.IsValid);
+
+        parameter.Name = "Test_Method";
+        Assert.True(parameter.IsValid);
+
+        parameter.Name = "TestMethod";
+        Assert.True(parameter.IsValid);
+    }
+
     [Theory]
     [MemberData(nameof(DataTypeNames))]
     public void Test_NonEnumerableDataType(string dataTypeName)
