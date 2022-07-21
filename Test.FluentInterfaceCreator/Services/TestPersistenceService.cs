@@ -13,5 +13,7 @@ public class TestPersistenceService
         Assert.NotNull(project);
         Assert.Equal(5, project.InterfaceSpecs.Count);
         Assert.Empty(project.InterfaceSpecs.Where(i => string.IsNullOrWhiteSpace(i.Name)));
+        Assert.Equal(17, project.DataTypes.Count(dt => dt.IsNative));
+        Assert.Equal(5, project.DataTypes.Count(dt => !dt.IsNative));
     }
 }

@@ -18,6 +18,12 @@ public class ProjectEditor
         OutputLanguages = OutputLanguageRepository.GetLanguages();
     }
 
+    public void StartNewProject(OutputLanguage outputLanguage)
+    {
+        Project = new Project();
+        Project.OutputLanguage = outputLanguage;
+    }
+
     public void LoadProjectFromFile(string fileName)
     {
         Project = PersistenceService.GetProjectFromDisk(fileName);

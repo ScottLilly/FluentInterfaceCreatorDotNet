@@ -28,7 +28,7 @@ public partial class MainWindow : Window
         OutputLanguage outputLanguage = 
             VM.OutputLanguages.First(ol => ol.Name == selectedLanguage);
 
-        //VM.StartNewProject(outputLanguage);
+        VM.StartNewProject(outputLanguage);
     }
 
     private void LoadProject_OnClick(object sender, RoutedEventArgs e)

@@ -35,6 +35,25 @@ public static class PersistenceService
             project.InterfaceSpecs.Remove(interfaceSpecToRemove);
         }
 
+        List<DataType> cleanedDatatypes = new List<DataType>();
+        foreach (DataType dataType in project.DataTypes)
+        {
+            if (!cleanedDatatypes
+                    .Exists(dt =>
+                        dt.IsNative == dataType.IsNative &&
+                        dt.ContainingNamespace == dataType.ContainingNamespace &&
+                        dt.Name == dataType.Name))
+            {
+                cleanedDatatypes.Add(dataType);
+            }
+        }
+
+        project.DataTypes.Clear();
+        foreach (var dataType in cleanedDatatypes)
+        {
+            project.DataTypes.Add(dataType);
+        }
+
         return project;
     }
 }
