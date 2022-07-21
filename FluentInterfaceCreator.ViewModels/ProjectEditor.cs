@@ -9,11 +9,25 @@ public class ProjectEditor
 {
     public List<OutputLanguage>? OutputLanguages { get; }
 
-    public Project Project { get; private set; }
+    public Project? Project { get; private set; }
+
+    public bool HasProject => Project != null;
 
     public ProjectEditor()
     {
         OutputLanguages = OutputLanguageRepository.GetLanguages();
-        Project = new Project();
+    }
+
+    public void LoadProjectFromFile(string fileName)
+    {
+        Project = PersistenceService.GetProjectFromDisk(fileName);
+    }
+
+    public void SaveProjectToFile(string fileName)
+    {
+        if (Project != null)
+        {
+            PersistenceService.SaveProjectToDisk(Project, fileName);
+        }
     }
 }

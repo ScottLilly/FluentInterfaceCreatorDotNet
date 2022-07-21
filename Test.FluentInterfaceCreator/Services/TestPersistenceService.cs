@@ -5,7 +5,7 @@ namespace Test.FluentInterfaceCreator.Services;
 public class TestPersistenceService
 {
     [Fact]
-    public void Test_LoadMSJSON()
+    public void Test_LoadProjectFromJSON()
     {
         var project = 
             PersistenceService.GetProjectFromDisk(@".\TestFiles\savedProject.json");

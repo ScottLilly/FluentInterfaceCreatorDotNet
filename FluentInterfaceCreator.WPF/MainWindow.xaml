@@ -13,7 +13,8 @@
         Width="1024" Height="768">
 
     <Window.Resources>
-        
+        <BooleanToVisibilityConverter x:Key="VisibleIfTrue"/>
+
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="3"/>
             <Setter Property="Padding" Value="3"/>
@@ -74,6 +75,9 @@
                 </MenuItem>
                 <MenuItem Header="{Binding Source={x:Static resources:Literals.LoadProject}}"
                           Click="LoadProject_OnClick"/>
+                <MenuItem Header="{Binding Source={x:Static resources:Literals.SaveProject}}"
+                          IsEnabled="{Binding HasProject}"
+                          Click="SaveProject_OnClick"/>
                 <Separator/>
                 <MenuItem Header="{Binding Source={x:Static resources:Literals.Exit}}" 
                           Click="Exit_OnClick"/>

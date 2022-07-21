@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 using FluentInterfaceCreator.Models.Inputs;
+using FluentInterfaceCreator.Services;
 using FluentInterfaceCreator.ViewModels;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
@@ -9,8 +10,6 @@ namespace FluentInterfaceCreator.WPF;
 
 public partial class MainWindow : Window
 {
-    private const string FILE_NAME_EXTENSION = ".ficp";
-
     private ProjectEditor VM =>
         DataContext as ProjectEditor;
 
@@ -37,15 +36,15 @@ public partial class MainWindow : Window
         OpenFileDialog dialog =
             new OpenFileDialog
             {
-                DefaultExt = FILE_NAME_EXTENSION,
-                Filter = $"Fluent Interface Creator projects (*{FILE_NAME_EXTENSION})|*{FILE_NAME_EXTENSION}"
+                DefaultExt = PersistenceService.FILE_NAME_EXTENSION,
+                Filter = $"Fluent Interface Creator projects (*{PersistenceService.FILE_NAME_EXTENSION})|*{PersistenceService.FILE_NAME_EXTENSION}"
             };
 
         bool? result = dialog.ShowDialog(this);
 
         if (result == true)
         {
-            //VM.LoadProjectFromFile(dialog.FileName);
+            VM.LoadProjectFromFile(dialog.FileName);
         }
     }
 
@@ -54,16 +53,16 @@ public partial class MainWindow : Window
         SaveFileDialog dialog =
             new SaveFileDialog
             {
-                //FileName = VM.CurrentProject.Name,
-                DefaultExt = FILE_NAME_EXTENSION,
-                Filter = $"Fluent Interface Creator projects (*{FILE_NAME_EXTENSION})|*{FILE_NAME_EXTENSION}"
+                FileName = VM.Project?.Name,
+                DefaultExt = PersistenceService.FILE_NAME_EXTENSION,
+                Filter = $"Fluent Interface Creator projects (*{PersistenceService.FILE_NAME_EXTENSION})|*{PersistenceService.FILE_NAME_EXTENSION}"
             };
 
         bool? result = dialog.ShowDialog(this);
 
         if (result == true)
         {
-            //VM.SaveProjectToFile(dialog.FileName);
+            VM.SaveProjectToFile(dialog.FileName);
 
             // TODO: Reset Project.IsDirty flag
         }

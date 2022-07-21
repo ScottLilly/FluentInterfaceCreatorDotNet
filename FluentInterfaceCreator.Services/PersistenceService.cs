@@ -5,6 +5,8 @@ namespace FluentInterfaceCreator.Services;
 
 public static class PersistenceService
 {
+    public const string FILE_NAME_EXTENSION = ".ficp2";
+
     public static List<OutputLanguage> GetOutputLanguages()
     {
         string json = File.ReadAllText("outputLanguages.json");
