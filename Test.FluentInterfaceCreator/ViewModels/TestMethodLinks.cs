@@ -7,6 +7,8 @@ public class TestMethodLinks : BaseTestClass
     [Fact]
     public void Test_AddMethodsAndLinks_RemoveOneMethod()
     {
+        _projectEditor.StartNewProject(GetOutputLanguage());
+
         var instantiatingMethod = BuildInstantiatingMethod("Create");
         _projectEditor.Project.Methods.Add(instantiatingMethod);
 
@@ -75,6 +77,8 @@ public class TestMethodLinks : BaseTestClass
     [Fact]
     public void Test_AddMethodsAndLinks_RemoveTwoMethods()
     {
+        _projectEditor.StartNewProject(GetOutputLanguage());
+
         var instantiatingMethod = BuildInstantiatingMethod("Create");
         _projectEditor.Project.Methods.Add(instantiatingMethod);
 
