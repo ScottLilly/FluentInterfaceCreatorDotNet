@@ -14,7 +14,7 @@ public class TestProjectEditor : BaseTestClass
     [Fact]
     public void Test_SelectOutputLanguage()
     {
-        Assert.Empty(_projectEditor.Project.DataTypes);
+        _projectEditor.StartNewProject(GetOutputLanguage());
 
         _projectEditor.Project.OutputLanguage = _cSharpLanguage;
 
@@ -24,6 +24,8 @@ public class TestProjectEditor : BaseTestClass
     [Fact]
     public void Test_ProjectCanCreateOutputFiles()
     {
+        _projectEditor.StartNewProject(GetOutputLanguage());
+
         Assert.False(_projectEditor.Project.CanCreateOutputFiles);
 
         _projectEditor.Project.OutputLanguage = _cSharpLanguage;
