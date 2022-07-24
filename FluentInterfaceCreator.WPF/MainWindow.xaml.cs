@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using FluentInterfaceCreator.Models.Inputs;
 using FluentInterfaceCreator.Services;
 using FluentInterfaceCreator.ViewModels;
@@ -86,4 +87,18 @@ public partial class MainWindow : Window
     }
 
     #endregion
+
+    private void Expander_OnExpanded(object sender, RoutedEventArgs e)
+    {
+        var expander = sender as Expander;
+
+        expander.Header = "Hide\nDetails";
+    }
+
+    private void Expander_OnCollapsed(object sender, RoutedEventArgs e)
+    {
+        var expander = sender as Expander;
+
+        expander.Header = "Show\nDetails";
+    }
 }
