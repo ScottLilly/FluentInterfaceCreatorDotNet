@@ -6,14 +6,52 @@
         xmlns:resources="clr-namespace:FluentInterfaceCreator.WPF.Resources"
         xmlns:viewModels="clr-namespace:FluentInterfaceCreator.ViewModels;assembly=FluentInterfaceCreator.ViewModels"
         xmlns:converters="clr-namespace:FluentInterfaceCreator.WPF.Converters"
+        xmlns:inputs="clr-namespace:FluentInterfaceCreator.Models.Inputs;assembly=FluentInterfaceCreator.Models"
         d:DataContext="{d:DesignInstance viewModels:ProjectEditor}"
         mc:Ignorable="d"
         FontSize="11pt"
         Title="{Binding Source={x:Static resources:Literals.AppTitle}}" 
-        Width="1024" Height="768">
+        Width="1280" Height="768">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="VisibleIfTrue"/>
+
+        <DataTemplate DataType="{x:Type inputs:Method}">
+            <Border BorderBrush="Black"
+                    BorderThickness="1"
+                    Padding="2,2,2,2"
+                    Margin="0,2,0,2"
+                    CornerRadius="5">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                           FontWeight="Bold"
+                           Margin="0,0,0,0"
+                           Padding="2,1,0,1"
+                           Content="{Binding Name}"/>
+
+                    <ItemsControl Grid.Row="1" Grid.Column="0"
+                                  ItemsSource="{Binding Parameters}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Left"
+                                       Margin="0,0,0,0"
+                                       Padding="2,1,0,1"
+                                       Content="{Binding FormattedDataTypeAndName}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+            </Border>
+        </DataTemplate>
+
+
 
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="3"/>
@@ -56,7 +94,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
         <!-- Menu -->
@@ -88,6 +125,196 @@
             </MenuItem>
         </Menu>
         
+        <Grid Grid.Row="1" Grid.Column="0"
+              Visibility="{Binding HasProject, Converter={StaticResource VisibleIfTrue}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" MinWidth="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Project metadata -->
+            <Expander ExpandDirection="Right" HorizontalAlignment="Left"
+                      Header="Project Details"
+                      Padding="2,0,0,0"
+                      Foreground="White"
+                      Background="#1974d2"
+                      IsExpanded="True"
+                      Expanded="Expander_OnExpanded"
+                      Collapsed="Expander_OnCollapsed">
+
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Grid.Row="0" Grid.Column="0"
+                              Padding="5,5,5,5"
+                              Header="Project Details"
+                              VerticalAlignment="Stretch"
+                              BorderBrush="Black"
+                              BorderThickness="1">
+
+                        <Grid VerticalAlignment="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   FontWeight="Bold"
+                                   Content="Output language:"/>
+                            <Label Grid.Row="0" Grid.Column="1"
+                                   Content="{Binding Project.OutputLanguage.Name}"/>
+
+                            <Label Grid.Row="1" Grid.Column="0"
+                                   FontWeight="Bold"
+                                   Content="Project name:"/>
+                            <TextBox Grid.Row="1" Grid.Column="1"
+                                     Width="250"
+                                     Text="{Binding Project.Name}"/>
+
+                            <Label Grid.Row="2" Grid.Column="0"
+                                   FontWeight="Bold"
+                                   Content="Factory class name:"/>
+                            <TextBox Grid.Row="2" Grid.Column="1"
+                                     Width="250"
+                                     Text="{Binding Project.FactoryClassName}"/>
+
+                            <Label Grid.Row="3" Grid.Column="0"
+                                   FontWeight="Bold"
+                                   Content="Namespace:"/>
+                            <TextBox Grid.Row="3" Grid.Column="1"
+                                     Width="250"
+                                     Text="{Binding Project.NamespaceForFactoryClass}"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Datatypes data grid -->
+                    <GroupBox Grid.Row="1" Grid.Column="0"
+                              Header="Datatypes"
+                              Padding="5,5,5,5"
+                              VerticalAlignment="Stretch"
+                              BorderBrush="Black"
+                              BorderThickness="1">
+
+                        <Grid VerticalAlignment="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <DataGrid Grid.Row="0" Grid.Column="0"
+                                      ItemsSource="{Binding Project.DataTypes}"
+                                      AutoGenerateColumns="False"
+                                      CanUserAddRows="False"
+                                      CanUserDeleteRows="False"
+                                      CanUserReorderColumns="False"
+                                      CanUserResizeColumns="False"
+                                      CanUserResizeRows="False"
+                                      CanUserSortColumns="False"
+                                      HeadersVisibility="Column">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Namespace"
+                                                Binding="{Binding ContainingNamespace}"/>
+                                    <DataGridTextColumn Header="Name"
+                                                Binding="{Binding Name}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <Button Grid.Row="1" Grid.Column="0"
+                                    HorizontalAlignment="Right"
+                                    Content="Add new datatype"/>
+
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+            </Expander>
+
+            <!-- Methods summary list -->
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Grid.Column="0"
+                          Padding="5,5,5,5"
+                          Header="Instantiating Methods"
+                          VerticalAlignment="Stretch"
+                          BorderBrush="Black"
+                          BorderThickness="1">
+
+                    <ScrollViewer Padding="5,5,5,5">
+                        <ItemsControl ClipToBounds="True"
+                                      ItemsSource="{Binding Project.InstantiatingMethods}">
+                        </ItemsControl>
+                    </ScrollViewer>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Grid.Column="0"
+                        Padding="5,5,5,5"
+                        Header="Chaining Methods"
+                        VerticalAlignment="Stretch"
+                        BorderBrush="Black"
+                        BorderThickness="1">
+
+                    <ScrollViewer Padding="5,5,5,5">
+                        <ItemsControl ClipToBounds="True"
+                                      ItemsSource="{Binding Project.ChainingMethods}">
+                        </ItemsControl>
+                    </ScrollViewer>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Grid.Column="0"
+                          Padding="5,5,5,5"
+                          Header="Executing Methods"
+                          VerticalAlignment="Stretch"
+                          BorderBrush="Black"
+                          BorderThickness="1">
+
+                    <ScrollViewer Padding="5,5,5,5">
+                        <ItemsControl ClipToBounds="True"
+                                      ItemsSource="{Binding Project.ExecutingMethods}">
+                        </ItemsControl>
+                    </ScrollViewer>
+                </GroupBox>
+
+            </Grid>
+
+            <!-- SelectedMethod details -->
+            <Grid Grid.Row="0" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Grid.Column="0"
+                          Header="Selected Method"
+                          Padding="5,5,5,5"
+                          VerticalAlignment="Stretch"
+                          BorderBrush="Black"
+                          BorderThickness="1">
+
+                </GroupBox>
+
+            </Grid>
+
+        </Grid>
     </Grid>
 
 </Window>
