@@ -6,6 +6,7 @@
         xmlns:resources="clr-namespace:FluentInterfaceCreator.WPF.Resources"
         xmlns:viewModels="clr-namespace:FluentInterfaceCreator.ViewModels;assembly=FluentInterfaceCreator.ViewModels"
         xmlns:converters="clr-namespace:FluentInterfaceCreator.WPF.Converters"
+        xmlns:inputs="clr-namespace:FluentInterfaceCreator.Models.Inputs;assembly=FluentInterfaceCreator.Models"
         d:DataContext="{d:DesignInstance viewModels:ProjectEditor}"
         mc:Ignorable="d"
         FontSize="11pt"
@@ -14,6 +15,43 @@
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="VisibleIfTrue"/>
+
+        <DataTemplate DataType="{x:Type inputs:Method}">
+            <Border BorderBrush="Black"
+                    BorderThickness="1"
+                    Padding="2,2,2,2"
+                    Margin="0,2,0,2"
+                    CornerRadius="5">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                           FontWeight="Bold"
+                           Margin="0,0,0,0"
+                           Padding="2,1,0,1"
+                           Content="{Binding Name}"/>
+
+                    <ItemsControl Grid.Row="1" Grid.Column="0"
+                                  ItemsSource="{Binding Parameters}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Label HorizontalAlignment="Left"
+                                       Margin="0,0,0,0"
+                                       Padding="2,1,0,1"
+                                       Content="{Binding FormattedDataTypeAndName}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+            </Border>
+        </DataTemplate>
+
+
 
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="3"/>
