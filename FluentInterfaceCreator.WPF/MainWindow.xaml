@@ -14,6 +14,32 @@
         Width="1280" Height="768">
 
     <Window.Resources>
+        <Style TargetType="GroupBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="5,0,0,5"/>
+            <Setter Property="Padding" Value="5,5,5,5"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style>
+        <Style TargetType="Label" x:Key="InputLabel">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="Label" x:Key="MethodSummaryLabel">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="Padding" Value="2,1,2,1"/>
+        </Style>
+        <Style TargetType="Label" x:Key="MethodSummeryNameLabel"
+               BasedOn="{StaticResource MethodSummaryLabel}">
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="ScrollViewer">
+            <Setter Property="Padding" Value="5,5,5,5"/>
+        </Style>
+
         <BooleanToVisibilityConverter x:Key="VisibleIfTrue"/>
 
         <DataTemplate DataType="{x:Type inputs:Method}">
@@ -21,7 +47,7 @@
                     BorderThickness="1"
                     Padding="2,2,2,2"
                     Margin="0,2,0,2"
-                    CornerRadius="5">
+                    CornerRadius="3">
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -30,18 +56,14 @@
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0"
-                           FontWeight="Bold"
-                           Margin="0,0,0,0"
-                           Padding="2,1,0,1"
+                           Style="{StaticResource MethodSummeryNameLabel}"
                            Content="{Binding Name}"/>
 
                     <ItemsControl Grid.Row="1" Grid.Column="0"
                                   ItemsSource="{Binding Parameters}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Label HorizontalAlignment="Left"
-                                       Margin="0,0,0,0"
-                                       Padding="2,1,0,1"
+                                <Label Style="{StaticResource MethodSummaryLabel}"
                                        Content="{Binding FormattedDataTypeAndName}"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -50,34 +72,6 @@
 
             </Border>
         </DataTemplate>
-
-
-
-        <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="3"/>
-            <Setter Property="Padding" Value="3"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        <Style TargetType="Label">
-            <Setter Property="Margin" Value="3"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        <Style TargetType="ComboBox">
-            <Setter Property="Margin" Value="3"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="3, 0, 3, 0"/>
-            <Setter Property="Padding" Value="8, 3, 8, 3"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        <Style TargetType="DataGrid">
-            <Setter Property="Margin" Value="3"/>
-        </Style>
-        <Style TargetType="Grid">
-            <Setter Property="Margin" Value="3"/>
-        </Style>
 
         <converters:ConfigurableBooleanToVisibilityConverter 
             x:Key="CollapsedWhenTrueVisibleWhenFalse"
@@ -125,6 +119,7 @@
             </MenuItem>
         </Menu>
         
+        <!-- Main workspace area -->
         <Grid Grid.Row="1" Grid.Column="0"
               Visibility="{Binding HasProject, Converter={StaticResource VisibleIfTrue}}">
             <Grid.RowDefinitions>
@@ -137,7 +132,8 @@
             </Grid.ColumnDefinitions>
 
             <!-- Project metadata -->
-            <Expander ExpandDirection="Right" HorizontalAlignment="Left"
+            <Expander ExpandDirection="Right" 
+                      HorizontalAlignment="Left"
                       Header="Project Details"
                       Padding="2,0,0,0"
                       Foreground="White"
@@ -153,11 +149,8 @@
                     </Grid.RowDefinitions>
 
                     <GroupBox Grid.Row="0" Grid.Column="0"
-                              Padding="5,5,5,5"
-                              Header="Project Details"
-                              VerticalAlignment="Stretch"
-                              BorderBrush="Black"
-                              BorderThickness="1">
+                              Style="{StaticResource {x:Type GroupBox}}"
+                              Header="Project Details">
 
                         <Grid VerticalAlignment="Top">
                             <Grid.RowDefinitions>
@@ -172,27 +165,27 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Row="0" Grid.Column="0"
-                                   FontWeight="Bold"
+                                   Style="{StaticResource InputLabel}"
                                    Content="Output language:"/>
                             <Label Grid.Row="0" Grid.Column="1"
                                    Content="{Binding Project.OutputLanguage.Name}"/>
 
                             <Label Grid.Row="1" Grid.Column="0"
-                                   FontWeight="Bold"
+                                   Style="{StaticResource InputLabel}"
                                    Content="Project name:"/>
                             <TextBox Grid.Row="1" Grid.Column="1"
                                      Width="250"
                                      Text="{Binding Project.Name}"/>
 
                             <Label Grid.Row="2" Grid.Column="0"
-                                   FontWeight="Bold"
+                                   Style="{StaticResource InputLabel}"
                                    Content="Factory class name:"/>
                             <TextBox Grid.Row="2" Grid.Column="1"
                                      Width="250"
                                      Text="{Binding Project.FactoryClassName}"/>
 
                             <Label Grid.Row="3" Grid.Column="0"
-                                   FontWeight="Bold"
+                                   Style="{StaticResource InputLabel}"
                                    Content="Namespace:"/>
                             <TextBox Grid.Row="3" Grid.Column="1"
                                      Width="250"
@@ -203,10 +196,7 @@
                     <!-- Datatypes data grid -->
                     <GroupBox Grid.Row="1" Grid.Column="0"
                               Header="Datatypes"
-                              Padding="5,5,5,5"
-                              VerticalAlignment="Stretch"
-                              BorderBrush="Black"
-                              BorderThickness="1">
+                              Style="{StaticResource {x:Type GroupBox}}">
 
                         <Grid VerticalAlignment="Top">
                             <Grid.RowDefinitions>
@@ -227,15 +217,19 @@
                                       CanUserResizeRows="False"
                                       CanUserSortColumns="False"
                                       HeadersVisibility="Column">
+
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Namespace"
                                                 Binding="{Binding ContainingNamespace}"/>
                                     <DataGridTextColumn Header="Name"
                                                 Binding="{Binding Name}"/>
                                 </DataGrid.Columns>
+
                             </DataGrid>
 
                             <Button Grid.Row="1" Grid.Column="0"
+                                    Margin="0,5,0,0"
+                                    Padding="8,2,8,2"
                                     HorizontalAlignment="Right"
                                     Content="Add new datatype"/>
 
@@ -254,44 +248,29 @@
                 </Grid.RowDefinitions>
 
                 <GroupBox Grid.Row="0" Grid.Column="0"
-                          Padding="5,5,5,5"
-                          Header="Instantiating Methods"
-                          VerticalAlignment="Stretch"
-                          BorderBrush="Black"
-                          BorderThickness="1">
+                          Style="{StaticResource {x:Type GroupBox}}"
+                          Header="Instantiating Methods">
 
-                    <ScrollViewer Padding="5,5,5,5">
-                        <ItemsControl ClipToBounds="True"
-                                      ItemsSource="{Binding Project.InstantiatingMethods}">
-                        </ItemsControl>
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding Project.InstantiatingMethods}"/>
                     </ScrollViewer>
                 </GroupBox>
 
                 <GroupBox Grid.Row="1" Grid.Column="0"
-                        Padding="5,5,5,5"
-                        Header="Chaining Methods"
-                        VerticalAlignment="Stretch"
-                        BorderBrush="Black"
-                        BorderThickness="1">
+                          Style="{StaticResource {x:Type GroupBox}}"
+                          Header="Chaining Methods">
 
-                    <ScrollViewer Padding="5,5,5,5">
-                        <ItemsControl ClipToBounds="True"
-                                      ItemsSource="{Binding Project.ChainingMethods}">
-                        </ItemsControl>
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding Project.ChainingMethods}"/>
                     </ScrollViewer>
                 </GroupBox>
 
                 <GroupBox Grid.Row="2" Grid.Column="0"
-                          Padding="5,5,5,5"
-                          Header="Executing Methods"
-                          VerticalAlignment="Stretch"
-                          BorderBrush="Black"
-                          BorderThickness="1">
+                          Style="{StaticResource {x:Type GroupBox}}"
+                          Header="Executing Methods">
 
-                    <ScrollViewer Padding="5,5,5,5">
-                        <ItemsControl ClipToBounds="True"
-                                      ItemsSource="{Binding Project.ExecutingMethods}">
-                        </ItemsControl>
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding Project.ExecutingMethods}"/>
                     </ScrollViewer>
                 </GroupBox>
 
@@ -304,11 +283,9 @@
                 </Grid.RowDefinitions>
 
                 <GroupBox Grid.Row="0" Grid.Column="0"
-                          Header="Selected Method"
-                          Padding="5,5,5,5"
-                          VerticalAlignment="Stretch"
-                          BorderBrush="Black"
-                          BorderThickness="1">
+                          Style="{StaticResource {x:Type GroupBox}}"
+                          Margin="5,0,5,5"
+                          Header="Selected Method">
 
                 </GroupBox>
 
