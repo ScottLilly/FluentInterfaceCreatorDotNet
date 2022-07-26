@@ -5,9 +5,9 @@ namespace FluentInterfaceCreator.Models.Inputs;
 
 public class DataType
 {
-    public string Name { get; set; } = "";
-    public string ContainingNamespace { get; set; } = "";
     public bool IsNative { get; set; } = false;
+    public string ContainingNamespace { get; set; } = "";
+    public string Name { get; set; } = "";
 
     public bool IsValid =>
         Name.IsNotEmpty() &&

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using FluentInterfaceCreator.Models.Inputs;
@@ -19,6 +20,11 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         DataContext = new ProjectEditor();
+
+        sortedDataTypes.Items.SortDescriptions
+            .Add(new SortDescription("ContainingNamespace", ListSortDirection.Ascending));
+        sortedDataTypes.Items.SortDescriptions
+            .Add(new SortDescription("Name", ListSortDirection.Ascending));
     }
 
     #region "File" menu options
