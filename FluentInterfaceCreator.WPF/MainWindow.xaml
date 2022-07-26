@@ -224,6 +224,7 @@
                             </Grid.ColumnDefinitions>
 
                             <DataGrid Grid.Row="0" Grid.Column="0"
+                                      x:Name="sortedDataTypes"
                                       ItemsSource="{Binding Project.DataTypes}"
                                       AutoGenerateColumns="False"
                                       CanUserAddRows="False"
@@ -236,9 +237,9 @@
 
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Namespace"
-                                                Binding="{Binding ContainingNamespace}"/>
+                                                        Binding="{Binding ContainingNamespace}"/>
                                     <DataGridTextColumn Header="Name"
-                                                Binding="{Binding Name}"/>
+                                                        Binding="{Binding Name}"/>
                                 </DataGrid.Columns>
 
                             </DataGrid>
