@@ -40,6 +40,11 @@ public partial class MainWindow : Window
 
     private void LoadProject_OnClick(object sender, RoutedEventArgs e)
     {
+        if (!OkToDiscardAnyChanges())
+        {
+            return;
+        }
+
         OpenFileDialog dialog =
             new OpenFileDialog
             {
@@ -70,15 +75,33 @@ public partial class MainWindow : Window
         if (result == true)
         {
             VM.SaveProjectToFile(dialog.FileName);
-
-            // TODO: Reset Project.IsDirty flag
         }
     }
 
     private void Exit_OnClick(object sender, RoutedEventArgs e)
     {
-        // TODO: Add Project.IsDirty and warn if there are unsaved changes
-        Close();
+        if (OkToDiscardAnyChanges())
+        {
+            Close();
+        }
+    }
+
+    private bool OkToDiscardAnyChanges()
+    {
+        if (VM.Project == null)
+        {
+            return true;
+        }
+
+        if (VM.Project.IsDirty)
+        {
+            var result = 
+                MessageBox.Show("Lose unsaved changes?", "Save", MessageBoxButton.YesNoCancel);
+
+            return result == MessageBoxResult.Yes;
+        }
+
+        return true;
     }
 
     #endregion

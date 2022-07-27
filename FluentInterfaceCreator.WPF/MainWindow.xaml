@@ -191,21 +191,24 @@
                                    Content="Project name:"/>
                             <TextBox Grid.Row="1" Grid.Column="1"
                                      Width="250"
-                                     Text="{Binding Project.Name}"/>
+                                     Text="{Binding Project.Name, 
+                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Grid.Row="2" Grid.Column="0"
                                    Style="{StaticResource InputLabel}"
                                    Content="Factory class name:"/>
                             <TextBox Grid.Row="2" Grid.Column="1"
                                      Width="250"
-                                     Text="{Binding Project.FactoryClassName}"/>
+                                     Text="{Binding Project.FactoryClassName, 
+                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Label Grid.Row="3" Grid.Column="0"
                                    Style="{StaticResource InputLabel}"
                                    Content="Namespace:"/>
                             <TextBox Grid.Row="3" Grid.Column="1"
                                      Width="250"
-                                     Text="{Binding Project.NamespaceForFactoryClass}"/>
+                                     Text="{Binding Project.NamespaceForFactoryClass, 
+                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                     </GroupBox>
 

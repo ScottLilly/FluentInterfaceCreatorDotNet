@@ -7,8 +7,13 @@ using PropertyChanged;
 namespace FluentInterfaceCreator.Models.Inputs;
 
 [SuppressPropertyChangedWarnings]
-public class Project : INotifyPropertyChanged
+public class Project : INotifyPropertyChanged, ITrackChanges
 {
+    private ProjectMemento _projectMemento;
+    private bool _dataTypesAreDirty = false;
+    private bool _methodLinksAreDirty = false;
+    private bool _interfaceSpecsAreDirty = false;
+
     public string Name { get; set; } = "";
     public OutputLanguage? OutputLanguage { get; set; }
     public string NamespaceForFactoryClass { get; set; } = "";
@@ -53,14 +58,28 @@ public class Project : INotifyPropertyChanged
     public List<string> NamespacesNeeded =>
         Methods.SelectMany(m => m.RequiredNamespaces).Distinct().ToList();
 
+    public bool IsDirty =>
+        Name != _projectMemento.Name ||
+        NamespaceForFactoryClass != _projectMemento.NamespaceForFactoryClass ||
+        FactoryClassName != _projectMemento.FactoryClassName ||
+        _dataTypesAreDirty ||
+        _methodLinksAreDirty ||
+        _interfaceSpecsAreDirty;
+    
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public Project()
     {
+        _projectMemento = 
+            new ProjectMemento(Name, OutputLanguage, 
+                NamespaceForFactoryClass, FactoryClassName);
+
         // Internal handlers, to refresh computed values
         PropertyChanged += OnPropertyChanged;
+        DataTypes.CollectionChanged += OnDataTypesCollectionChanged;
         Methods.CollectionChanged += OnMethodsCollectionChanged;
         MethodLinks.CollectionChanged += OnMethodLinksCollectionChanged;
+        InterfaceSpecs.CollectionChanged += OnInterfaceSpecsCollectionChanged;
     }
 
     #region Public methods
@@ -68,6 +87,16 @@ public class Project : INotifyPropertyChanged
     public void AddMethodLink(Guid startingMethodId, Guid endingMethodId)
     {
         MethodLinks.Add(new MethodLink(startingMethodId, endingMethodId));
+    }
+
+    public void MarkAsClean()
+    {
+        _projectMemento =
+            new ProjectMemento(Name, OutputLanguage,
+                NamespaceForFactoryClass, FactoryClassName);
+        _dataTypesAreDirty = false;
+        _methodLinksAreDirty = false;
+        _interfaceSpecsAreDirty = false;
     }
 
     #endregion
@@ -85,9 +114,17 @@ public class Project : INotifyPropertyChanged
         }
     }
 
+    private void OnDataTypesCollectionChanged(object? sender, 
+        NotifyCollectionChangedEventArgs e)
+    {
+        _dataTypesAreDirty = true;
+    }
+
     private void OnMethodsCollectionChanged(object? sender,
         NotifyCollectionChangedEventArgs e)
     {
+        _methodLinksAreDirty = true;
+
         // When a Method is removed from the Methods property,
         // remove the MethodLink objects that referenced it
         if (e.Action == NotifyCollectionChangedAction.Remove &&
@@ -119,6 +156,12 @@ public class Project : INotifyPropertyChanged
         NotifyCollectionChangedEventArgs e)
     {
         RefreshInterfaceSpecs();
+    }
+
+    private void OnInterfaceSpecsCollectionChanged(object? sender, 
+        NotifyCollectionChangedEventArgs e)
+    {
+        _interfaceSpecsAreDirty = true;
     }
 
     private void RefreshInterfaceSpecs()
@@ -165,4 +208,26 @@ public class Project : INotifyPropertyChanged
     }
 
     #endregion
+
+    #region Memento class
+
+    private class ProjectMemento
+    {
+        public string Name { get; set; } = "";
+        public OutputLanguage? OutputLanguage { get; set; }
+        public string NamespaceForFactoryClass { get; set; } = "";
+        public string FactoryClassName { get; set; } = "";
+
+        internal ProjectMemento(string name, OutputLanguage? outputLanguage,
+            string namespaceForFactoryClass, string factoryClassName)
+        {
+            Name = name;
+            OutputLanguage = outputLanguage;
+            NamespaceForFactoryClass = namespaceForFactoryClass;
+            FactoryClassName = factoryClassName;
+        }
+    }
+
+    #endregion
 }
+

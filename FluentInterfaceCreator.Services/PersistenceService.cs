@@ -54,6 +54,8 @@ public static class PersistenceService
             project.DataTypes.Add(dataType);
         }
 
+        project.MarkAsClean();
+
         return project;
     }
 }
