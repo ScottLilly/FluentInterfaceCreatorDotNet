@@ -18,6 +18,8 @@ public static class PersistenceService
     {
         File.WriteAllText(filename,
             JsonConvert.SerializeObject(project, Formatting.Indented));
+
+        project.MarkAsClean();
     }
 
     public static Project GetProjectFromDisk(string filename)

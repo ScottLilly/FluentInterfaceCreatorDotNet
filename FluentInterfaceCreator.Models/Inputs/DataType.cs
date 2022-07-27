@@ -3,16 +3,22 @@ using FluentInterfaceCreator.Models.Resources;
 
 namespace FluentInterfaceCreator.Models.Inputs;
 
-public class DataType
+public class DataType : ITrackChanges
 {
     public bool IsNative { get; set; } = false;
     public string ContainingNamespace { get; set; } = "";
     public string Name { get; set; } = "";
 
+    public bool IsDirty { get; }
+
     public bool IsValid =>
         Name.IsNotEmpty() &&
         !Name.ContainsInvalidCharacter() &&
         !Name.HasAnInternalSpace();
+
+    public void MarkAsClean()
+    {
+    }
 
     public IEnumerable<string> ValidationErrors()
     {

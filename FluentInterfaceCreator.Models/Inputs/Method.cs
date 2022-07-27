@@ -6,7 +6,7 @@ using PropertyChanged;
 namespace FluentInterfaceCreator.Models.Inputs;
 
 [SuppressPropertyChangedWarnings]
-public class Method : INotifyPropertyChanged
+public class Method : INotifyPropertyChanged, ITrackChanges
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public Enums.MethodType Type { get; set; }
@@ -55,6 +55,9 @@ public class Method : INotifyPropertyChanged
     public string FullSignature =>
         $"{Name}({string.Join(", ", Parameters.Select(p => p.FormattedDataTypeAndName))})";
 
+    public bool IsDirty =>
+        Parameters.Any(p => p.IsDirty);
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public Method(string name, Enums.MethodType type)
@@ -64,7 +67,7 @@ public class Method : INotifyPropertyChanged
     }
 
     // TODO: Find better solution
-    // Parameterless constructor for editing ViewModel and desrialization
+    // Parameterless constructor for editing ViewModel and deserialization
     public Method()
     {
     }
@@ -76,6 +79,14 @@ public class Method : INotifyPropertyChanged
         Name = name;
         Type = type;
         ReturnDataType = returnDataType;
+    }
+
+    public void MarkAsClean()
+    {
+        foreach (Parameter parameter in Parameters)
+        {
+            parameter.MarkAsClean();
+        }
     }
 
     public bool Matches(Method method, bool isCaseSensitive = true) =>

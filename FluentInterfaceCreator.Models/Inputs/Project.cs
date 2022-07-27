@@ -62,6 +62,9 @@ public class Project : INotifyPropertyChanged, ITrackChanges
         Name != _projectMemento.Name ||
         NamespaceForFactoryClass != _projectMemento.NamespaceForFactoryClass ||
         FactoryClassName != _projectMemento.FactoryClassName ||
+        DataTypes.Any(d => d.IsDirty) ||
+        Methods.Any(m => m.IsDirty) ||
+        InterfaceSpecs.Any(i => i.IsDirty) ||
         _dataTypesAreDirty ||
         _methodLinksAreDirty ||
         _interfaceSpecsAreDirty;
@@ -97,6 +100,21 @@ public class Project : INotifyPropertyChanged, ITrackChanges
         _dataTypesAreDirty = false;
         _methodLinksAreDirty = false;
         _interfaceSpecsAreDirty = false;
+
+        foreach (DataType dataType in DataTypes)
+        {
+            dataType.MarkAsClean();
+        }
+
+        foreach (Method method in Methods)
+        {
+            method.MarkAsClean();
+        }
+
+        foreach (InterfaceSpec interfaceSpec in InterfaceSpecs)
+        {
+            interfaceSpec.MarkAsClean();
+        }
     }
 
     #endregion
