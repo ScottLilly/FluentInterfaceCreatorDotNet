@@ -47,4 +47,29 @@ public class TestDataType : BaseTestClass
         dataType.Name = "TestMethod";
         Assert.True(dataType.IsValid);
     }
+
+    [Fact]
+    public void Test_IsDirty()
+    {
+        DataType dataType = new DataType();
+        Assert.False(dataType.IsDirty);
+
+        dataType.Name = "Test";
+        Assert.True(dataType.IsDirty);
+
+        dataType.MarkAsClean();
+        Assert.False(dataType.IsDirty);
+
+        dataType.ContainingNamespace = "TestNamespace";
+        Assert.True(dataType.IsDirty);
+
+        dataType.MarkAsClean();
+        Assert.False(dataType.IsDirty);
+
+        dataType.IsNative = true;
+        Assert.True(dataType.IsDirty);
+
+        dataType.MarkAsClean();
+        Assert.False(dataType.IsDirty);
+    }
 }

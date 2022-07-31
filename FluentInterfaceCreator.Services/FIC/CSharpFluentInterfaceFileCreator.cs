@@ -82,7 +82,7 @@ internal sealed class CSharpFluentInterfaceFileCreator :
                 else
                 {
                     var returnInterfaceSpec =
-                        _project.InterfaceSpecs.First(i => i.CalledByMethodId.Contains(method.Id));
+                        _project.InterfaceSpecs.First(i => i.CalledByMethodIds.Contains(method.Id));
 
                     builder.AddLine(2, $"{returnInterfaceSpec.Name} {method.FullSignature};");
                 }
@@ -103,7 +103,7 @@ internal sealed class CSharpFluentInterfaceFileCreator :
         foreach (Method method in _project.InstantiatingMethods)
         {
             var interfaceSpec =
-                _project.InterfaceSpecs.First(i => i.CalledByMethodId.Contains(method.Id));
+                _project.InterfaceSpecs.First(i => i.CalledByMethodIds.Contains(method.Id));
 
             builder.AddLine(2, $"public static {interfaceSpec.Name} {method.FullSignature}");
             builder.AddLine(2, "{");
@@ -120,7 +120,7 @@ internal sealed class CSharpFluentInterfaceFileCreator :
         foreach (Method method in _project.ChainingMethods)
         {
             var interfaceSpec =
-                _project.InterfaceSpecs.First(i => i.CalledByMethodId.Contains(method.Id));
+                _project.InterfaceSpecs.First(i => i.CalledByMethodIds.Contains(method.Id));
 
             builder.AddLine(2, $"public {interfaceSpec.Name} {method.FullSignature}");
             builder.AddLine(2, "{");

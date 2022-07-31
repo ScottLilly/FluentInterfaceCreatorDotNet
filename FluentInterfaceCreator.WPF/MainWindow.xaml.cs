@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms.VisualStyles;
 using FluentInterfaceCreator.Models.Inputs;
 using FluentInterfaceCreator.Services;
 using FluentInterfaceCreator.ViewModels;
@@ -18,13 +19,11 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        this.Closing += OnClosing;
 
         DataContext = new ProjectEditor();
 
-        sortedDataTypes.Items.SortDescriptions
-            .Add(new SortDescription("ContainingNamespace", ListSortDirection.Ascending));
-        sortedDataTypes.Items.SortDescriptions
-            .Add(new SortDescription("Name", ListSortDirection.Ascending));
+        ApplySortingToControls();
     }
 
     #region "File" menu options
@@ -36,10 +35,16 @@ public partial class MainWindow : Window
             VM.OutputLanguages.First(ol => ol.Name == selectedLanguage);
 
         VM.StartNewProject(outputLanguage);
+        ApplySortingToControls();
     }
 
     private void LoadProject_OnClick(object sender, RoutedEventArgs e)
     {
+        if (!OkToDiscardAnyChanges())
+        {
+            return;
+        }
+
         OpenFileDialog dialog =
             new OpenFileDialog
             {
@@ -52,6 +57,7 @@ public partial class MainWindow : Window
         if (result == true)
         {
             VM.LoadProjectFromFile(dialog.FileName);
+            ApplySortingToControls();
         }
     }
 
@@ -70,15 +76,38 @@ public partial class MainWindow : Window
         if (result == true)
         {
             VM.SaveProjectToFile(dialog.FileName);
-
-            // TODO: Reset Project.IsDirty flag
         }
     }
 
     private void Exit_OnClick(object sender, RoutedEventArgs e)
     {
-        // TODO: Add Project.IsDirty and warn if there are unsaved changes
         Close();
+    }
+
+    private void OnClosing(object? sender, CancelEventArgs e)
+    {
+        if (!OkToDiscardAnyChanges())
+        {
+            e.Cancel = true;
+        }
+    }
+
+    private bool OkToDiscardAnyChanges()
+    {
+        if (VM.Project == null)
+        {
+            return true;
+        }
+
+        if (VM.Project.IsDirty)
+        {
+            var result = 
+                MessageBox.Show("Lose unsaved changes?", "Save", MessageBoxButton.YesNo);
+
+            return result == MessageBoxResult.Yes;
+        }
+
+        return true;
     }
 
     #endregion
@@ -106,5 +135,13 @@ public partial class MainWindow : Window
         var expander = sender as Expander;
 
         expander.Header = "Show\nDetails";
+    }
+
+    private void ApplySortingToControls()
+    {
+        sortedDataTypes.Items.SortDescriptions
+            .Add(new SortDescription("ContainingNamespace", ListSortDirection.Ascending));
+        sortedDataTypes.Items.SortDescriptions
+            .Add(new SortDescription("Name", ListSortDirection.Ascending));
     }
 }

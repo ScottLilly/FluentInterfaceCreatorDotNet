@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentInterfaceCreator.Mode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentInterfaceCreator.Services", "FluentInterfaceCreator.Services\FluentInterfaceCreator.Services.csproj", "{5A68C1FD-D0F0-4DD1-AD09-2BA98F436C21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.FluentInterfaceCreator", "Test.FluentInterfaceCreator\Test.FluentInterfaceCreator.csproj", "{54017693-FFF1-491D-8D09-C86747815F6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.FluentInterfaceCreator", "Test.FluentInterfaceCreator\Test.FluentInterfaceCreator.csproj", "{54017693-FFF1-491D-8D09-C86747815F6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1EB47BE1-2689-4981-A7DF-0606664F522C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

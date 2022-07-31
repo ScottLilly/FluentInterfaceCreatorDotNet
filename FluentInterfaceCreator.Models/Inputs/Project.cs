@@ -7,8 +7,13 @@ using PropertyChanged;
 namespace FluentInterfaceCreator.Models.Inputs;
 
 [SuppressPropertyChangedWarnings]
-public class Project : INotifyPropertyChanged
+public class Project : INotifyPropertyChanged, ITrackChanges
 {
+    private ProjectMemento _memento;
+    private bool _dataTypesAreDirty = false;
+    private bool _methodLinksAreDirty = false;
+    private bool _interfaceSpecsAreDirty = false;
+
     public string Name { get; set; } = "";
     public OutputLanguage? OutputLanguage { get; set; }
     public string NamespaceForFactoryClass { get; set; } = "";
@@ -53,14 +58,29 @@ public class Project : INotifyPropertyChanged
     public List<string> NamespacesNeeded =>
         Methods.SelectMany(m => m.RequiredNamespaces).Distinct().ToList();
 
+    public bool IsDirty =>
+        Name != _memento.Name ||
+        NamespaceForFactoryClass != _memento.NamespaceForFactoryClass ||
+        FactoryClassName != _memento.FactoryClassName ||
+        DataTypes.Any(d => d.IsDirty) ||
+        Methods.Any(m => m.IsDirty) ||
+        InterfaceSpecs.Any(i => i.IsDirty) ||
+        _dataTypesAreDirty ||
+        _methodLinksAreDirty ||
+        _interfaceSpecsAreDirty;
+    
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public Project()
     {
+        SetMementoToCurrentValues();
+
         // Internal handlers, to refresh computed values
         PropertyChanged += OnPropertyChanged;
+        DataTypes.CollectionChanged += OnDataTypesCollectionChanged;
         Methods.CollectionChanged += OnMethodsCollectionChanged;
         MethodLinks.CollectionChanged += OnMethodLinksCollectionChanged;
+        InterfaceSpecs.CollectionChanged += OnInterfaceSpecsCollectionChanged;
     }
 
     #region Public methods
@@ -68,6 +88,37 @@ public class Project : INotifyPropertyChanged
     public void AddMethodLink(Guid startingMethodId, Guid endingMethodId)
     {
         MethodLinks.Add(new MethodLink(startingMethodId, endingMethodId));
+    }
+
+    public void MarkAsClean()
+    {
+        SetMementoToCurrentValues();
+
+        _dataTypesAreDirty = false;
+        _methodLinksAreDirty = false;
+        _interfaceSpecsAreDirty = false;
+
+        foreach (DataType dataType in DataTypes)
+        {
+            dataType.MarkAsClean();
+        }
+
+        foreach (Method method in Methods)
+        {
+            method.MarkAsClean();
+        }
+
+        foreach (InterfaceSpec interfaceSpec in InterfaceSpecs)
+        {
+            interfaceSpec.MarkAsClean();
+        }
+    }
+
+    private void SetMementoToCurrentValues()
+    {
+        _memento =
+            new ProjectMemento(Name, OutputLanguage,
+                NamespaceForFactoryClass, FactoryClassName);
     }
 
     #endregion
@@ -85,9 +136,17 @@ public class Project : INotifyPropertyChanged
         }
     }
 
+    private void OnDataTypesCollectionChanged(object? sender, 
+        NotifyCollectionChangedEventArgs e)
+    {
+        _dataTypesAreDirty = true;
+    }
+
     private void OnMethodsCollectionChanged(object? sender,
         NotifyCollectionChangedEventArgs e)
     {
+        _methodLinksAreDirty = true;
+
         // When a Method is removed from the Methods property,
         // remove the MethodLink objects that referenced it
         if (e.Action == NotifyCollectionChangedAction.Remove &&
@@ -121,6 +180,12 @@ public class Project : INotifyPropertyChanged
         RefreshInterfaceSpecs();
     }
 
+    private void OnInterfaceSpecsCollectionChanged(object? sender, 
+        NotifyCollectionChangedEventArgs e)
+    {
+        _interfaceSpecsAreDirty = true;
+    }
+
     private void RefreshInterfaceSpecs()
     {
         InterfaceSpecs.Clear();
@@ -149,18 +214,39 @@ public class Project : INotifyPropertyChanged
             {
                 InterfaceSpecs.Add(new InterfaceSpec
                 {
-                    CalledByMethodId = new List<Guid> { chainedMethod.Key },
+                    CalledByMethodIds = new List<Guid> { chainedMethod.Key },
                     CallsIntoMethodIds = chainedMethod.Value
                 });
             }
             else
             {
-                if (matchingInterfaceSpec.CalledByMethodId
+                if (matchingInterfaceSpec.CalledByMethodIds
                     .None(cbm => cbm == chainedMethod.Key))
                 {
-                    matchingInterfaceSpec.CalledByMethodId.Add(chainedMethod.Key);
+                    matchingInterfaceSpec.CalledByMethodIds.Add(chainedMethod.Key);
                 }
             }
+        }
+    }
+
+    #endregion
+
+    #region Memento class
+
+    private class ProjectMemento
+    {
+        public string Name { get; set; } = "";
+        public OutputLanguage? OutputLanguage { get; set; }
+        public string NamespaceForFactoryClass { get; set; } = "";
+        public string FactoryClassName { get; set; } = "";
+
+        internal ProjectMemento(string name, OutputLanguage? outputLanguage,
+            string namespaceForFactoryClass, string factoryClassName)
+        {
+            Name = name;
+            OutputLanguage = outputLanguage;
+            NamespaceForFactoryClass = namespaceForFactoryClass;
+            FactoryClassName = factoryClassName;
         }
     }
 

@@ -94,7 +94,7 @@ public abstract class BaseTestClass
         IEnumerable<Guid> calledByMethodIds,
         IEnumerable<Guid> callsIntoMethodIds) =>
         project.InterfaceSpecs
-            .First(i => i.CalledByMethodId.OrderBy(id => id)
+            .First(i => i.CalledByMethodIds.OrderBy(id => id)
                             .SequenceEqual(calledByMethodIds.OrderBy(id => id)) &&
                         i.CallsIntoMethodIds.OrderBy(id => id)
                             .SequenceEqual(callsIntoMethodIds.OrderBy(id => id)));
