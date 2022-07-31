@@ -11,9 +11,9 @@ public class InterfaceSpec: ITrackChanges
 
     public bool IsDirty =>
         Name != _memento.Name ||
-        CalledByMethodIds.OrderBy(i => i)
+        !CalledByMethodIds.OrderBy(i => i)
             .SequenceEqual(_memento.CalledByMethodIds.OrderBy(i => i)) ||
-        CallsIntoMethodIds.OrderBy(i => i)
+        !CallsIntoMethodIds.OrderBy(i => i)
             .SequenceEqual(_memento.CallsIntoMethodIds.OrderBy(i => i));
 
     public InterfaceSpec()
