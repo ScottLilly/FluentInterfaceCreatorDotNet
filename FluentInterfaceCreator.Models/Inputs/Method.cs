@@ -8,6 +8,8 @@ namespace FluentInterfaceCreator.Models.Inputs;
 [SuppressPropertyChangedWarnings]
 public class Method : INotifyPropertyChanged, ITrackChanges
 {
+    private MethodMemento _memento;
+
     public Guid Id { get; set; } = Guid.NewGuid();
     public Enums.MethodType Type { get; set; }
     public string Name { get; set; } = "";
@@ -56,6 +58,10 @@ public class Method : INotifyPropertyChanged, ITrackChanges
         $"{Name}({string.Join(", ", Parameters.Select(p => p.FormattedDataTypeAndName))})";
 
     public bool IsDirty =>
+        Name != _memento.Name ||
+        Type != _memento.Type ||
+        UseIEnumerable != _memento.UseIEnumerable ||
+        ReturnDataType != _memento.ReturnDataType ||
         Parameters.Any(p => p.IsDirty);
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -64,12 +70,15 @@ public class Method : INotifyPropertyChanged, ITrackChanges
     {
         Name = name;
         Type = type;
+
+        SetMementoToCurrentValues();
     }
 
     // TODO: Find better solution
     // Parameterless constructor for editing ViewModel and deserialization
     public Method()
     {
+        SetMementoToCurrentValues();
     }
 
     // TODO: Find better solution
@@ -79,10 +88,14 @@ public class Method : INotifyPropertyChanged, ITrackChanges
         Name = name;
         Type = type;
         ReturnDataType = returnDataType;
+
+        SetMementoToCurrentValues();
     }
 
     public void MarkAsClean()
     {
+        SetMementoToCurrentValues();
+
         foreach (Parameter parameter in Parameters)
         {
             parameter.MarkAsClean();
@@ -94,4 +107,29 @@ public class Method : INotifyPropertyChanged, ITrackChanges
         FormattedReturnDataType.Matches(method.FormattedReturnDataType, isCaseSensitive) &&
         Parameters.Select(p => p.FormattedDataType)
             .SequenceEqual(method.Parameters.Select(p => p.FormattedDataType));
+
+    private void SetMementoToCurrentValues()
+    {
+        _memento =
+            new MethodMemento(Type, Name, UseIEnumerable, ReturnDataType);
+    }
+
+    private class MethodMemento
+    {
+        public Enums.MethodType Type { get; set; }
+        public string Name { get; set; } = "";
+        // Only used for Executing methods
+        public bool UseIEnumerable { get; set; }
+        public DataType? ReturnDataType { get; set; }
+
+        internal MethodMemento(Enums.MethodType type, string name, 
+            bool useIEnumerable, DataType? returnDataType)
+        {
+            Type = type;
+            Name = name;
+            UseIEnumerable = useIEnumerable;
+            ReturnDataType = returnDataType;
+        }
+    }
+
 }

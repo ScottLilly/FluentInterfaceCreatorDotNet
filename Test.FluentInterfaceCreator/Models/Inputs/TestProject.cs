@@ -30,4 +30,11 @@ public class TestProject : BaseTestClass
         project.OutputLanguage = GetOutputLanguage();
         Assert.True(project.IsValid);
     }
+
+    [Fact]
+    public void Test_IsDirty()
+    {
+        Project project = new Project();
+        Assert.False(project.IsDirty);
+    }
 }

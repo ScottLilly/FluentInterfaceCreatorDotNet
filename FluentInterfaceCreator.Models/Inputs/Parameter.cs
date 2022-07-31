@@ -8,12 +8,19 @@ namespace FluentInterfaceCreator.Models.Inputs;
 [SuppressPropertyChangedWarnings]
 public class Parameter : INotifyPropertyChanged, ITrackChanges
 {
+    private ParameterMemento _memento;
+
     public bool UseIEnumerable { get; set; }
     public DataType? DataType { get; set; }
     public string Name { get; set; } = "";
     public string DefaultValue { get; set; } = "";
 
-    public bool IsDirty { get; }
+    public bool IsDirty =>
+        UseIEnumerable != _memento.UseIEnumerable ||
+        DataType != _memento.DataType ||
+        (DataType?.IsDirty ?? false) ||
+        Name != _memento.Name ||
+        DefaultValue != _memento.DefaultValue;
 
     public bool IsValid =>
         Name.IsNotEmpty() &&
@@ -39,31 +46,38 @@ public class Parameter : INotifyPropertyChanged, ITrackChanges
 
     public Parameter()
     {
+        SetMementoToCurrentValues();
     }
 
-    public Parameter(string name, DataType dataType, 
+    public Parameter(string name, DataType dataType,
         bool useIEnumerable = false)
     {
         Name = name;
         DataType = dataType;
         UseIEnumerable = useIEnumerable;
+
+        SetMementoToCurrentValues();
     }
 
-    public Parameter(string name, DataType dataType, 
+    public Parameter(string name, DataType dataType,
         string defaultValue)
     {
         Name = name;
         DataType = dataType;
         DefaultValue = defaultValue;
+
+        SetMementoToCurrentValues();
     }
 
-    public Parameter(string name, DataType dataType, 
+    public Parameter(string name, DataType dataType,
         string defaultValue, bool useIEnumerable)
     {
         Name = name;
         DataType = dataType;
         DefaultValue = defaultValue;
         UseIEnumerable = useIEnumerable;
+
+        SetMementoToCurrentValues();
     }
 
     public IEnumerable<string> ValidationErrors()
@@ -92,9 +106,36 @@ public class Parameter : INotifyPropertyChanged, ITrackChanges
     }
     public void MarkAsClean()
     {
+        DataType?.MarkAsClean();
+
+        SetMementoToCurrentValues();
     }
 
     public bool Matches(Parameter parameter, bool isCaseSensitive = true) =>
         Name.Matches(parameter.Name, isCaseSensitive) &&
         UseIEnumerable == parameter.UseIEnumerable;
+
+    private void SetMementoToCurrentValues()
+    {
+        _memento = 
+            new ParameterMemento(UseIEnumerable, DataType, Name, DefaultValue);
+    }
+
+    private class ParameterMemento
+    {
+        public bool UseIEnumerable { get; set; }
+        public DataType? DataType { get; set; }
+        public string Name { get; set; } = "";
+        public string DefaultValue { get; set; } = "";
+
+        internal ParameterMemento(bool useIEnumerable, DataType? dataType,
+            string name, string defaultValue)
+        {
+            UseIEnumerable = useIEnumerable;
+            DataType = dataType;
+            Name = name;
+            DefaultValue = defaultValue;
+        }
+    }
+
 }

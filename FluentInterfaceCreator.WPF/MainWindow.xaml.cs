@@ -21,10 +21,7 @@ public partial class MainWindow : Window
 
         DataContext = new ProjectEditor();
 
-        sortedDataTypes.Items.SortDescriptions
-            .Add(new SortDescription("ContainingNamespace", ListSortDirection.Ascending));
-        sortedDataTypes.Items.SortDescriptions
-            .Add(new SortDescription("Name", ListSortDirection.Ascending));
+        ApplySortingToControls();
     }
 
     #region "File" menu options
@@ -36,6 +33,7 @@ public partial class MainWindow : Window
             VM.OutputLanguages.First(ol => ol.Name == selectedLanguage);
 
         VM.StartNewProject(outputLanguage);
+        ApplySortingToControls();
     }
 
     private void LoadProject_OnClick(object sender, RoutedEventArgs e)
@@ -57,6 +55,7 @@ public partial class MainWindow : Window
         if (result == true)
         {
             VM.LoadProjectFromFile(dialog.FileName);
+            ApplySortingToControls();
         }
     }
 
@@ -129,5 +128,13 @@ public partial class MainWindow : Window
         var expander = sender as Expander;
 
         expander.Header = "Show\nDetails";
+    }
+
+    private void ApplySortingToControls()
+    {
+        sortedDataTypes.Items.SortDescriptions
+            .Add(new SortDescription("ContainingNamespace", ListSortDirection.Ascending));
+        sortedDataTypes.Items.SortDescriptions
+            .Add(new SortDescription("Name", ListSortDirection.Ascending));
     }
 }

@@ -9,7 +9,7 @@ namespace FluentInterfaceCreator.Models.Inputs;
 [SuppressPropertyChangedWarnings]
 public class Project : INotifyPropertyChanged, ITrackChanges
 {
-    private ProjectMemento _projectMemento;
+    private ProjectMemento _memento;
     private bool _dataTypesAreDirty = false;
     private bool _methodLinksAreDirty = false;
     private bool _interfaceSpecsAreDirty = false;
@@ -59,9 +59,9 @@ public class Project : INotifyPropertyChanged, ITrackChanges
         Methods.SelectMany(m => m.RequiredNamespaces).Distinct().ToList();
 
     public bool IsDirty =>
-        Name != _projectMemento.Name ||
-        NamespaceForFactoryClass != _projectMemento.NamespaceForFactoryClass ||
-        FactoryClassName != _projectMemento.FactoryClassName ||
+        Name != _memento.Name ||
+        NamespaceForFactoryClass != _memento.NamespaceForFactoryClass ||
+        FactoryClassName != _memento.FactoryClassName ||
         DataTypes.Any(d => d.IsDirty) ||
         Methods.Any(m => m.IsDirty) ||
         InterfaceSpecs.Any(i => i.IsDirty) ||
@@ -73,9 +73,7 @@ public class Project : INotifyPropertyChanged, ITrackChanges
 
     public Project()
     {
-        _projectMemento = 
-            new ProjectMemento(Name, OutputLanguage, 
-                NamespaceForFactoryClass, FactoryClassName);
+        SetMementoToCurrentValues();
 
         // Internal handlers, to refresh computed values
         PropertyChanged += OnPropertyChanged;
@@ -94,9 +92,8 @@ public class Project : INotifyPropertyChanged, ITrackChanges
 
     public void MarkAsClean()
     {
-        _projectMemento =
-            new ProjectMemento(Name, OutputLanguage,
-                NamespaceForFactoryClass, FactoryClassName);
+        SetMementoToCurrentValues();
+
         _dataTypesAreDirty = false;
         _methodLinksAreDirty = false;
         _interfaceSpecsAreDirty = false;
@@ -115,6 +112,13 @@ public class Project : INotifyPropertyChanged, ITrackChanges
         {
             interfaceSpec.MarkAsClean();
         }
+    }
+
+    private void SetMementoToCurrentValues()
+    {
+        _memento =
+            new ProjectMemento(Name, OutputLanguage,
+                NamespaceForFactoryClass, FactoryClassName);
     }
 
     #endregion
@@ -210,16 +214,16 @@ public class Project : INotifyPropertyChanged, ITrackChanges
             {
                 InterfaceSpecs.Add(new InterfaceSpec
                 {
-                    CalledByMethodId = new List<Guid> { chainedMethod.Key },
+                    CalledByMethodIds = new List<Guid> { chainedMethod.Key },
                     CallsIntoMethodIds = chainedMethod.Value
                 });
             }
             else
             {
-                if (matchingInterfaceSpec.CalledByMethodId
+                if (matchingInterfaceSpec.CalledByMethodIds
                     .None(cbm => cbm == chainedMethod.Key))
                 {
-                    matchingInterfaceSpec.CalledByMethodId.Add(chainedMethod.Key);
+                    matchingInterfaceSpec.CalledByMethodIds.Add(chainedMethod.Key);
                 }
             }
         }
@@ -248,4 +252,3 @@ public class Project : INotifyPropertyChanged, ITrackChanges
 
     #endregion
 }
-

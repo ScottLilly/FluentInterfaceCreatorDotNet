@@ -72,4 +72,35 @@ public class TestParameter : BaseTestClass
 
         Assert.Equal($"IEnumerable<{dataTypeName}>", parameter.FormattedDataType);
     }
+
+    [Fact]
+    public void Test_IsDirty()
+    {
+        Parameter parameter = new Parameter();
+        Assert.False(parameter.IsDirty);
+
+        parameter.Name = "Test";
+        Assert.True(parameter.IsDirty);
+
+        parameter.MarkAsClean();
+        Assert.False(parameter.IsDirty);
+
+        parameter.DataType = GetDataTypeWithName("string");
+        Assert.True(parameter.IsDirty);
+
+        parameter.MarkAsClean();
+        Assert.False(parameter.IsDirty);
+
+        parameter.DefaultValue = "asd";
+        Assert.True(parameter.IsDirty);
+
+        parameter.MarkAsClean();
+        Assert.False(parameter.IsDirty);
+
+        parameter.UseIEnumerable = true;
+        Assert.True(parameter.IsDirty);
+
+        parameter.MarkAsClean();
+        Assert.False(parameter.IsDirty);
+    }
 }

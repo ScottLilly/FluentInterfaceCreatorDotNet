@@ -282,4 +282,35 @@ public class TestMethod : BaseTestClass
         Assert.Contains(GENERIC_NAMESPACE_NAME, method.RequiredNamespaces);
         Assert.Equal("IEnumerable<string>|TestMethod=IEnumerable<int>:DateTime", method.DataTypeOnlySignature);
     }
+
+    [Fact]
+    public void Test_IsDirty()
+    {
+        Method method = new Method();
+        Assert.False(method.IsDirty);
+
+        method.Name = "test";
+        Assert.True(method.IsDirty);
+
+        method.MarkAsClean();
+        Assert.False(method.IsDirty);
+
+        method.UseIEnumerable = true;
+        Assert.True(method.IsDirty);
+
+        method.MarkAsClean();
+        Assert.False(method.IsDirty);
+
+        method.ReturnDataType = GetDataTypeWithName("string");
+        Assert.True(method.IsDirty);
+
+        method.MarkAsClean();
+        Assert.False(method.IsDirty);
+
+        method.Type = Enums.MethodType.Chaining;
+        Assert.True(method.IsDirty);
+
+        method.MarkAsClean();
+        Assert.False(method.IsDirty);
+    }
 }
