@@ -1,12 +1,12 @@
-﻿<Window x:Class="FluentInterfaceCreator.WPF.MainWindow"
+﻿<Window x:Class="FluentInterfaceCreator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:resources="clr-namespace:FluentInterfaceCreator.WPF.Resources"
         xmlns:viewModels="clr-namespace:FluentInterfaceCreator.ViewModels;assembly=FluentInterfaceCreator.ViewModels"
-        xmlns:converters="clr-namespace:FluentInterfaceCreator.WPF.Converters"
         xmlns:inputs="clr-namespace:FluentInterfaceCreator.Models.Inputs;assembly=FluentInterfaceCreator.Models"
+        xmlns:resources="clr-namespace:FluentInterfaceCreator.Resources"
+        xmlns:converters="clr-namespace:FluentInterfaceCreator.Converters"
         d:DataContext="{d:DesignInstance viewModels:ProjectEditor}"
         mc:Ignorable="d"
         FontSize="11pt"
@@ -130,6 +130,9 @@
                           Click="Exit_OnClick"/>
             </MenuItem>
             <MenuItem Header="{Binding Source={x:Static resources:Literals.Help}}">
+                <MenuItem Header="{Binding Source={x:Static resources:Literals.Help}}"
+                          Click="Help_OnClick"/>
+                <Separator/>
                 <MenuItem Header="{Binding Source={x:Static resources:Literals.AboutFluentInterfaceCreator}}" 
                           Click="About_OnClick"/>
             </MenuItem>

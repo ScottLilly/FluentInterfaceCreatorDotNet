@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace FluentInterfaceCreator.WPF.Converters;
+namespace FluentInterfaceCreator.Converters;
 
 public class ConfigurableBooleanToVisibilityConverter : BooleanConverter<Visibility>
 {

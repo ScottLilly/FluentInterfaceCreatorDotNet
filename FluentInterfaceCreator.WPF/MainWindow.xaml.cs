@@ -2,14 +2,14 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms.VisualStyles;
 using FluentInterfaceCreator.Models.Inputs;
 using FluentInterfaceCreator.Services;
 using FluentInterfaceCreator.ViewModels;
+using FluentInterfaceCreator.Windows;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 
-namespace FluentInterfaceCreator.WPF;
+namespace FluentInterfaceCreator;
 
 public partial class MainWindow : Window
 {
@@ -101,10 +101,12 @@ public partial class MainWindow : Window
 
         if (VM.Project.IsDirty)
         {
-            var result = 
-                MessageBox.Show("Lose unsaved changes?", "Save", MessageBoxButton.YesNo);
+            YesNo yesNoWindow = new YesNo("Exit?", "Lose unsaved changes?");
+            yesNoWindow.Owner = this;
 
-            return result == MessageBoxResult.Yes;
+            yesNoWindow.ShowDialog();
+
+            return yesNoWindow.ResponseIsYes;
         }
 
         return true;
@@ -114,10 +116,15 @@ public partial class MainWindow : Window
 
     #region "Help" menu options
 
+    private void Help_OnClick(object sender, RoutedEventArgs e)
+    {
+        Help help = new Help { Owner = this };
+        help.ShowDialog();
+    }
+
     private void About_OnClick(object sender, RoutedEventArgs e)
     {
         About about = new About {Owner = this};
-
         about.ShowDialog();
     }
 

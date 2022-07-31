@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Navigation;
 
-namespace FluentInterfaceCreator.WPF;
+namespace FluentInterfaceCreator.Windows;
 
 public partial class About : Window
 {
