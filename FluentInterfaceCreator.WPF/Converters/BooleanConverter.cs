@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace FluentInterfaceCreator.WPF.Converters;
+namespace FluentInterfaceCreator.Converters;
 
 public class BooleanConverter<T> : IValueConverter
 {

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace FluentInterfaceCreator.WPF;
+namespace FluentInterfaceCreator;
 
 public partial class App : Application
 {
