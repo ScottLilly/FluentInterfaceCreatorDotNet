@@ -22,6 +22,7 @@ public class ProjectEditor
     {
         Project = new Project();
         Project.OutputLanguage = outputLanguage;
+        Project.MarkAsClean();
     }
 
     public void LoadProjectFromFile(string fileName)

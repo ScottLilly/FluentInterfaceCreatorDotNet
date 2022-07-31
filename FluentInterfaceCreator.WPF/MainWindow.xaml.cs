@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms.VisualStyles;
 using FluentInterfaceCreator.Models.Inputs;
 using FluentInterfaceCreator.Services;
 using FluentInterfaceCreator.ViewModels;
@@ -18,6 +19,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        this.Closing += OnClosing;
 
         DataContext = new ProjectEditor();
 
@@ -79,9 +81,14 @@ public partial class MainWindow : Window
 
     private void Exit_OnClick(object sender, RoutedEventArgs e)
     {
-        if (OkToDiscardAnyChanges())
+        Close();
+    }
+
+    private void OnClosing(object? sender, CancelEventArgs e)
+    {
+        if (!OkToDiscardAnyChanges())
         {
-            Close();
+            e.Cancel = true;
         }
     }
 
@@ -95,7 +102,7 @@ public partial class MainWindow : Window
         if (VM.Project.IsDirty)
         {
             var result = 
-                MessageBox.Show("Lose unsaved changes?", "Save", MessageBoxButton.YesNoCancel);
+                MessageBox.Show("Lose unsaved changes?", "Save", MessageBoxButton.YesNo);
 
             return result == MessageBoxResult.Yes;
         }
