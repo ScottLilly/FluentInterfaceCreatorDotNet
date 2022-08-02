@@ -32,7 +32,10 @@ public class Method : INotifyPropertyChanged, ITrackChanges
     public bool CanEndChainPair =>
         Type is Enums.MethodType.Chaining or Enums.MethodType.Executing;
     public bool RequiresReturnDataType =>
+        IsExecutingMethod;
+    public bool IsExecutingMethod =>
         Type == Enums.MethodType.Executing;
+
     public IEnumerable<string> RequiredNamespaces =>
         Parameters.SelectMany(p => p.RequiredNamespaces)
             .Concat(new List<string>
