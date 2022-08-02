@@ -46,7 +46,7 @@
             <Setter Property="Margin" Value="0,0,0,0"/>
             <Setter Property="Padding" Value="2,1,2,1"/>
         </Style>
-        <Style TargetType="Label" x:Key="MethodSummeryNameLabel"
+        <Style TargetType="Label" x:Key="MethodSummaryNameLabel"
                BasedOn="{StaticResource MethodSummaryLabel}">
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
@@ -68,21 +68,40 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0"
-                           Style="{StaticResource MethodSummeryNameLabel}"
+                           Style="{StaticResource MethodSummaryNameLabel}"
                            Content="{Binding Name}"/>
 
                     <ItemsControl Grid.Row="1" Grid.Column="0"
                                   ItemsSource="{Binding Parameters}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Label Style="{StaticResource MethodSummaryLabel}"
-                                       Content="{Binding FormattedDataTypeAndName}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Style="{StaticResource MethodSummaryLabel}"
+                                           FontWeight="Bold"
+                                           Foreground="Green"
+                                           Content="=>"/>
+                                    <Label Style="{StaticResource MethodSummaryLabel}"
+                                           Content="{Binding FormattedDataTypeAndName}"/>
+                                </StackPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
+
+                    <StackPanel Grid.Row="2" Grid.Column="0" 
+                                Visibility="{Binding IsExecutingMethod, Converter={StaticResource VisibleIfTrue}}"
+                                Orientation="Horizontal">
+                        <Label Style="{StaticResource MethodSummaryLabel}"
+                               FontWeight="Bold"
+                               Foreground="Red"
+                               Content="&lt;="/>
+                        <Label Style="{StaticResource MethodSummaryLabel}"
+                               Content="{Binding ReturnDataType.Name}"/>
+                    </StackPanel>
+
                 </Grid>
 
             </Border>
@@ -309,6 +328,40 @@
                           Style="{StaticResource {x:Type GroupBox}}"
                           Margin="5,0,5,5"
                           Header="Selected Method">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0"
+                               Style="{StaticResource InputLabel}"
+                               Content="Type:"/>
+                        <TextBox Grid.Row="0" Grid.Column="1"
+                                 MinWidth="200"
+                                 Text="{Binding SelectedMethod.Type}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0"
+                               Style="{StaticResource InputLabel}"
+                               Content="Name:"/>
+                        <TextBox Grid.Row="1" Grid.Column="1"
+                                 MinWidth="200"
+                                 Text="{Binding SelectedMethod.Name}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0"
+                               Style="{StaticResource InputLabel}"
+                               Content="Enumerable?:"/>
+                        <CheckBox Grid.Row="2" Grid.Column="1"
+                                  VerticalAlignment="Center"
+                                 IsChecked="{Binding SelectedMethod.UseIEnumerable}"/>
+
+
+                    </Grid>
 
                 </GroupBox>
 

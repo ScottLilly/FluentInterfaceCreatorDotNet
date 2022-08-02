@@ -10,6 +10,7 @@ public class ProjectEditor
     public List<OutputLanguage>? OutputLanguages { get; }
 
     public Project? Project { get; private set; }
+    public Method SelectedMethod { get; set; } = new Method();
 
     public bool HasProject => Project != null;
 
